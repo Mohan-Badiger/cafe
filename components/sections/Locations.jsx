@@ -1,5 +1,4 @@
 "use client";
-
 import { locations } from "@/lib/content";
 import SectionReveal from "@/components/shared/SectionReveal";
 import MagneticButton from "@/components/shared/MagneticButton";
