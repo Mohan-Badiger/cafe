@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { brandStory } from "@/lib/content";
 import SectionReveal from "@/components/shared/SectionReveal";
