@@ -106,7 +106,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
-                className="flex-1 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-cream text-sm placeholder:text-white/30 focus:outline-none focus:border-gold/50 transition-colors"
+                className="flex-1 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-cream text-sm focus:outline-none transition-colors"
               />
               <MagneticButton
                 type="submit"
