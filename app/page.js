@@ -1,49 +1,23 @@
-import dynamic from "next/dynamic";
+"use client";
 
-// Client components - lazy loaded for performance
-const LenisProvider = dynamic(
-  () => import("@/components/shared/LenisProvider"),
-  { ssr: false }
-);
-const Navbar = dynamic(() => import("@/components/sections/Navbar"), {
-  ssr: false,
-});
-const Hero = dynamic(() => import("@/components/sections/Hero"), {
-  ssr: false,
-});
-const BrandStory = dynamic(
-  () => import("@/components/sections/BrandStory"),
-  { ssr: false }
-);
-const Philosophy = dynamic(
-  () => import("@/components/sections/Philosophy"),
-  { ssr: false }
-);
-const MenuShowcase = dynamic(
-  () => import("@/components/sections/MenuShowcase"),
-  { ssr: false }
-);
-const Awards = dynamic(() => import("@/components/sections/Awards"), {
-  ssr: false,
-});
-const Press = dynamic(() => import("@/components/sections/Press"), {
-  ssr: false,
-});
+import dynamic from "next/dynamic";
+import LenisProvider from "@/components/shared/LenisProvider";
+import Navbar from "@/components/sections/Navbar";
+import Hero from "@/components/sections/Hero";
+import BrandStory from "@/components/sections/BrandStory";
+import Philosophy from "@/components/sections/Philosophy";
+import MenuShowcase from "@/components/sections/MenuShowcase";
+import Awards from "@/components/sections/Awards";
+import Press from "@/components/sections/Press";
+import Locations from "@/components/sections/Locations";
+import Testimonials from "@/components/sections/Testimonials";
+import Footer from "@/components/sections/Footer";
+
+// Timeline uses GSAP ScrollTrigger — lazy-load for performance
 const Timeline = dynamic(
   () => import("@/components/sections/Timeline"),
   { ssr: false }
 );
-const Locations = dynamic(
-  () => import("@/components/sections/Locations"),
-  { ssr: false }
-);
-const Testimonials = dynamic(
-  () => import("@/components/sections/Testimonials"),
-  { ssr: false }
-);
-const Footer = dynamic(() => import("@/components/sections/Footer"), {
-  ssr: false,
-});
 
 export default function Home() {
   return (
