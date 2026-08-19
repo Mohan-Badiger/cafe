@@ -16,6 +16,7 @@ const inter = Inter({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://chaatandchill.cafe"),
   title: "Chaat & Chill Café — Sip. Snack. Smile.",
   description:
     "Where India's vibrant street food culture meets modern café vibes. Every bite tells a story, every sip sparks a smile. Visit us in Bangalore, Mumbai, Delhi & Hyderabad.",
