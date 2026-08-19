@@ -1,5 +1,4 @@
 "use client";
-
 import { awards } from "@/lib/content";
 
 export default function Awards() {
