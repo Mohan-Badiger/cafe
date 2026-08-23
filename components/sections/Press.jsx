@@ -14,7 +14,7 @@ export default function Press() {
         </SectionReveal>
         <SectionReveal delay={0.1}>
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-espresso text-center mb-16">
-            What They're <span className="text-amber">Saying</span>
+            What They&apos;re <span className="text-amber">Saying</span>
           </h2>
         </SectionReveal>
 
