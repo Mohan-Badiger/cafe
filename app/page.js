@@ -2,6 +2,8 @@
 
 import dynamic from "next/dynamic";
 import LenisProvider from "@/components/shared/LenisProvider";
+import { BookingProvider } from "@/lib/BookingContext";
+import ReservationModal from "@/components/shared/ReservationModal";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import BrandStory from "@/components/sections/BrandStory";
@@ -21,20 +23,24 @@ const Timeline = dynamic(
 
 export default function Home() {
   return (
-    <LenisProvider>
-      <Navbar />
-      <main>
-        <Hero />
-        <BrandStory />
-        <Philosophy />
-        <MenuShowcase />
-        <Awards />
-        <Press />
-        <Timeline />
-        <Locations />
-        <Testimonials />
-      </main>
-      <Footer />
-    </LenisProvider>
+    <BookingProvider>
+      <LenisProvider>
+        <Navbar />
+        <main>
+          <Hero />
+          <BrandStory />
+          <Philosophy />
+          <MenuShowcase />
+          <Awards />
+          <Press />
+          <Timeline />
+          <Locations />
+          <Testimonials />
+        </main>
+        <Footer />
+        <ReservationModal />
+      </LenisProvider>
+    </BookingProvider>
   );
 }
+
