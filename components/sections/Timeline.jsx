@@ -14,26 +14,28 @@ export default function Timeline() {
     if (prefersReduced) return;
 
     let ctx;
+    let isMounted = true;
+
     import("gsap").then(({ gsap }) => {
       import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
+        if (!isMounted) return;
+
         gsap.registerPlugin(ScrollTrigger);
 
         const track = trackRef.current;
         const section = sectionRef.current;
         if (!track || !section) return;
 
-        const scrollWidth = track.scrollWidth - window.innerWidth;
-
         ctx = gsap.context(() => {
           gsap.to(track, {
-            x: -scrollWidth,
+            x: () => -(track.scrollWidth - window.innerWidth),
             ease: "none",
             scrollTrigger: {
               trigger: section,
               pin: true,
               scrub: 1,
               start: "top top",
-              end: () => `+=${scrollWidth}`,
+              end: () => `+=${track.scrollWidth - window.innerWidth}`,
               invalidateOnRefresh: true,
             },
           });
@@ -42,6 +44,7 @@ export default function Timeline() {
     });
 
     return () => {
+      isMounted = false;
       if (ctx) ctx.revert();
     };
   }, []);
@@ -52,10 +55,13 @@ export default function Timeline() {
       ref={sectionRef}
       className="relative bg-espresso-deep overflow-hidden"
     >
+      {/* Timeline connector line */}
+      <div className="absolute top-1/2 left-0 right-0 h-px bg-white/10 z-0 pointer-events-none" />
+
       {/* Section header */}
       <div
         ref={trackRef}
-        className="flex items-center h-screen"
+        className="relative flex items-center h-screen"
         style={{ width: "fit-content" }}
       >
         {/* Intro slide */}
@@ -76,9 +82,6 @@ export default function Timeline() {
             </div>
           </div>
         </div>
-
-        {/* Timeline connector line */}
-        <div className="absolute top-1/2 left-0 right-0 h-px bg-white/10 z-0" />
 
         {/* Timeline items */}
         {timeline.map((item, i) => (
