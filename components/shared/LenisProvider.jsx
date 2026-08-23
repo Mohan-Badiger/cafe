@@ -12,24 +12,46 @@ export default function LenisProvider({ children }) {
     if (prefersReduced) return;
 
     let lenis;
-    import("@studio-freight/lenis").then((mod) => {
-      const Lenis = mod.default;
+    let tickerCallback;
+    let gsapInstance;
+    let isMounted = true;
+
+    Promise.all([
+      import("@studio-freight/lenis"),
+      import("gsap"),
+      import("gsap/ScrollTrigger")
+    ]).then(([lenisMod, gsapMod, scrollTriggerMod]) => {
+      if (!isMounted) return;
+
+      const Lenis = lenisMod.default;
+      const { gsap } = gsapMod;
+      const { ScrollTrigger } = scrollTriggerMod;
+
+      gsapInstance = gsap;
+      gsap.registerPlugin(ScrollTrigger);
+
       lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        lerp: 0.1,
         smoothWheel: true,
       });
       lenisRef.current = lenis;
 
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
+      // Synchronize ScrollTrigger updates with Lenis scroll
+      lenis.on("scroll", ScrollTrigger.update);
+
+      // Drive Lenis scroll ticks from GSAP's ticker
+      tickerCallback = (time) => {
+        lenis.raf(time * 1000);
+      };
+      gsap.ticker.add(tickerCallback);
     });
 
     return () => {
+      isMounted = false;
       if (lenis) lenis.destroy();
+      if (gsapInstance && tickerCallback) {
+        gsapInstance.ticker.remove(tickerCallback);
+      }
     };
   }, []);
 
