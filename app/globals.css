@@ -34,7 +34,7 @@
 
 /* ========== BASE STYLES ========== */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -118,18 +118,13 @@ body {
 }
 
 /* ========== CUSTOM SCROLLBAR ========== */
+.menu-scroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .menu-scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.menu-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 2px;
-}
-
-.menu-scroll::-webkit-scrollbar-thumb {
-  background: var(--accent-gold);
-  border-radius: 2px;
+  display: none; /* Chrome, Safari and Opera */
 }
 
 /* ========== REDUCED MOTION ========== */
