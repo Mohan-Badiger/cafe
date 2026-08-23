@@ -7,12 +7,15 @@ import SectionReveal from "@/components/shared/SectionReveal";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Newsletter signup logic
     setEmail("");
-    alert("Thanks for subscribing! 🎉");
+    setSubscribed(true);
+    setTimeout(() => {
+      setSubscribed(false);
+    }, 5000);
   };
 
   return (
@@ -99,22 +102,28 @@ export default function Footer() {
             <p className="text-muted text-sm mb-4">
               Get the latest on new dishes, events, and special offers.
             </p>
-            <form onSubmit={handleSubmit} className="flex gap-2">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="flex-1 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-cream text-sm focus:outline-none transition-colors"
-              />
-              <MagneticButton
-                type="submit"
-                className="px-5 py-2.5 bg-gold text-espresso rounded-full text-sm font-semibold hover:bg-amber transition-colors"
-              >
-                Join
-              </MagneticButton>
-            </form>
+            {subscribed ? (
+              <div className="bg-gold/10 border border-gold/20 rounded-xl p-4 text-gold font-medium text-sm text-center">
+                Thanks for subscribing! 🎉
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex gap-2">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  className="flex-1 px-4 py-2.5 rounded-full bg-white/5 border border-white/10 text-cream text-sm focus:outline-none transition-colors"
+                />
+                <MagneticButton
+                  type="submit"
+                  className="px-5 py-2.5 bg-gold text-espresso rounded-full text-sm font-semibold hover:bg-amber transition-colors cursor-pointer"
+                >
+                  Join
+                </MagneticButton>
+              </form>
+            )}
           </SectionReveal>
         </div>
 
