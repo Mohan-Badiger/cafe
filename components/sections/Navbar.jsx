@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navLinks, siteConfig } from "@/lib/content";
+import { useBooking } from "@/lib/BookingContext";
 import MagneticButton from "@/components/shared/MagneticButton";
 
 export default function Navbar() {
@@ -10,6 +11,7 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [lastY, setLastY] = useState(0);
+  const { openBooking } = useBooking();
 
   useEffect(() => {
     const onScroll = () => {
@@ -70,9 +72,8 @@ export default function Navbar() {
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-4 z-10">
             <MagneticButton
-              as="a"
-              href="#locations"
-              className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-gold text-espresso font-semibold text-sm rounded-full hover:bg-amber transition-colors duration-200"
+              onClick={() => openBooking()}
+              className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-gold text-espresso font-semibold text-sm rounded-full hover:bg-amber transition-colors duration-200 cursor-pointer"
             >
               Reserve a Table
             </MagneticButton>
@@ -124,16 +125,18 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <motion.a
-                href="#locations"
-                onClick={() => setMobileOpen(false)}
-                className="mt-4 px-8 py-3 bg-gold text-espresso font-semibold rounded-full"
+              <motion.button
+                onClick={() => {
+                  setMobileOpen(false);
+                  openBooking();
+                }}
+                className="mt-4 px-8 py-3 bg-gold text-espresso font-semibold rounded-full cursor-pointer"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
                 Reserve a Table
-              </motion.a>
+              </motion.button>
             </nav>
           </motion.div>
         )}
