@@ -21,7 +21,7 @@ export default function Hero() {
     <section
       id="hero"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-espresso"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-espresso scroll-mt-24"
     >
       {/* Background image */}
       <div className="absolute inset-0 z-0">
