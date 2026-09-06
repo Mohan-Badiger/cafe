@@ -19,7 +19,7 @@ export default function Philosophy() {
     <section
       id="philosophy"
       ref={ref}
-      className="relative py-32 md:py-48 overflow-hidden"
+      className="relative py-32 md:py-48 overflow-hidden scroll-mt-24"
     >
       {/* Background image + overlay */}
       <div className="absolute inset-0">

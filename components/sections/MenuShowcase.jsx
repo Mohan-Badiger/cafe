@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { menuItems } from "@/lib/content";
 import SectionReveal from "@/components/shared/SectionReveal";
@@ -8,15 +8,14 @@ import MagneticButton from "@/components/shared/MagneticButton";
 
 export default function MenuShowcase() {
   const scrollRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const scrollCarousel = (direction) => {
+  const updateActiveIndex = () => {
     const container = scrollRef.current;
     if (!container) return;
-
     const cards = Array.from(container.children);
     if (cards.length === 0) return;
 
-    // Find which card is currently closest to the viewport's center
     const containerRect = container.getBoundingClientRect();
     const containerCenter = containerRect.left + containerRect.width / 2;
 
@@ -27,31 +26,55 @@ export default function MenuShowcase() {
       const cardRect = card.getBoundingClientRect();
       const cardCenter = cardRect.left + cardRect.width / 2;
       const distance = Math.abs(cardCenter - containerCenter);
-      
+
       if (distance < minDistance) {
         minDistance = distance;
         closestCardIndex = index;
       }
     });
 
-    // Determine target card index
-    let targetIndex = closestCardIndex;
+    setActiveIndex(closestCardIndex);
+  };
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    container.addEventListener("scroll", updateActiveIndex, { passive: true });
+    return () => container.removeEventListener("scroll", updateActiveIndex);
+  }, []);
+
+  const scrollToCard = (index) => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const cards = Array.from(container.children);
+    if (cards[index]) {
+      cards[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center",
+      });
+    }
+  };
+
+  const scrollCarousel = (direction) => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const cards = Array.from(container.children);
+    if (cards.length === 0) return;
+
+    let targetIndex = activeIndex;
     if (direction === "next") {
-      targetIndex = Math.min(closestCardIndex + 1, cards.length - 1);
+      targetIndex = Math.min(activeIndex + 1, cards.length - 1);
     } else {
-      targetIndex = Math.max(closestCardIndex - 1, 0);
+      targetIndex = Math.max(activeIndex - 1, 0);
     }
 
-    // Scroll the target card into view centered
-    cards[targetIndex].scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center",
-    });
+    scrollToCard(targetIndex);
   };
 
   return (
-    <section id="menu" className="relative py-24 md:py-36 bg-espresso-deep overflow-hidden">
+    <section id="menu" className="relative py-24 md:py-36 bg-espresso-deep overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 mb-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
@@ -71,11 +94,11 @@ export default function MenuShowcase() {
             </SectionReveal>
           </div>
           <SectionReveal delay={0.3}>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4 flex-wrap sm:flex-nowrap">
               <MagneticButton
                 as="a"
-                href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-gold text-gold rounded-full hover:bg-gold hover:text-espresso transition-all duration-300 text-sm font-semibold whitespace-nowrap"
+                href="#locations"
+                className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 border border-gold text-gold rounded-full hover:bg-gold hover:text-espresso transition-all duration-300 text-xs sm:text-sm font-semibold whitespace-nowrap"
               >
                 View Full Menu
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -83,11 +106,12 @@ export default function MenuShowcase() {
                 </svg>
               </MagneticButton>
 
-              {/* Navigation Arrows */}
-              <div className="hidden md:flex items-center gap-2">
+              {/* Navigation Arrows - Accessible on all screen sizes */}
+              <div className="flex items-center gap-2">
                 <button
                   onClick={() => scrollCarousel("prev")}
-                  className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-cream hover:border-gold hover:text-gold transition-colors duration-300 cursor-pointer"
+                  disabled={activeIndex === 0}
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-white/10 flex items-center justify-center text-cream hover:border-gold hover:text-gold transition-colors duration-300 cursor-pointer disabled:opacity-30"
                   aria-label="Previous menu items"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -96,7 +120,8 @@ export default function MenuShowcase() {
                 </button>
                 <button
                   onClick={() => scrollCarousel("next")}
-                  className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-cream hover:border-gold hover:text-gold transition-colors duration-300 cursor-pointer"
+                  disabled={activeIndex === menuItems.length - 1}
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-white/10 flex items-center justify-center text-cream hover:border-gold hover:text-gold transition-colors duration-300 cursor-pointer disabled:opacity-30"
                   aria-label="Next menu items"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -112,7 +137,7 @@ export default function MenuShowcase() {
       {/* Horizontal scroll carousel */}
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto px-6 lg:px-10 pb-6 menu-scroll snap-x snap-mandatory"
+        className="flex gap-6 overflow-x-auto px-6 lg:px-10 pb-4 menu-scroll snap-x snap-mandatory"
       >
         {menuItems.map((item, i) => (
           <motion.div
@@ -156,7 +181,7 @@ export default function MenuShowcase() {
 
                 {/* Elegant card footer micro-interaction */}
                 <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-xs text-gold/80 font-semibold uppercase tracking-wider group-hover:text-gold transition-colors">Order Now</span>
+                  <span className="text-xs text-gold/80 font-semibold uppercase tracking-wider group-hover:text-gold transition-colors">Popular Bite</span>
                   <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-cream group-hover:border-gold group-hover:bg-gold group-hover:text-espresso transition-all duration-300">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M7 17L17 7M17 7H7M17 7v10" />
@@ -167,6 +192,33 @@ export default function MenuShowcase() {
             </div>
           </motion.div>
         ))}
+      </div>
+
+      {/* Interactive Carousel Pagination & Mobile Swipe Helper */}
+      <div className="mt-6 px-6 lg:px-10 max-w-7xl mx-auto flex items-center justify-between">
+        {/* Dot indicators */}
+        <div className="flex items-center gap-2">
+          {menuItems.map((item, i) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToCard(i)}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${i === activeIndex
+                  ? "w-8 bg-gold shadow-[0_0_10px_rgba(212,168,83,0.5)]"
+                  : "w-2 bg-white/20 hover:bg-white/40"
+                }`}
+              aria-label={`Go to ${item.title} (item ${i + 1} of ${menuItems.length})`}
+            />
+          ))}
+        </div>
+
+        {/* Swipe Helper Hint for Mobile */}
+        <div className="flex items-center gap-2 text-gold/70 text-xs font-semibold tracking-wider uppercase select-none">
+          <span className="hidden sm:inline">Use arrows or drag</span>
+          <span className="sm:hidden">Swipe to browse</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="animate-pulse">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </div>
       </div>
     </section>
   );
