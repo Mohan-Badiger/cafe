@@ -13,7 +13,7 @@ export default function Locations() {
   };
 
   return (
-    <section id="locations" className="py-24 md:py-36 bg-warm">
+    <section id="locations" className="py-24 md:py-36 bg-warm scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <SectionReveal>
           <span className="eyebrow text-amber block text-center mb-3">

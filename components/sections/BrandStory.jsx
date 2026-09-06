@@ -6,7 +6,7 @@ import MagneticButton from "@/components/shared/MagneticButton";
 
 export default function BrandStory() {
   return (
-    <section id="story" className="relative py-24 md:py-36 bg-cream overflow-hidden">
+    <section id="story" className="relative py-24 md:py-36 bg-cream overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Image */}
