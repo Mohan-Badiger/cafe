@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { siteConfig, navLinks } from "@/lib/content";
 import MagneticButton from "@/components/shared/MagneticButton";
 import SectionReveal from "@/components/shared/SectionReveal";
@@ -25,11 +26,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-16 border-b border-white/10">
           {/* Brand */}
           <SectionReveal className="lg:col-span-1">
-            <a href="#hero" className="inline-block mb-4">
-              <span className="text-3xl font-serif font-bold text-cream">
+            <Link href="/" className="inline-block mb-4 group">
+              <span className="text-3xl font-serif font-bold text-cream group-hover:text-gold transition-colors">
                 Chaat<span className="text-gold">&nbsp;&&nbsp;</span>Chill
               </span>
-            </a>
+            </Link>
             <p className="text-muted text-sm leading-relaxed mb-6">
               {siteConfig.description}
             </p>
@@ -65,12 +66,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-muted text-sm hover:text-gold transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
