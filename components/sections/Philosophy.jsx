@@ -2,16 +2,12 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { philosophy } from "@/lib/content";
 
 export default function Philosophy() {
   const ref = useRef(null);
   const prefersReduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
 
   const words = philosophy.statement.split(" ");
 
@@ -19,15 +15,15 @@ export default function Philosophy() {
     <section
       id="philosophy"
       ref={ref}
-      className="relative py-32 md:py-48 overflow-hidden scroll-mt-24"
+      className="relative py-20 sm:py-32 md:py-48 overflow-hidden scroll-mt-24"
     >
       {/* Background image + overlay */}
       <div className="absolute inset-0 z-0">
         <Image
           src={philosophy.backgroundImage}
-          alt="Artisanal whole spices and culinary craft"
+          alt="Artisanal whole spices and culinary craft at Chaat & Chill Café"
           fill
-          priority
+          quality={80}
           className="object-cover object-center"
           sizes="100vw"
         />

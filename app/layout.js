@@ -16,11 +16,21 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+export const viewport = {
+  themeColor: "#1a1714",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata = {
   metadataBase: new URL("https://chaatandchill.cafe"),
-  title: "Chaat & Chill Café — Sip. Snack. Smile.",
+  title: {
+    default: "Chaat & Chill Café — Sip. Snack. Smile.",
+    template: "%s | Chaat & Chill Café",
+  },
   description:
-    "Where India's vibrant street food culture meets modern café vibes. Every bite tells a story, every sip sparks a smile. Visit us in Bangalore, Mumbai, Delhi & Hyderabad.",
+    "Where India's vibrant street food culture meets modern café vibes. Every bite tells a story, every sip sparks a smile. Artisanal chaats, dosas, and masala chai.",
   keywords: [
     "chaat",
     "Indian street food",
@@ -28,13 +38,20 @@ export const metadata = {
     "masala chai",
     "pani puri",
     "samosa",
-    "Bangalore café",
-    "Mumbai café",
+    "dosa",
+    "Jamakhandi café",
+    "Rabakavi café",
+    "Chaat and Chill",
+    "The Shreeshailam Cafe",
+    "artisanal street food",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Chaat & Chill Café — Sip. Snack. Smile.",
     description:
-      "Where India's vibrant street food culture meets modern café vibes.",
+      "Where India's vibrant street food culture meets modern café vibes. Artisanal chaats, dosas, and masala chai in Jamakhandi & Rabakavi.",
     url: "https://chaatandchill.cafe",
     siteName: "Chaat & Chill Café",
     images: [
@@ -52,12 +69,58 @@ export const metadata = {
     card: "summary_large_image",
     title: "Chaat & Chill Café — Sip. Snack. Smile.",
     description:
-      "Where India's vibrant street food culture meets modern café vibes.",
+      "Where India's vibrant street food culture meets modern café vibes in Jamakhandi & Rabakavi.",
     images: ["/images/hero-chai.jpg"],
   },
   icons: {
     icon: "/favicon.ico",
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "Chaat & Chill Café",
+  image: "https://chaatandchill.cafe/images/hero-chai.jpg",
+  description:
+    "Where India's vibrant street food culture meets modern café vibes. Outlets in Jamakhandi and Rabakavi (The Shreeshailam Cafe).",
+  url: "https://chaatandchill.cafe",
+  servesCuisine: ["Indian", "Street Food", "Chaat", "Vegetarian", "South Indian"],
+  priceRange: "₹₹",
+  hasMenu: "https://chaatandchill.cafe/menu",
+  department: [
+    {
+      "@type": "Restaurant",
+      name: "Chaat and Chill, Jamakhandi",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Near KSRTC Bus Stand",
+        addressLocality: "Jamakhandi",
+        addressRegion: "Karnataka",
+        postalCode: "587301",
+        addressCountry: "IN",
+      },
+      telephone: "+91 8353 220123",
+    },
+    {
+      "@type": "Restaurant",
+      name: "The Shreeshailam Cafe, Rabakavi",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Main Road, Rabakavi Banhatti",
+        addressLocality: "Rabakavi",
+        addressRegion: "Karnataka",
+        postalCode: "587311",
+        addressCountry: "IN",
+      },
+      telephone: "+91 8351 230456",
+    },
+  ],
+  sameAs: [
+    "https://instagram.com/chaatandchill",
+    "https://twitter.com/chaatandchill",
+    "https://facebook.com/chaatandchill",
+  ],
 };
 
 export default function RootLayout({ children }) {
@@ -66,6 +129,12 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${playfair.variable} ${inter.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased">
         <AppLayout>{children}</AppLayout>
         {/* Grain overlay for premium print-like feel */}

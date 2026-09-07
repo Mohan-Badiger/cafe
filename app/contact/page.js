@@ -1,13 +1,17 @@
 import ContactView from "@/components/sections/contact/ContactView";
 
 export const metadata = {
-  title: "Contact & Addas — The Rameshwaram Cafe | We'd Love to Hear From You",
+  title: "Contact & Outlets",
   description:
-    "Got questions? We've got chutney! Find outlets, operating hours, directions, and phone numbers for The Rameshwaram Cafe addas. Inquire for bulk catering and franchise partnerships.",
+    "Find your nearest Chaat & Chill Café outlet. Check opening hours, addresses, phone numbers, and reserve your table in Jamakhandi, Rabakavi, and beyond.",
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
-    title: "Contact & Addas — The Rameshwaram Cafe",
+    title: "Contact & Outlets — Chaat & Chill Café | Visit Our Addas",
     description:
-      "Find your nearest Rameshwaram Cafe adda in Bengaluru, Hyderabad, and Jamakhandi. Open 6:00 AM to 1:00 AM.",
+      "Got questions? We've got chutney! Find outlets, operating hours, directions, and reserve a table.",
+    url: "https://chaatandchill.cafe/contact",
     images: ["/images/outlet-ambiance.jpg"],
   },
 };

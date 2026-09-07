@@ -190,7 +190,7 @@ function MenuRowCarousel({ items }) {
         {items.map((item) => (
           <div
             key={item.id}
-            className="w-70 sm:w-80 md:w-90 shrink-0 flex flex-col"
+            className="w-60 sm:w-80 md:w-90 shrink-0 flex flex-col"
           >
             {/* Square Food Image with black background - strictly square with NO border or rounded corners */}
             <div className="relative aspect-square w-full overflow-hidden bg-black shadow-md">
@@ -198,24 +198,25 @@ function MenuRowCarousel({ items }) {
                 src={item.image}
                 alt={item.title}
                 fill
+                quality={75}
                 className="object-cover transition-transform duration-500 ease-out hover:scale-105"
-                sizes="(max-width: 768px) 280px, (max-width: 1200px) 360px, 360px"
+                sizes="(max-width: 640px) 240px, (max-width: 1200px) 360px, 360px"
               />
             </div>
 
             {/* Clean Serif Caption below the image */}
-            <h3 className="font-serif text-lg sm:text-xl text-espresso mt-3 font-normal tracking-wide">
+            <h3 className="font-serif text-base sm:text-xl text-espresso mt-2.5 sm:mt-3 font-normal tracking-wide">
               {item.title}
             </h3>
           </div>
         ))}
       </div>
 
-      {/* Right Navigation Arrow Button */}
+      {/* Right Navigation Arrow Button (Desktop / Tablet) */}
       <button
         onClick={() => handleScroll("right")}
         aria-label="Scroll menu items right"
-        className="absolute right-2 top-1/2 -translate-y-10 z-20 w-11 h-11 rounded-full bg-espresso-deep text-white flex items-center justify-center shadow-2xl hover:bg-gold hover:text-espresso transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100"
+        className="hidden sm:flex absolute right-2 top-1/2 -translate-y-10 z-20 w-11 h-11 rounded-full bg-espresso-deep text-white items-center justify-center shadow-2xl hover:bg-gold hover:text-espresso transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100"
       >
         <svg
           width="20"
@@ -231,11 +232,11 @@ function MenuRowCarousel({ items }) {
         </svg>
       </button>
 
-      {/* Left Navigation Arrow Button */}
+      {/* Left Navigation Arrow Button (Desktop / Tablet) */}
       <button
         onClick={() => handleScroll("left")}
         aria-label="Scroll menu items left"
-        className="absolute left-2 top-1/2 -translate-y-10 z-20 w-11 h-11 rounded-full bg-espresso-deep text-white flex items-center justify-center shadow-2xl hover:bg-gold hover:text-espresso transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100"
+        className="hidden sm:flex absolute left-2 top-1/2 -translate-y-10 z-20 w-11 h-11 rounded-full bg-espresso-deep text-white items-center justify-center shadow-2xl hover:bg-gold hover:text-espresso transition-all duration-300 cursor-pointer opacity-90 hover:opacity-100"
       >
         <svg
           width="20"
