@@ -1,10 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import LenisProvider from "@/components/shared/LenisProvider";
-import { BookingProvider } from "@/lib/BookingContext";
-import ReservationModal from "@/components/shared/ReservationModal";
-import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import BrandStory from "@/components/sections/BrandStory";
 import Philosophy from "@/components/sections/Philosophy";
@@ -13,7 +9,6 @@ import Awards from "@/components/sections/Awards";
 import Press from "@/components/sections/Press";
 import Locations from "@/components/sections/Locations";
 import Testimonials from "@/components/sections/Testimonials";
-import Footer from "@/components/sections/Footer";
 
 // Timeline uses GSAP ScrollTrigger — lazy-load for performance
 const Timeline = dynamic(
@@ -23,24 +18,19 @@ const Timeline = dynamic(
 
 export default function Home() {
   return (
-    <BookingProvider>
-      <LenisProvider>
-        <Navbar />
-        <main>
-          <Hero />
-          <BrandStory />
-          <Philosophy />
-          <MenuShowcase />
-          <Awards />
-          <Press />
-          <Timeline />
-          <Locations />
-          <Testimonials />
-        </main>
-        <Footer />
-        <ReservationModal />
-      </LenisProvider>
-    </BookingProvider>
+    <>
+      <Hero />
+      <BrandStory />
+      <Philosophy />
+      <MenuShowcase />
+      <Awards />
+      <Press />
+      <div key="timeline-boundary">
+        <Timeline />
+      </div>
+      <Locations />
+      <Testimonials />
+    </>
   );
 }
 
