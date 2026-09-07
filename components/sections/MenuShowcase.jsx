@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -56,6 +56,7 @@ const showcaseDishes = [
 
 export default function MenuShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef(null);
 
   const activeDish = showcaseDishes[currentIndex];
 
@@ -71,21 +72,38 @@ export default function MenuShowcase() {
     );
   };
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+  };
+
   return (
     <section
       id="menu"
-      className="relative py-20 sm:py-28 md:py-36 bg-cream overflow-hidden scroll-mt-24 select-none"
+      className="relative py-16 sm:py-28 md:py-36 bg-cream overflow-hidden scroll-mt-24 select-none"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         {/* Top Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-16">
           <SectionReveal>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-espresso tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl text-espresso tracking-tight">
               A Taste of <span className="text-amber">Tradition</span>
             </h2>
           </SectionReveal>
           <SectionReveal delay={0.1}>
-            <p className="text-espresso/60 text-xs sm:text-sm md:text-base leading-relaxed mt-4 max-w-2xl mx-auto font-sans">
+            <p className="text-espresso/60 text-xs sm:text-sm md:text-base leading-relaxed mt-3 sm:mt-4 max-w-2xl mx-auto font-sans">
               From steaming idlis and crispy dosas to filter coffee that warms
               your soul, our menu celebrates the best of South Indian cuisine.
               Every dish is crafted with fresh ingredients, traditional methods,
@@ -94,10 +112,10 @@ export default function MenuShowcase() {
           </SectionReveal>
         </div>
 
-        {/* Main Showcase: Left Tag, Center Plate with Mandala & Arrows, Right Tag */}
-        <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 my-6 sm:my-10">
-          {/* Left Callout Text (Editorial magazine style) */}
-          <div className="w-full lg:w-1/4 text-center lg:text-right flex items-center justify-center lg:justify-end">
+        {/* Main Showcase: Left Tag (Desktop), Center Plate with touch swipe, Right Tag (Desktop) */}
+        <div className="relative flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-4 my-4 sm:my-10">
+          {/* Left Callout Text (Desktop magazine style) */}
+          <div className="hidden lg:flex w-1/4 text-right items-center justify-end">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeDish.id + "-left"}
@@ -112,13 +130,17 @@ export default function MenuShowcase() {
             </AnimatePresence>
           </div>
 
-          {/* Center Stage: Decorative Lotus Motif + Round Dish Image + Nav Arrows */}
-          <div className="relative flex items-center justify-center shrink-0">
+          {/* Center Stage: Dish Image + Touch Swipe + Nav Arrows */}
+          <div
+            className="relative flex items-center justify-center shrink-0"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {/* Left Nav Arrow Button */}
             <button
               onClick={handlePrev}
               aria-label="Previous dish"
-              className="absolute -left-4 sm:-left-8 md:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-espresso/15 shadow-md flex items-center justify-center text-espresso/70 hover:text-espresso hover:border-gold hover:scale-105 active:scale-95 transition-all duration-300 z-30 cursor-pointer"
+              className="absolute -left-3 sm:-left-8 md:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-espresso/15 shadow-md flex items-center justify-center text-espresso/70 hover:text-espresso hover:border-gold hover:scale-105 active:scale-95 transition-all duration-300 z-30 cursor-pointer"
             >
               <svg
                 width="18"
@@ -138,7 +160,7 @@ export default function MenuShowcase() {
             <button
               onClick={handleNext}
               aria-label="Next dish"
-              className="absolute -right-4 sm:-right-8 md:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-espresso/15 shadow-md flex items-center justify-center text-espresso/70 hover:text-espresso hover:border-gold hover:scale-105 active:scale-95 transition-all duration-300 z-30 cursor-pointer"
+              className="absolute -right-3 sm:-right-8 md:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 border border-espresso/15 shadow-md flex items-center justify-center text-espresso/70 hover:text-espresso hover:border-gold hover:scale-105 active:scale-95 transition-all duration-300 z-30 cursor-pointer"
             >
               <svg
                 width="18"
@@ -154,8 +176,8 @@ export default function MenuShowcase() {
               </svg>
             </button>
 
-            {/* Center Dish Container: Sharp Square, Correct Fit, No Rounded Corners */}
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 shadow-2xl bg-espresso overflow-hidden">
+            {/* Center Dish Container: Sharp Square, Responsive Fit */}
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 shadow-2xl bg-espresso overflow-hidden touch-pan-y">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={activeDish.id}
@@ -169,7 +191,7 @@ export default function MenuShowcase() {
                     scale: 0.95,
                   }}
                   transition={{
-                    duration: 0.4,
+                    duration: 0.35,
                     ease: [0.25, 1, 0.5, 1],
                   }}
                   className="relative w-full h-full"
@@ -178,7 +200,7 @@ export default function MenuShowcase() {
                     src={activeDish.image}
                     alt={activeDish.title}
                     fill
-                    priority
+                    quality={80}
                     className="object-cover"
                     sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, 384px"
                   />
@@ -187,8 +209,8 @@ export default function MenuShowcase() {
             </div>
           </div>
 
-          {/* Right Callout Text (Editorial magazine style, slightly offset) */}
-          <div className="w-full lg:w-1/4 text-center lg:text-left flex items-center justify-center lg:justify-start lg:pt-14">
+          {/* Right Callout Text (Desktop magazine style) */}
+          <div className="hidden lg:flex w-1/4 text-left items-center justify-start lg:pt-14">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeDish.id + "-right"}
@@ -204,8 +226,24 @@ export default function MenuShowcase() {
           </div>
         </div>
 
+        {/* Dish Dots Navigation for mobile & all screens */}
+        <div className="flex items-center justify-center gap-2 mt-4 sm:mt-6">
+          {showcaseDishes.map((dish, idx) => (
+            <button
+              key={dish.id}
+              onClick={() => setCurrentIndex(idx)}
+              aria-label={`Go to dish ${dish.title}`}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                currentIndex === idx
+                  ? "w-8 bg-amber"
+                  : "w-2 bg-espresso/20 hover:bg-espresso/40"
+              }`}
+            />
+          ))}
+        </div>
+
         {/* Bottom Area: Dish Title, Description, and View All Menu CTA */}
-        <div className="text-center max-w-2xl mx-auto mt-6 sm:mt-10">
+        <div className="text-center max-w-2xl mx-auto mt-6 sm:mt-8">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeDish.id + "-info"}

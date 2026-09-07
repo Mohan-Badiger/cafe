@@ -2,34 +2,33 @@
 import { locations } from "@/lib/content";
 import { useBooking } from "@/lib/BookingContext";
 import SectionReveal from "@/components/shared/SectionReveal";
-import MagneticButton from "@/components/shared/MagneticButton";
 
 export default function Locations() {
   const { openBooking } = useBooking();
 
   const cityWatermarks = {
-    "Chat and Chill, Jamakhandi": "JM",
-    "Shrishailam, Rabakavi": "RK",
+    "Chaat and Chill, Jamakhandi": "JKD",
+    "The Shreeshailam Cafe, Rabakavi": "RBK",
   };
 
   return (
-    <section id="locations" className="py-24 md:py-36 bg-warm scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section id="locations" className="py-16 sm:py-24 md:py-36 bg-warm scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <SectionReveal>
           <span className="eyebrow text-amber block text-center mb-3">
             FIND US
           </span>
         </SectionReveal>
         <SectionReveal delay={0.1}>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-espresso text-center mb-16">
+          <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-espresso text-center mb-10 sm:mb-16">
             Our <span className="text-amber">Locations</span>
           </h2>
         </SectionReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {locations.map((loc, i) => (
             <SectionReveal key={i} delay={0.1 + i * 0.1}>
-              <div className="relative overflow-hidden p-8 rounded-2xl bg-cream/35 border border-espresso/5 hover:border-gold/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.03)] transition-all duration-500 h-full flex flex-col backdrop-blur-xs group">
+              <div className="relative overflow-hidden p-6 sm:p-8 rounded-2xl bg-cream/35 border border-espresso/5 hover:border-gold/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.03)] transition-all duration-500 h-full flex flex-col backdrop-blur-xs group">
 
                 {/* Minimal animated top gold line */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left ease-out" />

@@ -1,14 +1,18 @@
 import AboutView from "@/components/sections/about/AboutView";
 
 export const metadata = {
-  title: "About Us — The Rameshwaram Cafe | South Indian Soul, Modern Bite",
+  title: "About Us",
   description:
-    "Discover the story of The Rameshwaram Cafe. Inspired by Dr. A.P.J. Abdul Kalam, serving authentic South Indian cuisine made with pure Nandini cow ghee, zero chillers, and timeless prasadam philosophy.",
+    "Discover the story of Chaat & Chill Café. Where India's vibrant street food soul meets modern café vibes — crafted with love, zero compromise, and authentic recipes.",
+  alternates: {
+    canonical: "/about",
+  },
   openGraph: {
-    title: "About Us — The Rameshwaram Cafe | South Indian Soul, Modern Bite",
+    title: "About Us — Chaat & Chill Café | Soulful Street Food, Modern Vibe",
     description:
-      "Our Cafe is our Temple, Our Customers are Gods, & What we serve, is Prasadam. Meet our founders and explore our culinary journey.",
-    images: ["/images/outlet-ambiance.jpg"],
+      "Crafted with love, served with a smile, and spiced with memories of bustling bazaars. Meet our founders and explore our culinary journey.",
+    url: "https://chaatandchill.cafe/about",
+    images: ["/images/brand-story.jpg"],
   },
 };
 

@@ -16,7 +16,7 @@ export default function ContactView() {
     email: "",
     phone: "",
     inquiryType: "General Feedback & Experience",
-    outlet: "Indiranagar 100ft Road Flagship",
+    outlet: "Chaat and Chill, Jamakhandi",
     message: "",
   });
   const [errors, setErrors] = useState({});
@@ -53,7 +53,7 @@ export default function ContactView() {
         email: "",
         phone: "",
         inquiryType: "General Feedback & Experience",
-        outlet: "Indiranagar 100ft Road Flagship",
+        outlet: "Chaat and Chill, Jamakhandi",
         message: "",
       });
       setTimeout(() => {

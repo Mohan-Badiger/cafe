@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,21 +11,42 @@ import MagneticButton from "@/components/shared/MagneticButton";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [isInHero, setIsInHero] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [lastY, setLastY] = useState(0);
+  const lastYRef = useRef(0);
   const pathname = usePathname();
   const { openBooking } = useBooking();
 
   useEffect(() => {
-    const onScroll = () => {
+    const updateNavbar = () => {
       const y = window.scrollY;
+      const lastY = lastYRef.current;
       setScrolled(y > 50);
       setHidden(y > 200 && y > lastY);
-      setLastY(y);
+      lastYRef.current = y;
+
+      const heroEl = document.getElementById("hero");
+      if (heroEl) {
+        const rect = heroEl.getBoundingClientRect();
+        // While the hero component's bottom edge is below the navbar bottom, we are in the hero component
+        setIsInHero(rect.bottom > 72);
+      } else {
+        setIsInHero(false);
+      }
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [lastY]);
+
+    updateNavbar();
+    const rafId = requestAnimationFrame(updateNavbar);
+
+    window.addEventListener("scroll", updateNavbar, { passive: true });
+    window.addEventListener("resize", updateNavbar, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", updateNavbar);
+      window.removeEventListener("resize", updateNavbar);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -38,17 +59,22 @@ export default function Navbar() {
     <>
       <motion.header
         id="navbar"
-        className="fixed top-0 left-0 right-0 z-50 transition-colors duration-300"
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         animate={{ y: hidden && !mobileOpen ? -100 : 0 }}
         transition={{ duration: 0.3 }}
         style={{
-          backgroundColor: scrolled
-            ? "rgba(26, 23, 20, 0.95)"
-            : "rgba(26, 23, 20, 0.45)",
-          backdropFilter: "blur(12px)",
-          borderBottom: scrolled
-            ? "1px solid rgba(255, 255, 255, 0.08)"
-            : "1px solid rgba(255, 255, 255, 0.04)",
+          backgroundColor: isInHero
+            ? "transparent"
+            : scrolled
+              ? "rgba(26, 23, 20, 0.95)"
+              : "rgba(26, 23, 20, 0.45)",
+          backdropFilter: isInHero ? "none" : "blur(12px)",
+          WebkitBackdropFilter: isInHero ? "none" : "blur(12px)",
+          borderBottom: isInHero
+            ? "1px solid transparent"
+            : scrolled
+              ? "1px solid rgba(255, 255, 255, 0.08)"
+              : "1px solid rgba(255, 255, 255, 0.04)",
         }}
       >
         <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 lg:px-10">

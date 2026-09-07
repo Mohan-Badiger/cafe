@@ -91,19 +91,19 @@ export default function ReservationModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && closeBooking()}>
-      <DialogContent className="bg-espresso-deep border border-gold/20 text-cream max-w-lg p-0 rounded-2xl overflow-hidden shadow-2xl">
-        <DialogHeader className="p-6 md:p-8 pb-4 border-b border-white/5">
+      <DialogContent className="bg-espresso-deep border border-gold/20 text-cream max-w-lg p-0 rounded-2xl overflow-hidden shadow-2xl max-h-[90dvh] flex flex-col">
+        <DialogHeader className="p-5 sm:p-6 md:p-8 pb-4 border-b border-white/5 shrink-0">
           <DialogTitle className="font-serif text-2xl md:text-3xl font-bold text-cream">
             {step === "success" ? "Booking Confirmed" : "Table Reservation"}
           </DialogTitle>
-          <DialogDescription className="text-muted text-sm mt-1">
+          <DialogDescription className="text-muted text-xs sm:text-sm mt-1">
             {step === "success"
               ? "Your spot has been successfully secured."
               : "Sip, snack, and smile. Let us prepare your table."}
           </DialogDescription>
         </DialogHeader>
 
-        <div className="p-6 md:p-8">
+        <div className="p-5 sm:p-6 md:p-8 overflow-y-auto overscroll-contain">
           <AnimatePresence mode="wait">
             {step === "form" && (
               <motion.form

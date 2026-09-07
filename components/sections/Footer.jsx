@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { siteConfig, navLinks } from "@/lib/content";
-import MagneticButton from "@/components/shared/MagneticButton";
 import SectionReveal from "@/components/shared/SectionReveal";
+import MagneticButton from "@/components/shared/MagneticButton";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
