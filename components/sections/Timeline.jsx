@@ -5,7 +5,7 @@ import { timeline } from "@/lib/content";
 import SectionReveal from "@/components/shared/SectionReveal";
 
 export default function Timeline() {
-  const sectionRef = useRef(null);
+  const desktopContainerRef = useRef(null);
   const trackRef = useRef(null);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function Timeline() {
     ).matches;
     if (prefersReduced) return;
 
-    let mm;
+    let ctx;
     let isMounted = true;
 
     Promise.all([
@@ -26,42 +26,42 @@ export default function Timeline() {
       gsap.registerPlugin(ScrollTrigger);
 
       const track = trackRef.current;
-      const section = sectionRef.current;
-      if (!track || !section) return;
+      const container = desktopContainerRef.current;
+      if (!track || !container) return;
 
-      mm = gsap.matchMedia();
+      // Use gsap.context scoped to the desktop inner container
+      // Never pin the root <section> element to prevent React removeChild DOM conflicts on route unmount
+      ctx = gsap.context(() => {
+        const mm = gsap.matchMedia();
 
-      // Only enable horizontal pinning on desktop (>= 768px)
-      mm.add("(min-width: 768px)", () => {
-        const tween = gsap.to(track, {
-          x: () => -(track.scrollWidth - window.innerWidth),
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            pin: true,
-            scrub: 1,
-            start: "top top",
-            end: () => `+=${track.scrollWidth - window.innerWidth}`,
-            invalidateOnRefresh: true,
-          },
+        mm.add("(min-width: 768px)", () => {
+          gsap.to(track, {
+            x: () => -(track.scrollWidth - window.innerWidth),
+            ease: "none",
+            scrollTrigger: {
+              trigger: container,
+              pin: true,
+              scrub: 1,
+              start: "top top",
+              end: () => `+=${track.scrollWidth - window.innerWidth}`,
+              invalidateOnRefresh: true,
+            },
+          });
         });
-        return () => {
-          if (tween.scrollTrigger) tween.scrollTrigger.kill();
-          tween.kill();
-        };
-      });
+      }, desktopContainerRef);
     });
 
     return () => {
       isMounted = false;
-      if (mm) mm.revert();
+      if (ctx) {
+        ctx.revert();
+      }
     };
   }, []);
 
   return (
     <section
       id="journey"
-      ref={sectionRef}
       className="relative bg-espresso-deep overflow-hidden scroll-mt-24"
     >
       {/* Mobile Vertical Timeline (< 768px) */}
@@ -121,7 +121,7 @@ export default function Timeline() {
       </div>
 
       {/* Desktop Horizontal Timeline (>= 768px) */}
-      <div className="hidden md:block">
+      <div ref={desktopContainerRef} className="hidden md:block">
         {/* Timeline connector line */}
         <div className="absolute top-1/2 left-0 right-0 h-px bg-white/10 z-0 pointer-events-none" />
 
