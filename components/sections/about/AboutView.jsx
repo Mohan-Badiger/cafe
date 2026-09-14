@@ -31,7 +31,7 @@ export default function AboutView() {
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs uppercase tracking-[0.25em] font-semibold mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/15 border border-gold/30 text-gold text-xs uppercase tracking-[0.25em] font-semibold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -50,7 +50,7 @@ export default function AboutView() {
           </motion.h1>
 
           <motion.div
-            className="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md max-w-3xl mx-auto mb-8 shadow-2xl"
+            className="p-6 sm:p-8 bg-white/5 border border-white/10 backdrop-blur-md max-w-3xl mx-auto mb-8 shadow-2xl"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -79,7 +79,7 @@ export default function AboutView() {
             {hero.stats.map((stat, i) => (
               <div
                 key={i}
-                className="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs text-center hover:border-gold/40 transition-colors"
+                className="p-4 sm:p-5 bg-white/5 border border-white/10 backdrop-blur-xs text-center hover:border-gold/40 transition-colors"
               >
                 <div className="text-3xl sm:text-4xl font-serif font-bold text-gold mb-1">
                   {stat.number}
@@ -119,7 +119,7 @@ export default function AboutView() {
           {/* Founders Large Portrait Feature */}
           <div className="mb-16">
             <SectionReveal>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-16/10 sm:aspect-21/9 max-w-5xl mx-auto">
+              <div className="relative overflow-hidden shadow-2xl border-4 border-white aspect-16/10 sm:aspect-21/9 max-w-5xl mx-auto">
                 <Image
                   src={founders.image}
                   alt="Raghavendra Rao and Divya Raghavendra Rao — Founders of The Rameshwaram Cafe"
@@ -130,7 +130,7 @@ export default function AboutView() {
                 <div className="absolute inset-0 bg-linear-to-t from-espresso/90 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-cream">
                   <div>
-                    <span className="px-3.5 py-1 rounded-full bg-gold text-espresso text-xs font-bold uppercase tracking-wider mb-2 inline-block">
+                    <span className="px-3.5 py-1 bg-gold text-espresso text-xs font-bold uppercase tracking-wider mb-2 inline-block">
                       Founding Visionaries
                     </span>
                     <h3 className="font-serif text-2xl sm:text-3xl font-bold">
@@ -149,7 +149,7 @@ export default function AboutView() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {founders.members.map((member, idx) => (
               <SectionReveal key={idx} delay={0.15 + idx * 0.15}>
-                <div className="h-full p-8 sm:p-10 rounded-3xl bg-white shadow-xl border border-espresso/5 flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
+                <div className="h-full p-8 sm:p-10 bg-white shadow-xl border border-espresso/5 flex flex-col justify-between hover:shadow-2xl transition-all duration-300">
                   <div>
                     <div className="flex items-start justify-between gap-4 mb-4">
                       <div>
@@ -160,12 +160,12 @@ export default function AboutView() {
                           {member.role}
                         </span>
                       </div>
-                      <span className="w-10 h-10 rounded-full bg-gold/15 text-espresso font-serif font-bold flex items-center justify-center shrink-0">
+                      <span className="w-10 h-10 bg-gold/15 text-espresso font-serif font-bold flex items-center justify-center shrink-0">
                         0{idx + 1}
                       </span>
                     </div>
 
-                    <div className="mb-6 inline-block px-3 py-1 rounded-lg bg-cream border border-espresso/10 text-xs font-mono text-espresso/70">
+                    <div className="mb-6 inline-block px-3 py-1 bg-cream border border-espresso/10 text-xs font-mono text-espresso/70">
                       {member.badge}
                     </div>
 
@@ -194,7 +194,7 @@ export default function AboutView() {
         <div className="absolute -left-24 -top-24 w-96 h-96 rounded-full bg-amber/5 blur-3xl pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-6 lg:px-10 relative z-10">
-          <div className="p-8 sm:p-14 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md">
+          <div className="p-8 sm:p-14 bg-white/5 border border-white/10 backdrop-blur-md">
             <SectionReveal>
               <div className="text-center max-w-3xl mx-auto mb-10">
                 <span className="eyebrow text-gold block mb-3 font-semibold">
@@ -248,9 +248,9 @@ export default function AboutView() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.items.map((val, idx) => (
               <SectionReveal key={val.id} delay={0.1 + idx * 0.1}>
-                <div className="h-full p-8 rounded-3xl bg-white border border-espresso/5 shadow-lg hover:shadow-2xl hover:border-gold/40 transition-all duration-300 flex flex-col justify-between group">
+                <div className="h-full p-8 bg-white border border-espresso/5 shadow-lg hover:shadow-2xl hover:border-gold/40 transition-all duration-300 flex flex-col justify-between group">
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-gold/15 text-espresso font-serif font-bold text-xl flex items-center justify-center mb-6 group-hover:bg-gold transition-colors">
+                    <div className="w-12 h-12 bg-gold/15 text-espresso font-serif font-bold text-xl flex items-center justify-center mb-6 group-hover:bg-gold transition-colors">
                       {idx + 1}
                     </div>
                     <span className="text-xs uppercase font-mono tracking-widest text-amber font-semibold block mb-2">
@@ -294,7 +294,7 @@ export default function AboutView() {
                 </h2>
               </SectionReveal>
               <SectionReveal delay={0.2}>
-                <div className="inline-block px-4 py-2 rounded-xl bg-white/5 border border-gold/30 text-gold font-serif italic text-lg sm:text-xl">
+                <div className="inline-block px-4 py-2 bg-white/5 border border-gold/30 text-gold font-serif italic text-lg sm:text-xl">
                   {sustainability.tagline}
                 </div>
               </SectionReveal>
@@ -308,7 +308,7 @@ export default function AboutView() {
                   <MagneticButton
                     as={Link}
                     href="/menu"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-espresso font-semibold text-sm rounded-full hover:bg-cream hover:text-espresso transition-all duration-300 shadow-lg cursor-pointer"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-espresso font-semibold text-sm hover:bg-cream hover:text-espresso transition-all duration-300 shadow-lg cursor-pointer"
                   >
                     <span>Taste The Pure Ghee Magic</span>
                     <span>↗</span>
@@ -321,7 +321,7 @@ export default function AboutView() {
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {sustainability.pillars.map((pillar, idx) => (
                 <SectionReveal key={idx} delay={0.15 + idx * 0.1}>
-                  <div className="p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-gold/40 hover:bg-white/10 transition-all duration-300">
+                  <div className="p-6 sm:p-8 bg-white/5 border border-white/10 hover:border-gold/40 hover:bg-white/10 transition-all duration-300">
                     <span className="text-xs uppercase font-mono tracking-wider text-gold block mb-2 font-semibold">
                       {pillar.tag}
                     </span>
@@ -365,13 +365,13 @@ export default function AboutView() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {timeline.map((item, idx) => (
               <SectionReveal key={idx} delay={0.1 + idx * 0.1}>
-                <div className="p-8 rounded-3xl bg-white border border-espresso/5 shadow-lg hover:shadow-xl hover:border-gold/40 transition-all duration-300 flex flex-col justify-between h-full">
+                <div className="p-8 bg-white border border-espresso/5 shadow-lg hover:shadow-xl hover:border-gold/40 transition-all duration-300 flex flex-col justify-between h-full">
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <span className="font-serif text-3xl sm:text-4xl font-bold text-amber">
                         {item.year}
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-cream border border-espresso/10 text-xs font-mono text-espresso/70">
+                      <span className="px-3 py-1 bg-cream border border-espresso/10 text-xs font-mono text-espresso/70">
                         Milestone
                       </span>
                     </div>
@@ -393,7 +393,7 @@ export default function AboutView() {
           {/* Bottom Call to Action */}
           <div className="mt-16 text-center">
             <SectionReveal>
-              <div className="p-8 sm:p-12 rounded-3xl bg-espresso text-cream max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
+              <div className="p-8 sm:p-12 bg-espresso text-cream max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 shadow-2xl">
                 <div className="text-left">
                   <h3 className="font-serif text-2xl sm:text-3xl font-bold mb-2">
                     Experience The Authentic Taste Today
@@ -406,14 +406,14 @@ export default function AboutView() {
                   <MagneticButton
                     as={Link}
                     href="/menu"
-                    className="px-7 py-3.5 bg-gold text-espresso font-bold text-sm rounded-full hover:bg-cream transition-colors cursor-pointer"
+                    className="px-7 py-3.5 bg-gold text-espresso font-bold text-sm hover:bg-cream transition-colors cursor-pointer"
                   >
                     View Menu
                   </MagneticButton>
                   <MagneticButton
                     as={Link}
                     href="/contact"
-                    className="px-6 py-3.5 border border-white/20 text-cream font-semibold text-sm rounded-full hover:border-gold hover:text-gold transition-colors cursor-pointer"
+                    className="px-6 py-3.5 border border-white/20 text-cream font-semibold text-sm hover:border-gold hover:text-gold transition-colors cursor-pointer"
                   >
                     Find Nearest Adda
                   </MagneticButton>
