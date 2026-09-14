@@ -82,7 +82,7 @@ export default function ContactView() {
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs uppercase tracking-[0.25em] font-semibold mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/15 border border-gold/30 text-gold text-xs uppercase tracking-[0.25em] font-semibold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -127,7 +127,7 @@ export default function ContactView() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars.map((pillar, idx) => (
             <SectionReveal key={pillar.id} delay={0.1 + idx * 0.1}>
-              <div className="h-full p-8 rounded-3xl bg-white border border-espresso/5 shadow-lg hover:shadow-2xl hover:border-gold/40 transition-all duration-300 flex flex-col justify-between">
+              <div className="h-full p-8 bg-white border border-espresso/5 shadow-lg hover:shadow-2xl hover:border-gold/40 transition-all duration-300 flex flex-col justify-between">
                 <div>
                   <span className="text-xs uppercase font-mono tracking-widest text-amber font-semibold block mb-2">
                     {pillar.tag}
@@ -158,7 +158,7 @@ export default function ContactView() {
           3. JUST DROP YOUR MESSAGE HERE (INTERACTIVE FORM & RUSH TAGLINE)
           ===================================================================== */}
       <section className="py-12 md:py-20 px-6 lg:px-10 max-w-5xl mx-auto">
-        <div className="bg-white rounded-3xl p-8 sm:p-14 shadow-2xl border border-espresso/5">
+        <div className="bg-white p-8 sm:p-14 shadow-2xl border border-espresso/5">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="eyebrow text-amber block mb-2 font-semibold">
               DROP A LINE
@@ -175,7 +175,7 @@ export default function ContactView() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="mb-8 p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800"
+              className="mb-8 p-6 bg-emerald-50 border border-emerald-200 text-emerald-800"
             >
               <div className="flex items-center gap-3 mb-1">
                 <span className="text-2xl">🎉</span>
@@ -203,7 +203,7 @@ export default function ContactView() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   placeholder="e.g. Ramesh Hegde"
-                  className={`w-full px-4 py-3 rounded-xl bg-cream/40 border text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber ${
+                  className={`w-full px-4 py-3 bg-cream/40 border text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber ${
                     errors.name ? "border-rose-500" : "border-espresso/15"
                   }`}
                 />
@@ -226,7 +226,7 @@ export default function ContactView() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   placeholder="ramesh@example.com"
-                  className={`w-full px-4 py-3 rounded-xl bg-cream/40 border text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber ${
+                  className={`w-full px-4 py-3 bg-cream/40 border text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber ${
                     errors.email ? "border-rose-500" : "border-espresso/15"
                   }`}
                 />
@@ -251,7 +251,7 @@ export default function ContactView() {
                     setFormData({ ...formData, phone: e.target.value })
                   }
                   placeholder="+91 98765 43210"
-                  className={`w-full px-4 py-3 rounded-xl bg-cream/40 border text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber ${
+                  className={`w-full px-4 py-3 bg-cream/40 border text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber ${
                     errors.phone ? "border-rose-500" : "border-espresso/15"
                   }`}
                 />
@@ -272,7 +272,7 @@ export default function ContactView() {
                   onChange={(e) =>
                     setFormData({ ...formData, inquiryType: e.target.value })
                   }
-                  className="w-full px-4 py-3 rounded-xl bg-cream/40 border border-espresso/15 text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber"
+                  className="w-full px-4 py-3 bg-cream/40 border border-espresso/15 text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber"
                 >
                   <option value="General Feedback & Experience">
                     General Feedback & Dining Experience
@@ -303,7 +303,7 @@ export default function ContactView() {
                 onChange={(e) =>
                   setFormData({ ...formData, outlet: e.target.value })
                 }
-                className="w-full px-4 py-3 rounded-xl bg-cream/40 border border-espresso/15 text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber"
+                className="w-full px-4 py-3 bg-cream/40 border border-espresso/15 text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber"
               >
                 {outlets.map((o) => (
                   <option key={o.id} value={o.name}>
@@ -325,7 +325,7 @@ export default function ContactView() {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 placeholder="Share your thoughts, catering date, or questions here..."
-                className={`w-full px-4 py-3 rounded-xl bg-cream/40 border text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber ${
+                className={`w-full px-4 py-3 bg-cream/40 border text-espresso text-sm transition-all focus:outline-hidden focus:ring-1 focus:ring-amber ${
                   errors.message ? "border-rose-500" : "border-espresso/15"
                 }`}
               />
@@ -341,7 +341,7 @@ export default function ContactView() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-10 py-4 bg-espresso text-cream hover:bg-gold hover:text-espresso font-bold text-sm rounded-full transition-all duration-300 shadow-xl cursor-pointer disabled:opacity-50"
+                className="px-10 py-4 bg-espresso text-cream hover:bg-gold hover:text-espresso font-bold text-sm transition-all duration-300 shadow-xl cursor-pointer disabled:opacity-50"
               >
                 {isSubmitting ? "Transmitting..." : "Submit Message ↗"}
               </button>
@@ -381,14 +381,14 @@ export default function ContactView() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {outlets.map((outlet, idx) => (
               <SectionReveal key={outlet.id} delay={0.1 + idx * 0.1}>
-                <div className="h-full p-8 rounded-3xl bg-white border border-espresso/5 shadow-lg hover:shadow-2xl hover:border-gold/40 transition-all duration-300 flex flex-col justify-between">
+                <div className="h-full p-8 bg-white border border-espresso/5 shadow-lg hover:shadow-2xl hover:border-gold/40 transition-all duration-300 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="px-3 py-1 rounded-full bg-cream text-espresso/80 text-[11px] font-mono font-semibold border border-espresso/10">
+                      <span className="px-3 py-1 bg-cream text-espresso/80 text-[11px] font-mono font-semibold border border-espresso/10">
                         {outlet.city}
                       </span>
                       <span className="flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="w-2 h-2 bg-emerald-500 animate-pulse" />
                         Open Daily
                       </span>
                     </div>
@@ -405,7 +405,7 @@ export default function ContactView() {
                       {outlet.address}
                     </p>
 
-                    <div className="p-3 rounded-xl bg-cream/60 border border-espresso/5 mb-6 space-y-1">
+                    <div className="p-3 bg-cream/60 border border-espresso/5 mb-6 space-y-1">
                       <div className="text-xs font-semibold text-espresso flex items-center gap-2">
                         <span>⏰</span> {outlet.hours}
                       </div>
@@ -463,13 +463,13 @@ export default function ContactView() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {mediaBuzz.coverage.map((item, idx) => (
               <SectionReveal key={idx} delay={0.15 + idx * 0.1}>
-                <div className="h-full p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-gold/40 transition-all duration-300 flex flex-col justify-between">
+                <div className="h-full p-8 bg-white/5 border border-white/10 hover:border-gold/40 transition-all duration-300 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-xs uppercase font-mono text-gold font-semibold">
                         {item.source}
                       </span>
-                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-white/10 text-cream/70 font-mono">
+                      <span className="text-xs px-2.5 py-0.5 bg-white/10 text-cream/70 font-mono">
                         {item.views}
                       </span>
                     </div>
@@ -526,7 +526,7 @@ export default function ContactView() {
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl bg-white border border-espresso/10 overflow-hidden transition-all duration-300"
+                  className="bg-white border border-espresso/10 overflow-hidden transition-all duration-300"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? -1 : idx)}
@@ -534,7 +534,7 @@ export default function ContactView() {
                   >
                     <span>{faq.question}</span>
                     <span
-                      className={`w-8 h-8 rounded-full bg-cream flex items-center justify-center shrink-0 font-sans text-sm font-bold transition-transform duration-300 ${
+                      className={`w-8 h-8 bg-cream flex items-center justify-center shrink-0 font-sans text-sm font-bold transition-transform duration-300 ${
                         isOpen ? "rotate-45 bg-gold text-espresso" : ""
                       }`}
                     >
