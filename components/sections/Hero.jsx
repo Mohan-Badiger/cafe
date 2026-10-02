@@ -20,17 +20,34 @@ export default function Hero() {
       ref={ref}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-espresso scroll-mt-24 px-4 sm:px-6"
     >
-      {/* Background image */}
+      {/* Background images — responsive mobile vs desktop */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-chai.jpg"
-          alt="Steaming masala chai with samosas at Chaat & Chill Café"
-          fill
-          priority
-          quality={85}
-          className="object-cover"
-          sizes="100vw"
-        />
+        {/* Small screens (mobile & portrait tablets) */}
+        <div className="block md:hidden absolute inset-0">
+          <Image
+            src="/images/hero-luxury-mobile.jpg"
+            alt="Modern luxury interior of Chaat & Chill Café with artisanal chai and gourmet chaat"
+            fill
+            priority
+            quality={85}
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
+
+        {/* Big screens (desktop & landscape tablets) */}
+        <div className="hidden md:block absolute inset-0">
+          <Image
+            src="/images/hero-luxury.jpg"
+            alt="Modern luxury interior of Chaat & Chill Café with artisanal chai and gourmet chaat"
+            fill
+            priority
+            quality={85}
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
+
         <div className="absolute inset-0 bg-linear-to-b from-espresso/80 via-espresso/50 to-espresso/90" />
       </div>
 

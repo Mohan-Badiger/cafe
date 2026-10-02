@@ -56,10 +56,10 @@ export const metadata = {
     siteName: "Chaat & Chill Café",
     images: [
       {
-        url: "/images/hero-chai.jpg",
+        url: "/images/hero-luxury.jpg",
         width: 1200,
         height: 630,
-        alt: "Chaat & Chill Café — Masala Chai and Samosas",
+        alt: "Chaat & Chill Café — Artisanal Chai and Modern Gourmet Chaat",
       },
     ],
     locale: "en_IN",
@@ -70,7 +70,7 @@ export const metadata = {
     title: "Chaat & Chill Café — Sip. Snack. Smile.",
     description:
       "Where India's vibrant street food culture meets modern café vibes in Jamakhandi & Rabakavi.",
-    images: ["/images/hero-chai.jpg"],
+    images: ["/images/hero-luxury.jpg"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -81,7 +81,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   name: "Chaat & Chill Café",
-  image: "https://chaatandchill.cafe/images/hero-chai.jpg",
+  image: "https://chaatandchill.cafe/images/hero-luxury.jpg",
   description:
     "Where India's vibrant street food culture meets modern café vibes. Outlets in Jamakhandi and Rabakavi (The Shreeshailam Cafe).",
   url: "https://chaatandchill.cafe",

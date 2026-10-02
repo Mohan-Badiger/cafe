@@ -1,0 +1,361 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAdmin, OUTLETS, DEMO_USERS, ADMIN_ROLES } from "@/lib/admin/adminStore";
+import AdminBadge from "./AdminBadge";
+import {
+  Search,
+  Bell,
+  PlusCircle,
+  Zap,
+  MapPin,
+  Menu,
+  ChevronDown,
+  LogOut,
+  UserCheck,
+  Shield,
+  Check,
+  ExternalLink,
+  Sparkles,
+} from "lucide-react";
+
+export default function AdminHeader() {
+  const router = useRouter();
+  const {
+    currentUser,
+    logoutUser,
+    switchUserRole,
+    selectedOutlet,
+    setSelectedOutlet,
+    setMobileMenuOpen,
+    setIsCommandOpen,
+    setIsPosOpen,
+    simulateIncomingLiveOrder,
+    notifications,
+    markNotificationRead,
+    markAllNotificationsRead,
+  } = useAdmin();
+
+  const [outletMenuOpen, setOutletMenuOpen] = useState(false);
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const [notifMenuOpen, setNotifMenuOpen] = useState(false);
+
+  const unreadNotifs = (notifications || []).filter((n) => !n.read);
+
+  const currentOutletObj = OUTLETS.find((o) => o.id === selectedOutlet) || OUTLETS[0];
+  const userRoleConfig = currentUser ? ADMIN_ROLES[currentUser.role] : ADMIN_ROLES.SUPER_ADMIN;
+
+  return (
+    <header className="sticky top-0 z-30 h-16 bg-[#12100E]/95 backdrop-blur-md border-b border-[#26201B] px-4 sm:px-6 flex items-center justify-between gap-4">
+      {/* Left: Mobile Toggle & Outlet Switcher */}
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen(true)}
+          className="lg:hidden p-2 rounded-xl text-[#A89F91] hover:text-[#FAF5EF] hover:bg-white/5 cursor-pointer"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+
+        {/* Outlet Switcher Dropdown */}
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => {
+              setOutletMenuOpen((prev) => !prev);
+              setProfileMenuOpen(false);
+              setNotifMenuOpen(false);
+            }}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#1A1714] border border-[#2E2721] hover:border-[#D4A853]/40 text-xs font-medium text-[#FAF5EF] transition-all cursor-pointer"
+          >
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="hidden sm:inline font-semibold text-[#D4A853]">Branch:</span>
+            <span className="max-w-[140px] sm:max-w-none truncate">{currentOutletObj.name}</span>
+            <ChevronDown className="w-3.5 h-3.5 text-[#8E867B]" />
+          </button>
+
+          {outletMenuOpen && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setOutletMenuOpen(false)}
+              />
+              <div className="absolute left-0 mt-2 w-64 bg-[#161412] border border-[#2E2721] rounded-2xl shadow-2xl p-1.5 z-50 animate-in fade-in duration-150">
+                <div className="px-3 py-2 text-[10px] uppercase font-bold text-[#8E867B] tracking-wider border-b border-[#25201B]">
+                  Select Operating Branch
+                </div>
+                {OUTLETS.map((outlet) => (
+                  <button
+                    key={outlet.id}
+                    type="button"
+                    onClick={() => {
+                      setSelectedOutlet(outlet.id);
+                      setOutletMenuOpen(false);
+                    }}
+                    className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs transition-colors cursor-pointer ${
+                      selectedOutlet === outlet.id
+                        ? "bg-[#D4A853]/15 text-[#E6BC65] font-semibold"
+                        : "text-[#D8CEBF] hover:bg-[#25201B]"
+                    }`}
+                  >
+                    <div>
+                      <p className="font-medium">{outlet.name}</p>
+                      <p className="text-[10px] text-[#8E867B]">{outlet.city} • {outlet.tablesCount} Tables</p>
+                    </div>
+                    {selectedOutlet === outlet.id && (
+                      <Check className="w-4 h-4 text-[#D4A853]" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Center: Global Search Bar Trigger */}
+      <div className="flex-1 max-w-md hidden md:block">
+        <button
+          type="button"
+          onClick={() => setIsCommandOpen(true)}
+          className="w-full flex items-center justify-between px-3.5 py-1.5 rounded-xl bg-[#181512] border border-[#2A241F] hover:border-[#D4A853]/40 text-xs text-[#7E7568] transition-all cursor-pointer group"
+        >
+          <div className="flex items-center gap-2.5">
+            <Search className="w-3.5 h-3.5 text-[#D4A853] group-hover:scale-110 transition-transform" />
+            <span>Search orders, menu, patrons...</span>
+          </div>
+          <div className="flex items-center gap-1 font-mono text-[10px] bg-[#221C17] border border-[#362D24] px-1.5 py-0.5 rounded text-[#A89F91]">
+            <span>Ctrl</span>
+            <span>K</span>
+          </div>
+        </button>
+      </div>
+
+      {/* Right Controls: Quick Actions, Notifs & User */}
+      <div className="flex items-center gap-2 sm:gap-3">
+        {/* Simulate Order Button (Demo Wow Factor) */}
+        <button
+          type="button"
+          onClick={simulateIncomingLiveOrder}
+          title="Simulate incoming online order"
+          className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-medium transition-all cursor-pointer active:scale-95"
+        >
+          <Zap className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
+          <span>Simulate Live Order</span>
+        </button>
+
+        {/* Quick POS Biller Button */}
+        <button
+          type="button"
+          onClick={() => setIsPosOpen(true)}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#D4A853] to-[#E6BC65] hover:from-[#E6BC65] hover:to-[#F3CF7A] text-[#141210] text-xs font-semibold shadow-sm transition-all cursor-pointer active:scale-95"
+        >
+          <PlusCircle className="w-3.5 h-3.5" />
+          <span className="hidden sm:inline">Quick POS</span>
+        </button>
+
+        {/* Notifications Dropdown */}
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => {
+              setNotifMenuOpen((prev) => !prev);
+              setProfileMenuOpen(false);
+              setOutletMenuOpen(false);
+            }}
+            className="relative p-2 rounded-xl text-[#A89F91] hover:text-[#FAF5EF] hover:bg-white/5 transition-colors cursor-pointer"
+          >
+            <Bell className="w-4 h-4" />
+            {unreadNotifs.length > 0 && (
+              <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-rose-500 ring-2 ring-[#12100E] animate-pulse" />
+            )}
+          </button>
+
+          {notifMenuOpen && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setNotifMenuOpen(false)}
+              />
+              <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-[#161412] border border-[#2E2721] rounded-2xl shadow-2xl z-50 overflow-hidden animate-in fade-in duration-150">
+                <div className="px-4 py-3 border-b border-[#25201B] flex items-center justify-between bg-[#1A1714]">
+                  <div className="flex items-center gap-2">
+                    <h4 className="font-semibold text-xs text-[#FAF5EF]">
+                      Notifications
+                    </h4>
+                    {unreadNotifs.length > 0 && (
+                      <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                        {unreadNotifs.length} new
+                      </span>
+                    )}
+                  </div>
+                  {unreadNotifs.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={markAllNotificationsRead}
+                      className="text-[11px] text-[#D4A853] hover:underline cursor-pointer"
+                    >
+                      Mark all read
+                    </button>
+                  )}
+                </div>
+
+                <div className="max-h-80 overflow-y-auto divide-y divide-[#231E19]">
+                  {notifications.length === 0 ? (
+                    <div className="p-6 text-center text-xs text-[#7E7568]">
+                      No notifications right now.
+                    </div>
+                  ) : (
+                    notifications.map((n) => (
+                      <div
+                        key={n.id}
+                        onClick={() => markNotificationRead(n.id)}
+                        className={`p-3.5 text-xs transition-colors cursor-pointer ${
+                          !n.read ? "bg-[#1E1915]" : "hover:bg-[#1C1814]"
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <p className={`font-semibold ${!n.read ? "text-[#FAF5EF]" : "text-[#D8CEBF]"}`}>
+                            {n.title}
+                          </p>
+                          <span className="text-[10px] text-[#7E7568] whitespace-nowrap">
+                            {n.time}
+                          </span>
+                        </div>
+                        <p className="text-[#A89F91] text-[11px] mt-0.5 line-clamp-2">
+                          {n.message}
+                        </p>
+                      </div>
+                    ))
+                  )}
+                </div>
+
+                <div className="p-2.5 bg-[#141210] border-t border-[#25201B] text-center">
+                  <Link
+                    href="/admin/notifications"
+                    onClick={() => setNotifMenuOpen(false)}
+                    className="text-xs text-[#D4A853] hover:underline font-medium"
+                  >
+                    View All Audit Logs & Notifications →
+                  </Link>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* User Profile & Role Switcher */}
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => {
+              setProfileMenuOpen((prev) => !prev);
+              setOutletMenuOpen(false);
+              setNotifMenuOpen(false);
+            }}
+            className="flex items-center gap-2.5 p-1 rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
+          >
+            <div className="w-8 h-8 rounded-full overflow-hidden border border-[#D4A853]/40 bg-[#25201B]">
+              <img
+                src={currentUser?.avatar || DEMO_USERS[0].avatar}
+                alt={currentUser?.name || "Admin"}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="hidden lg:block text-left text-xs">
+              <p className="font-semibold text-[#FAF5EF] leading-tight">
+                {currentUser?.name || "Admin User"}
+              </p>
+              <p className="text-[10px] text-[#A89F91] mt-0.5">
+                {userRoleConfig?.title || "Super Admin"}
+              </p>
+            </div>
+            <ChevronDown className="w-3.5 h-3.5 text-[#8E867B] hidden sm:block" />
+          </button>
+
+          {profileMenuOpen && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setProfileMenuOpen(false)}
+              />
+              <div className="absolute right-0 mt-2 w-72 bg-[#161412] border border-[#2E2721] rounded-2xl shadow-2xl p-2 z-50 animate-in fade-in duration-150">
+                {/* User Header */}
+                <div className="px-3 py-2.5 border-b border-[#25201B]">
+                  <p className="font-semibold text-sm text-[#FAF5EF]">
+                    {currentUser?.name}
+                  </p>
+                  <p className="text-xs text-[#8E867B]">{currentUser?.email}</p>
+                  <div className="mt-2">
+                    <span
+                      className={`inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full border ${userRoleConfig?.badgeColor}`}
+                    >
+                      {userRoleConfig?.title}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Role Switcher Section (Demo Superpower) */}
+                <div className="py-2 border-b border-[#25201B]">
+                  <div className="px-3 py-1 text-[10px] uppercase font-bold text-[#8E867B] tracking-wider">
+                    Switch Active Role (Demo)
+                  </div>
+                  {DEMO_USERS.map((usr) => (
+                    <button
+                      key={usr.id}
+                      type="button"
+                      onClick={() => {
+                        switchUserRole(usr.id);
+                        setProfileMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-colors cursor-pointer ${
+                        currentUser?.id === usr.id
+                          ? "bg-[#D4A853]/15 text-[#E6BC65] font-semibold"
+                          : "text-[#D8CEBF] hover:bg-[#25201B]"
+                      }`}
+                    >
+                      <div className="text-left">
+                        <p className="font-medium">{usr.name}</p>
+                        <p className="text-[10px] text-[#8E867B]">{ADMIN_ROLES[usr.role]?.title} • {usr.outlet}</p>
+                      </div>
+                      {currentUser?.id === usr.id && (
+                        <Check className="w-3.5 h-3.5 text-[#D4A853]" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Links */}
+                <div className="pt-1.5 space-y-0.5">
+                  <Link
+                    href="/"
+                    target="_blank"
+                    className="flex items-center gap-2 px-3 py-2 text-xs text-[#D8CEBF] hover:text-[#FAF5EF] hover:bg-[#25201B] rounded-xl transition-colors"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5 text-[#D4A853]" />
+                    <span>View Public Café Website</span>
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      logoutUser();
+                      setProfileMenuOpen(false);
+                      router.push("/admin/login");
+                    }}
+                    className="w-full flex items-center gap-2 px-3 py-2 text-xs text-rose-400 hover:bg-rose-500/10 rounded-xl transition-colors cursor-pointer text-left"
+                  >
+                    <LogOut className="w-3.5 h-3.5" />
+                    <span>Sign Out</span>
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+}

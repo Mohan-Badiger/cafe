@@ -99,7 +99,7 @@ export default function Timeline() {
                   {/* Milestone Card */}
                   <div className="p-6 rounded-2xl bg-espresso/60 border border-white/10 group-hover:border-gold/30 transition-all duration-300 backdrop-blur-xs">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-gold/10 text-gold border border-gold/20">
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-gold/10 text-white border border-gold/20">
                         {item.year}
                       </span>
                       <span className="text-white/10 font-serif font-black text-3xl select-none">
@@ -161,7 +161,7 @@ export default function Timeline() {
                   }`}
               >
                 {/* Year */}
-                <span className="font-serif text-8xl sm:text-9xl font-bold text-white/5">
+                <span className="font-serif text-8xl sm:text-9xl font-bold text-white">
                   {item.year}
                 </span>
 
