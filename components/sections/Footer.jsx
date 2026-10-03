@@ -140,6 +140,9 @@ export default function Footer() {
             <a href="#" className="hover:text-gold transition-colors">
               Terms of Service
             </a>
+            <Link href="/admin" className="hover:text-gold transition-colors text-white/50 flex items-center gap-1">
+              Admin Portal
+            </Link>
           </div>
         </div>
       </div>

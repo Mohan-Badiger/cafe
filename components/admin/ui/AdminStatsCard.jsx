@@ -55,7 +55,7 @@ export default function AdminStatsCard({
           <p className="text-xs font-medium text-[#A89F91] tracking-wider uppercase">
             {title}
           </p>
-          <h4 className="text-2xl sm:text-3xl font-bold text-[#FAF5EF] mt-1.5 font-sans tracking-tight">
+          <h4 suppressHydrationWarning className="text-2xl sm:text-3xl font-bold text-[#FAF5EF] mt-1.5 font-sans tracking-tight">
             {value}
           </h4>
         </div>
@@ -70,10 +70,11 @@ export default function AdminStatsCard({
       </div>
 
       {(trend !== undefined || badgeText) && (
-        <div className="mt-4 pt-3 border-t border-[#25201B] flex items-center justify-between text-xs">
+        <div suppressHydrationWarning className="mt-4 pt-3 border-t border-[#25201B] flex items-center justify-between text-xs">
           {trend !== undefined ? (
-            <div className="flex items-center gap-1.5 font-medium">
+            <div suppressHydrationWarning className="flex items-center gap-1.5 font-medium">
               <span
+                suppressHydrationWarning
                 className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md text-[11px] font-semibold ${
                   isPositive
                     ? "bg-emerald-500/15 text-emerald-400"
@@ -87,14 +88,14 @@ export default function AdminStatsCard({
                 )}
                 {trend}
               </span>
-              <span className="text-[#8E867B]">{trendLabel}</span>
+              <span suppressHydrationWarning className="text-[#8E867B]">{trendLabel}</span>
             </div>
           ) : (
-            <span className="text-[#8E867B]">{trendLabel}</span>
+            <span suppressHydrationWarning className="text-[#8E867B]">{trendLabel}</span>
           )}
 
           {badgeText && (
-            <span className="text-[11px] font-medium text-[#D4A853] bg-[#D4A853]/10 px-2 py-0.5 rounded-md">
+            <span suppressHydrationWarning className="text-[11px] font-medium text-[#D4A853] bg-[#D4A853]/10 px-2 py-0.5 rounded-md">
               {badgeText}
             </span>
           )}

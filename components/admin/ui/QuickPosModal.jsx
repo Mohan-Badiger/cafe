@@ -87,10 +87,11 @@ export default function QuickPosModal() {
       notes: line.notes || "",
     }));
 
+    const parcelNumber = ((cartList.length * 17 + 11) % 80) + 10;
     createOrder({
       outlet,
       type: orderType,
-      table: orderType === "Dine-in" ? selectedTable : `Parcel #${Math.floor(10 + Math.random() * 80)}`,
+      table: orderType === "Dine-in" ? selectedTable : `Parcel #${parcelNumber}`,
       customer: {
         name: customerName.trim() || "Walk-in Guest",
         phone: customerPhone.trim() || "+91 99999 00000",
@@ -116,7 +117,7 @@ export default function QuickPosModal() {
       subtitle={`Outlet: ${outlet} • High-Velocity Counter Billing`}
       maxWidth="max-w-4xl"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-[500px]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 min-h-125">
         {/* Left Col: Menu Item Picker */}
         <div className="lg:col-span-7 flex flex-col space-y-3">
           {/* Search & Category Filter */}
@@ -126,7 +127,7 @@ export default function QuickPosModal() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search dishes..."
-              className="flex-1 bg-[#1A1714] border border-[#2E2721] rounded-xl px-3 py-2 text-sm text-[#FAF5EF] placeholder-[#7E7568] focus:border-[#D4A853] focus:outline-hidden"
+              className="flex-1 bg-espresso border border-white/10 rounded-xl px-3 py-2 text-sm text-cream focus:outline-none"
             />
           </div>
 
@@ -139,8 +140,8 @@ export default function QuickPosModal() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 rounded-lg whitespace-nowrap font-medium transition-colors cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-[#D4A853] text-[#141210] font-semibold"
-                    : "bg-[#25201B] text-[#A89F91] hover:text-[#FAF5EF]"
+                    ? "bg-gold text-[#141210] font-semibold"
+                    : "bg-[#25201B] text-[#A89F91] hover:text-cream"
                 }`}
               >
                 {cat}
@@ -149,7 +150,7 @@ export default function QuickPosModal() {
           </div>
 
           {/* Item Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[360px] overflow-y-auto pr-1">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-90 overflow-y-auto pr-1">
             {filteredItems.map((item) => {
               const inCartQty = cart[item.id]?.quantity || 0;
               return (
@@ -158,17 +159,17 @@ export default function QuickPosModal() {
                   onClick={() => addToCart(item)}
                   className={`p-3 rounded-xl border transition-all cursor-pointer select-none flex flex-col justify-between ${
                     inCartQty > 0
-                      ? "bg-[#D4A853]/10 border-[#D4A853]/50 shadow-md"
+                      ? "bg-gold/10 border-gold/50 shadow-md"
                       : "bg-[#1C1814] border-[#2A241F] hover:border-[#3E342A]"
                   }`}
                 >
                   <div>
                     <div className="flex items-start justify-between gap-1">
-                      <h5 className="font-medium text-xs text-[#FAF5EF] line-clamp-1">
+                      <h5 className="font-medium text-xs text-cream line-clamp-1">
                         {item.title}
                       </h5>
                       {inCartQty > 0 && (
-                        <span className="w-5 h-5 rounded-full bg-[#D4A853] text-[#141210] font-bold text-[10px] flex items-center justify-center shrink-0">
+                        <span className="w-5 h-5 rounded-full bg-gold text-[#141210] font-bold text-[10px] flex items-center justify-center shrink-0">
                           {inCartQty}
                         </span>
                       )}
@@ -203,7 +204,7 @@ export default function QuickPosModal() {
                 <select
                   value={orderType}
                   onChange={(e) => setOrderType(e.target.value)}
-                  className="w-full mt-1 bg-[#1C1814] border border-[#2E2721] rounded-lg px-2.5 py-1.5 text-xs text-[#FAF5EF]"
+                  className="w-full mt-1 bg-[#1C1814] border border-[#2E2721] rounded-lg px-2.5 py-1.5 text-xs text-cream"
                 >
                   <option value="Dine-in">Dine-in</option>
                   <option value="Takeaway">Takeaway</option>
@@ -219,7 +220,7 @@ export default function QuickPosModal() {
                   <select
                     value={selectedTable}
                     onChange={(e) => setSelectedTable(e.target.value)}
-                    className="w-full mt-1 bg-[#1C1814] border border-[#2E2721] rounded-lg px-2.5 py-1.5 text-xs text-[#FAF5EF]"
+                    className="w-full mt-1 bg-[#1C1814] border border-[#2E2721] rounded-lg px-2.5 py-1.5 text-xs text-cream"
                   >
                     {availableTables.map((t) => (
                       <option key={t.id} value={t.code}>
@@ -238,12 +239,12 @@ export default function QuickPosModal() {
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
                 placeholder="Guest Name (optional)"
-                className="w-full bg-[#1C1814] border border-[#2E2721] rounded-lg px-2.5 py-1.5 text-xs text-[#FAF5EF] placeholder-[#7E7568]"
+                className="w-full bg-[#1C1814] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-cream focus:outline-none"
               />
             </div>
 
             {/* Cart Items List */}
-            <div className="border-t border-b border-[#25201B] py-2 max-h-[170px] overflow-y-auto space-y-2">
+            <div className="border-t border-b border-[#25201B] py-2 max-h-42.5 overflow-y-auto space-y-2">
               {cartList.length === 0 ? (
                 <div className="py-6 text-center text-xs text-[#7E7568] flex flex-col items-center gap-1.5">
                   <ShoppingCart className="w-5 h-5 opacity-40" />
@@ -256,7 +257,7 @@ export default function QuickPosModal() {
                     className="flex items-center justify-between gap-2 text-xs py-1"
                   >
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium text-[#FAF5EF] truncate">
+                      <p className="font-medium text-cream truncate">
                         {item.title}
                       </p>
                       <p className="text-[11px] text-[#8E867B] font-mono">
@@ -272,7 +273,7 @@ export default function QuickPosModal() {
                       >
                         <Minus className="w-3 h-3" />
                       </button>
-                      <span className="w-5 text-center font-bold text-xs text-[#FAF5EF]">
+                      <span className="w-5 text-center font-bold text-xs text-cream">
                         {quantity}
                       </span>
                       <button
@@ -301,7 +302,7 @@ export default function QuickPosModal() {
                     onClick={() => setPaymentMode(mode)}
                     className={`py-1.5 px-2 rounded-lg text-center font-medium transition-colors cursor-pointer text-[11px] ${
                       paymentMode === mode
-                        ? "bg-[#D4A853]/20 border border-[#D4A853] text-[#E6BC65]"
+                        ? "bg-gold/20 border border-gold text-[#E6BC65]"
                         : "bg-[#1C1814] border border-[#2E2721] text-[#A89F91]"
                     }`}
                   >
@@ -316,13 +317,13 @@ export default function QuickPosModal() {
           <div className="pt-3 border-t border-[#25201B] space-y-2 mt-2">
             <div className="flex justify-between text-xs text-[#A89F91]">
               <span>Subtotal</span>
-              <span className="font-mono text-[#FAF5EF]">₹{subtotal.toFixed(2)}</span>
+              <span className="font-mono text-cream">₹{subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-xs text-[#A89F91]">
               <span>GST (5%)</span>
-              <span className="font-mono text-[#FAF5EF]">₹{tax.toFixed(2)}</span>
+              <span className="font-mono text-cream">₹{tax.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-sm font-bold text-[#FAF5EF] pt-1 border-t border-[#25201B]">
+            <div className="flex justify-between text-sm font-bold text-cream pt-1 border-t border-[#25201B]">
               <span>Total Bill</span>
               <span className="font-mono text-base text-[#E6BC65]">
                 ₹{total.toFixed(2)}

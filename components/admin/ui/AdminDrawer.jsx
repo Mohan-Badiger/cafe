@@ -46,7 +46,7 @@ export default function AdminDrawer({
           {/* Header */}
           <div className="px-6 py-4 border-b border-[#2A241F] flex items-center justify-between gap-4 shrink-0 bg-[#1A1714]">
             <div>
-              <h3 className="font-semibold text-lg text-[#FAF5EF]">{title}</h3>
+              <h3 className="font-google-sans font-semibold text-lg text-[#FAF5EF]">{title}</h3>
               {subtitle && (
                 <p className="text-xs text-[#A89F91] mt-0.5">{subtitle}</p>
               )}

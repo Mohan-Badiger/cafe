@@ -76,14 +76,57 @@ export default function ReservationModal() {
 
     setStep("loading");
 
-    // Generate random booking code
-    const randomCode = "CC-" + Math.floor(1000 + Math.random() * 9000);
+    // Generate booking reference code
+    const randomCode =
+      "CC-" +
+      String(
+        Math.abs(
+          ((formData.name.length * 811 + formData.phone.length * 97 + 1000) % 9000) + 1000
+        )
+      );
     setBookingCode(randomCode);
 
-    // Simulate server request
+    // Simulate server request & synchronize with Admin Panel
     setTimeout(() => {
+      try {
+        const stored = localStorage.getItem("chaat_admin_reservations");
+        const currentReservations = stored ? JSON.parse(stored) : [];
+        const newBooking = {
+          id: "RES-" + String(8900 + currentReservations.length + 1),
+          bookingCode: randomCode,
+          outlet: formData.location?.includes("Rabakavi") ? "Rabakavi" : "Jamakhandi",
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email || "",
+          guests: Number(formData.guests) || 2,
+          date: formData.date || todayStr,
+          time: formData.time,
+          tableAssigned: "T-02",
+          status: "confirmed",
+          notes: "Booked online via Website Concierge",
+          source: "Website Concierge",
+          createdAt: new Date().toISOString(),
+        };
+        localStorage.setItem("chaat_admin_reservations", JSON.stringify([newBooking, ...currentReservations]));
+
+        // Add to admin notifications
+        const notifStored = localStorage.getItem("chaat_admin_notifs");
+        const currentNotifs = notifStored ? JSON.parse(notifStored) : [];
+        const newNotif = {
+          id: "notif-" + Date.now(),
+          type: "reservation",
+          priority: "urgent",
+          title: `New Online Reservation: ${randomCode}`,
+          message: `${formData.name} booked a table for ${formData.guests} guests at ${formData.time} (${newBooking.outlet}).`,
+          time: "Just now",
+          read: false,
+        };
+        localStorage.setItem("chaat_admin_notifs", JSON.stringify([newNotif, ...currentNotifs]));
+      } catch (err) {
+        // ignore storage errors
+      }
       setStep("success");
-    }, 2000);
+    }, 1500);
   };
 
   // Get current date in YYYY-MM-DD for min-date attribute

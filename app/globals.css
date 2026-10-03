@@ -1,7 +1,10 @@
+/* ========== GOOGLE SANS (ADMIN PANEL ONLY) ========== */
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 /* ========== DESIGN TOKENS ========== */
 :root {
+  --font-google-sans: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --bg-dark: #1a1714;
   --bg-espresso: #131313;
   --bg-cream: #FAF5EF;
@@ -30,6 +33,22 @@
   --color-border-subtle: rgba(255, 255, 255, 0.1);
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
+  --font-google-sans: var(--font-google-sans);
+}
+
+/* ========== ADMIN PANEL TITLES (GOOGLE SANS ONLY) ========== */
+.font-google-sans {
+  font-family: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.admin-scope h1,
+.admin-scope h2,
+.admin-scope h3,
+.admin-scope .admin-title,
+.admin-scope .admin-page-title,
+.admin-scope .font-serif {
+  font-family: 'Google Sans', 'Product Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  letter-spacing: -0.015em;
 }
 
 /* ========== BASE STYLES ========== */

@@ -23,14 +23,14 @@ export default function AdminCard({
           <div>
             <div className="flex items-center gap-2.5">
               {title && (
-                <h3 className="font-sans font-semibold text-base text-[#FAF5EF] tracking-tight">
+                <h3 className="font-google-sans font-semibold text-base text-[#FAF5EF] tracking-tight">
                   {title}
                 </h3>
               )}
               {badge && <div>{badge}</div>}
             </div>
             {subtitle && (
-              <p className="text-xs text-[#A89F91] mt-0.5 font-normal">
+              <p suppressHydrationWarning className="text-xs text-[#A89F91] mt-0.5 font-normal">
                 {subtitle}
               </p>
             )}
