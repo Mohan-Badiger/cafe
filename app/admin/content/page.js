@@ -1,0 +1,292 @@
+"use client";
+
+import { useState } from "react";
+import { useAdmin } from "@/lib/admin/adminStore";
+import AdminCard from "@/components/admin/ui/AdminCard";
+import AdminBadge from "@/components/admin/ui/AdminBadge";
+import AdminButton from "@/components/admin/ui/AdminButton";
+import {
+  Globe,
+  Save,
+  Sparkles,
+  Megaphone,
+  Clock,
+  Eye,
+  CheckCircle2,
+  ExternalLink,
+} from "lucide-react";
+import Link from "next/link";
+
+export default function AdminContentPage() {
+  const { cmsContent, updateCmsContent, addToast } = useAdmin();
+
+  const [formData, setFormData] = useState(cmsContent);
+
+  const handleSave = (e) => {
+    e.preventDefault();
+    updateCmsContent(formData);
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Title & Save */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-[#FAF5EF]">
+            Website Content & Headless CMS
+          </h1>
+          <p className="text-xs sm:text-sm text-[#A89F91] mt-0.5">
+            Update festival announcement banners, hero statements, and store notices without code redeploys.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2.5">
+          <Link
+            href="/"
+            target="_blank"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#25201B] hover:bg-[#322A23] text-xs font-medium text-[#FAF5EF] transition-colors"
+          >
+            <Eye className="w-3.5 h-3.5 text-[#D4A853]" />
+            <span>Preview Website</span>
+          </Link>
+
+          <AdminButton
+            variant="primary"
+            size="sm"
+            icon={Save}
+            onClick={handleSave}
+          >
+            Save Changes Live
+          </AdminButton>
+        </div>
+      </div>
+
+      <form onSubmit={handleSave} className="space-y-6">
+        {/* Announcement Bar CMS */}
+        <AdminCard
+          title="Top Announcement Ticker"
+          subtitle="Displayed prominently across the header for all café visitors"
+          badge={
+            <AdminBadge variant={formData.announcementBar?.enabled ? "success" : "default"} size="sm">
+              {formData.announcementBar?.enabled ? "ACTIVE LIVE" : "DISABLED"}
+            </AdminBadge>
+          }
+        >
+          <div className="space-y-4">
+            <label className="flex items-center gap-2 cursor-pointer text-xs text-[#FAF5EF]">
+              <input
+                type="checkbox"
+                checked={formData.announcementBar?.enabled}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    announcementBar: {
+                      ...formData.announcementBar,
+                      enabled: e.target.checked,
+                    },
+                  })
+                }
+                className="rounded accent-[#D4A853]"
+              />
+              <span className="font-semibold">Enable Announcement Banner on Website</span>
+            </label>
+
+            <div>
+              <label className="text-xs font-semibold text-[#FAF5EF]">
+                Announcement Copy
+              </label>
+              <input
+                type="text"
+                value={formData.announcementBar?.text}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    announcementBar: {
+                      ...formData.announcementBar,
+                      text: e.target.value,
+                    },
+                  })
+                }
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] placeholder-[#7E7568] focus:border-[#D4A853] focus:outline-hidden"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="text-xs font-semibold text-[#FAF5EF]">
+                  CTA Button Label
+                </label>
+                <input
+                  type="text"
+                  value={formData.announcementBar?.highlight}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      announcementBar: {
+                        ...formData.announcementBar,
+                        highlight: e.target.value,
+                      },
+                    })
+                  }
+                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-[#FAF5EF]">
+                  Target Link Destination
+                </label>
+                <input
+                  type="text"
+                  value={formData.announcementBar?.link}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      announcementBar: {
+                        ...formData.announcementBar,
+                        link: e.target.value,
+                      },
+                    })
+                  }
+                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                />
+              </div>
+            </div>
+          </div>
+        </AdminCard>
+
+        {/* Hero Copy CMS */}
+        <AdminCard
+          title="Hero Banner Messaging"
+          subtitle="Primary headline and authentic South Indian street food philosophy"
+        >
+          <div className="space-y-4">
+            <div>
+              <label className="text-xs font-semibold text-[#FAF5EF]">
+                Brand Eyebrow Badge
+              </label>
+              <input
+                type="text"
+                value={formData.heroBanner?.badge}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    heroBanner: {
+                      ...formData.heroBanner,
+                      badge: e.target.value,
+                    },
+                  })
+                }
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+              />
+            </div>
+
+            <div>
+              <label className="text-xs font-semibold text-[#FAF5EF]">
+                Main Headline
+              </label>
+              <input
+                type="text"
+                value={formData.heroBanner?.headline}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    heroBanner: {
+                      ...formData.heroBanner,
+                      headline: e.target.value,
+                    },
+                  })
+                }
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+              />
+            </div>
+
+            <div>
+              <label className="text-xs font-semibold text-[#FAF5EF]">
+                Subheadline & Tagline
+              </label>
+              <textarea
+                rows={2}
+                value={formData.heroBanner?.subheadline}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    heroBanner: {
+                      ...formData.heroBanner,
+                      subheadline: e.target.value,
+                    },
+                  })
+                }
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl p-3 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+              />
+            </div>
+          </div>
+        </AdminCard>
+
+        {/* Operational Notice CMS */}
+        <AdminCard
+          title="Daily Operational Status & Timings"
+          subtitle="Broadcast status notices (e.g., Festival hours, VIP private event notice)"
+        >
+          <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="text-xs font-semibold text-[#FAF5EF]">
+                  Operational State
+                </label>
+                <select
+                  value={formData.operationalNotice?.status}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      operationalNotice: {
+                        ...formData.operationalNotice,
+                        status: e.target.value,
+                      },
+                    })
+                  }
+                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:outline-hidden"
+                >
+                  <option value="Normal Operations">Normal Operations</option>
+                  <option value="Extended Festival Hours">Extended Festival Hours (Open till 1 AM)</option>
+                  <option value="Private Wedding Catering Today">Private Wedding Catering Today</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs font-semibold text-[#FAF5EF]">
+                  Notice Description
+                </label>
+                <input
+                  type="text"
+                  value={formData.operationalNotice?.message}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      operationalNotice: {
+                        ...formData.operationalNotice,
+                        message: e.target.value,
+                      },
+                    })
+                  }
+                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                />
+              </div>
+            </div>
+          </div>
+        </AdminCard>
+
+        <div className="flex justify-end">
+          <AdminButton
+            type="submit"
+            variant="primary"
+            size="md"
+            icon={Save}
+          >
+            Save & Publish Live CMS
+          </AdminButton>
+        </div>
+      </form>
+    </div>
+  );
+}
