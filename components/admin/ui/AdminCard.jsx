@@ -23,7 +23,7 @@ export default function AdminCard({
           <div>
             <div className="flex items-center gap-2.5">
               {title && (
-                <h3 className="font-google-sans font-semibold text-base text-[#FAF5EF] tracking-tight">
+                <h3 className="font-google-sans font-semibold text-base text-cream tracking-tight">
                   {title}
                 </h3>
               )}
