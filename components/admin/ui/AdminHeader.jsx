@@ -172,7 +172,7 @@ export default function AdminHeader() {
           >
             <Bell className="w-4 h-4" />
             {mounted && unreadNotifs.length > 0 && (
-              <span className="absolute -top-1 -right-1 min-w-[17px] h-[17px] px-1 rounded-full bg-[#1A1613] text-white border border-white/40 font-bold text-[9px] flex items-center justify-center shadow-lg ring-1 ring-[#12100E]">
+              <span className="absolute -top-1 -right-1 min-w-4.25 h-4.25 px-1 rounded-full bg-[#1A1613] text-white border border-white/40 font-bold text-[9px] flex items-center justify-center shadow-lg ring-1 ring-[#12100E]">
                 {unreadNotifs.length}
               </span>
             )}
