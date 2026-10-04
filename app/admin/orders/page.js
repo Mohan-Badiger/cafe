@@ -22,6 +22,7 @@ import {
   IndianRupee,
   Eye,
   SlidersHorizontal,
+  Zap,
 } from "lucide-react";
 
 export default function AdminOrdersPage() {
@@ -71,7 +72,7 @@ export default function AdminOrdersPage() {
       {/* Top Header & Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-[#FAF5EF]">
+          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-cream">
             Live Orders & Kitchen Display System (KDS)
           </h1>
           <p className="text-xs sm:text-sm text-[#A89F91] mt-0.5">
@@ -83,9 +84,10 @@ export default function AdminOrdersPage() {
           <AdminButton
             variant="secondary"
             size="sm"
+            icon={Zap}
             onClick={simulateIncomingLiveOrder}
           >
-            Simulate Incoming
+            Live Order
           </AdminButton>
 
           <AdminButton
@@ -110,7 +112,7 @@ export default function AdminOrdersPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by Order #, table or guest..."
-              className="w-full bg-[#1A1714] border border-[#2E2721] rounded-xl pl-9 pr-3 py-2 text-xs text-[#FAF5EF] placeholder-[#7E7568] focus:border-[#D4A853] focus:outline-hidden"
+              className="w-full bg-espresso border border-[#2E2721] rounded-xl pl-9 pr-3 py-2 text-xs text-cream placeholder:text-[#7E7568] focus:border-gold focus:outline-hidden"
             />
           </div>
 
@@ -119,7 +121,7 @@ export default function AdminOrdersPage() {
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="bg-[#1A1714] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:outline-hidden"
+              className="bg-espresso border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:outline-hidden"
             >
               <option value="all">All Order Types</option>
               <option value="Dine-in">Dine-in</option>
@@ -131,7 +133,7 @@ export default function AdminOrdersPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-[#1A1714] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:outline-hidden"
+              className="bg-espresso border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:outline-hidden"
             >
               <option value="all">All Statuses</option>
               <option value="pending">Pending</option>
@@ -141,14 +143,14 @@ export default function AdminOrdersPage() {
             </select>
 
             {/* View Mode Toggle */}
-            <div className="flex items-center gap-1 bg-[#1A1714] p-1 rounded-xl border border-[#2E2721]">
+            <div className="flex items-center gap-1 bg-espresso p-1 rounded-xl border border-[#2E2721]">
               <button
                 type="button"
                 onClick={() => setViewMode("kanban")}
                 className={`px-3 py-1 rounded-lg font-medium transition-colors cursor-pointer ${
                   viewMode === "kanban"
-                    ? "bg-[#D4A853] text-[#141210] font-bold"
-                    : "text-[#A89F91] hover:text-[#FAF5EF]"
+                    ? "bg-gold text-[#141210] font-bold"
+                    : "text-[#A89F91] hover:text-cream"
                 }`}
               >
                 Kanban KDS
@@ -158,8 +160,8 @@ export default function AdminOrdersPage() {
                 onClick={() => setViewMode("table")}
                 className={`px-3 py-1 rounded-lg font-medium transition-colors cursor-pointer ${
                   viewMode === "table"
-                    ? "bg-[#D4A853] text-[#141210] font-bold"
-                    : "text-[#A89F91] hover:text-[#FAF5EF]"
+                    ? "bg-gold text-[#141210] font-bold"
+                    : "text-[#A89F91] hover:text-cream"
                 }`}
               >
                 Data Ledger
@@ -178,18 +180,18 @@ export default function AdminOrdersPage() {
             return (
               <div
                 key={col.id}
-                className="bg-[#141210] border border-[#25201B] rounded-2xl p-4 space-y-4 min-h-[500px] flex flex-col"
+                className="bg-[#141210] border border-[#25201B] rounded-2xl p-4 space-y-4 min-h-125 flex flex-col"
               >
                 {/* Column Header */}
                 <div className="flex items-center justify-between pb-3 border-b border-[#231E19]">
                   <div className="flex items-center gap-2">
-                    <Icon className="w-4 h-4 text-[#D4A853]" />
-                    <h3 className="font-semibold text-xs text-[#FAF5EF] uppercase tracking-wider">
+                    <Icon className="w-4 h-4 text-gold" />
+                    <h3 className="font-semibold text-xs text-cream uppercase tracking-wider">
                       {col.title}
                     </h3>
                   </div>
-                  <AdminBadge variant={col.badgeVariant} size="sm">
-                    {colOrders.length}
+                  <AdminBadge variant={col.badgeVariant} size="sm" suppressHydrationWarning>
+                    <span suppressHydrationWarning>{colOrders.length}</span>
                   </AdminBadge>
                 </div>
 
@@ -203,16 +205,16 @@ export default function AdminOrdersPage() {
                     colOrders.map((ord) => (
                       <div
                         key={ord.id}
-                        className="bg-[#1A1714] border border-[#2A241F] hover:border-[#3E342A] rounded-xl p-3.5 space-y-3 shadow-md transition-all group"
+                        className="bg-espresso border border-[#2A241F] hover:border-[#3E342A] rounded-xl p-3.5 space-y-3 shadow-md transition-all group"
                       >
                         {/* Order Header */}
                         <div className="flex items-start justify-between gap-2">
                           <div>
                             <div className="flex items-center gap-1.5">
-                              <span className="font-mono font-bold text-xs text-[#FAF5EF]">
+                              <span className="font-mono font-bold text-xs text-cream">
                                 {ord.id}
                               </span>
-                              <span className="text-[10px] text-[#D4A853] bg-[#D4A853]/10 px-1.5 py-0.5 rounded font-medium">
+                              <span className="text-[10px] text-gold bg-gold/10 px-1.5 py-0.5 rounded font-medium">
                                 {ord.outlet}
                               </span>
                             </div>
@@ -227,7 +229,7 @@ export default function AdminOrdersPage() {
                           <button
                             type="button"
                             onClick={() => handlePrintReceipt(ord)}
-                            className="p-1 rounded-lg text-[#8E867B] hover:text-[#FAF5EF] hover:bg-white/5 transition-colors cursor-pointer"
+                            className="p-1 rounded-lg text-[#8E867B] hover:text-cream hover:bg-white/5 transition-colors cursor-pointer"
                             title="View KOT / Invoice"
                           >
                             <Printer className="w-3.5 h-3.5" />
@@ -238,7 +240,7 @@ export default function AdminOrdersPage() {
                         <div className="space-y-1.5 py-2 border-t border-b border-[#241F1A] text-xs">
                           {ord.items.map((line, idx) => (
                             <div key={idx} className="space-y-0.5">
-                              <div className="flex justify-between items-center text-[#FAF5EF]">
+                              <div className="flex justify-between items-center text-cream">
                                 <span className="font-medium">
                                   {line.quantity}× {line.title}
                                 </span>
@@ -289,7 +291,7 @@ export default function AdminOrdersPage() {
                               <AdminButton
                                 variant="amber"
                                 size="xs"
-                                className="w-full bg-[#D97200] hover:bg-[#FFA043] text-white"
+                                className="w-full bg-amber hover:bg-[#FFA043] text-white"
                                 onClick={() => updateOrderStatus(ord.id, "ready")}
                               >
                                 Mark Ready
@@ -356,9 +358,9 @@ export default function AdminOrdersPage() {
                   filteredOrders.map((ord) => (
                     <tr
                       key={ord.id}
-                      className="hover:bg-[#1A1714] transition-colors"
+                      className="hover:bg-espresso transition-colors"
                     >
-                      <td className="py-3 px-4 font-mono font-bold text-[#FAF5EF]">
+                      <td className="py-3 px-4 font-mono font-bold text-cream">
                         {ord.id}
                       </td>
                       <td className="py-3 px-4 text-[#A89F91]">
@@ -368,7 +370,7 @@ export default function AdminOrdersPage() {
                         {ord.type} {ord.table ? `(${ord.table})` : ""}
                       </td>
                       <td className="py-3 px-4">
-                        <p className="font-medium text-[#FAF5EF]">{ord.customer?.name}</p>
+                        <p className="font-medium text-cream">{ord.customer?.name}</p>
                         <p className="text-[10px] text-[#7E7568]">{ord.customer?.phone}</p>
                       </td>
                       <td className="py-3 px-4 max-w-xs truncate text-[#A89F91]">
@@ -450,7 +452,7 @@ export default function AdminOrdersPage() {
           <div className="bg-[#100E0C] border border-[#2E2721] p-5 rounded-xl font-mono text-xs text-[#D8CEBF] space-y-4 shadow-inner">
             {/* Header info */}
             <div className="text-center pb-3 border-b border-dashed border-[#362D24] space-y-1">
-              <h4 className="font-bold text-sm text-[#FAF5EF]">
+              <h4 className="font-bold text-sm text-cream">
                 CHAAT & CHILL CAFÉ
               </h4>
               <p className="text-[11px] text-[#A89F91]">
@@ -459,7 +461,7 @@ export default function AdminOrdersPage() {
                   : "Main Market Road, Rabakavi Banhatti 587311"}
               </p>
               <p className="text-[10px] text-[#7E7568]">GSTIN: 29AABCC1234F1Z8</p>
-              <div className="pt-2 flex justify-between text-[11px] text-[#FAF5EF]">
+              <div className="pt-2 flex justify-between text-[11px] text-cream">
                 <span>Order: {selectedOrder.id}</span>
                 <span>{selectedOrder.type}</span>
               </div>
@@ -471,7 +473,7 @@ export default function AdminOrdersPage() {
 
             {/* Guest */}
             <div className="text-[11px] text-[#A89F91]">
-              <p>Guest: <span className="text-[#FAF5EF]">{selectedOrder.customer?.name}</span></p>
+              <p>Guest: <span className="text-cream">{selectedOrder.customer?.name}</span></p>
               <p>Phone: {selectedOrder.customer?.phone}</p>
             </div>
 
@@ -479,14 +481,14 @@ export default function AdminOrdersPage() {
             <div className="py-2 border-t border-b border-dashed border-[#362D24] space-y-2">
               {selectedOrder.items.map((item, idx) => (
                 <div key={idx} className="space-y-0.5">
-                  <div className="flex justify-between items-center text-[#FAF5EF]">
+                  <div className="flex justify-between items-center text-cream">
                     <span>
                       {item.quantity}× {item.title}
                     </span>
                     <span>₹{item.price * item.quantity}</span>
                   </div>
                   {item.notes && (
-                    <p className="text-[10px] text-[#D4A853] italic pl-2">
+                    <p className="text-[10px] text-gold italic pl-2">
                       * {item.notes}
                     </p>
                   )}

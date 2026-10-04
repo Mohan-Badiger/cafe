@@ -35,7 +35,7 @@ export default function AdminNotificationsPage() {
   );
 
   const icons = {
-    order: <ShoppingBag className="w-4 h-4 text-[#D4A853]" />,
+    order: <ShoppingBag className="w-4 h-4 text-gold" />,
     inventory: <Package className="w-4 h-4 text-rose-400" />,
     reservation: <CalendarCheck className="w-4 h-4 text-sky-400" />,
     payment: <CreditCard className="w-4 h-4 text-emerald-400" />,
@@ -46,7 +46,7 @@ export default function AdminNotificationsPage() {
       {/* Title & Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-[#FAF5EF]">
+          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-cream">
             Notifications & System Audit Trail
           </h1>
           <p className="text-xs sm:text-sm text-[#A89F91] mt-0.5">
@@ -86,8 +86,8 @@ export default function AdminNotificationsPage() {
             onClick={() => setTypeFilter(type)}
             className={`px-3.5 py-1.5 rounded-xl capitalize font-medium transition-colors cursor-pointer ${
               typeFilter === type
-                ? "bg-[#D4A853] text-[#141210] font-bold"
-                : "bg-[#181512] border border-[#2A241F] text-[#A89F91] hover:text-[#FAF5EF]"
+                ? "bg-gold text-[#141210] font-bold"
+                : "bg-[#181512] border border-[#2A241F] text-[#A89F91] hover:text-cream"
             }`}
           >
             {type === "all" ? `All Alerts (${notifications.length})` : `${type}s`}
@@ -111,18 +111,18 @@ export default function AdminNotificationsPage() {
               onClick={() => markNotificationRead(n.id)}
               className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start justify-between gap-4 ${
                 !n.read
-                  ? "bg-[#1C1814] border-[#D4A853]/40 shadow-md"
+                  ? "bg-[#1C1814] border-gold/40 shadow-md"
                   : "bg-[#141210] border-[#25201B] hover:bg-[#181512]"
               }`}
             >
               <div className="flex items-start gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-[#25201B] flex items-center justify-center shrink-0 border border-[#362D24]">
-                  {icons[n.type] || <Bell className="w-4 h-4 text-[#D4A853]" />}
+                  {icons[n.type] || <Bell className="w-4 h-4 text-gold" />}
                 </div>
 
                 <div className="space-y-0.5">
                   <div className="flex items-center gap-2">
-                    <h3 className={`text-sm font-semibold ${!n.read ? "text-[#FAF5EF]" : "text-[#D8CEBF]"}`}>
+                    <h3 className={`text-sm font-semibold ${!n.read ? "text-cream" : "text-[#D8CEBF]"}`}>
                       {n.title}
                     </h3>
                     <AdminBadge

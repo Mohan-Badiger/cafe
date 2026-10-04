@@ -139,7 +139,7 @@ export default function AdminStaffPage() {
                     alt={person.name}
                     width={48}
                     height={48}
-                    unoptimized
+                    quality={85}
                     className="w-full h-full object-cover"
                   />
                 </div>
