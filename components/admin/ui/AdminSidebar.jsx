@@ -40,6 +40,7 @@ export default function AdminSidebar() {
     orders,
     reservations,
     inventory,
+    notifications,
   } = useAdmin();
 
   const mounted = useIsMounted();
@@ -56,6 +57,8 @@ export default function AdminSidebar() {
   const lowStockCount = (inventory || []).filter(
     (i) => i.status === "low" || i.status === "critical"
   ).length;
+
+  const unreadNotifsCount = (notifications || []).filter((n) => !n.read).length;
 
   const navGroups = [
     {
@@ -107,7 +110,13 @@ export default function AdminSidebar() {
         { label: "Staff & Shifts", href: "/admin/staff", icon: Briefcase },
         { label: "Reviews & Feedback", href: "/admin/reviews", icon: MessageSquare },
         { label: "Website Content CMS", href: "/admin/content", icon: Globe },
-        { label: "Notifications & Audit", href: "/admin/notifications", icon: Bell },
+        {
+          label: "Notifications & Audit",
+          href: "/admin/notifications",
+          icon: Bell,
+          badge: unreadNotifsCount > 0 ? unreadNotifsCount : null,
+          badgeVariant: "white",
+        },
         { label: "Settings & Outlets", href: "/admin/settings", icon: Settings },
       ],
     },
@@ -119,6 +128,7 @@ export default function AdminSidebar() {
       amber: "bg-[#D97200] text-white",
       gold: "bg-[#D4A853] text-[#141210]",
       danger: "bg-rose-500 text-white animate-pulse",
+      white: "bg-white/15 text-white border border-white/20 font-bold",
     };
     return (
       <span

@@ -44,9 +44,9 @@ export default function AdminDrawer({
           className={`w-screen ${width} bg-[#161412] border-l border-[#2E2721] shadow-2xl flex flex-col animate-in slide-in-from-right duration-250`}
         >
           {/* Header */}
-          <div className="px-6 py-4 border-b border-[#2A241F] flex items-center justify-between gap-4 shrink-0 bg-[#1A1714]">
+          <div className="px-6 py-4 border-b border-[#2A241F] flex items-center justify-between gap-4 shrink-0 bg-espresso">
             <div>
-              <h3 className="font-google-sans font-semibold text-lg text-[#FAF5EF]">{title}</h3>
+              <h3 className="font-google-sans font-semibold text-lg text-cream">{title}</h3>
               {subtitle && (
                 <p className="text-xs text-[#A89F91] mt-0.5">{subtitle}</p>
               )}
@@ -54,7 +54,7 @@ export default function AdminDrawer({
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-lg text-[#A89F91] hover:text-[#FAF5EF] hover:bg-white/5 transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg text-[#A89F91] hover:text-cream hover:bg-white/5 transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>

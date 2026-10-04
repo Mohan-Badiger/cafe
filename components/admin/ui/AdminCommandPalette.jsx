@@ -151,7 +151,7 @@ export default function AdminCommandPalette() {
                 className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-left text-sm text-[#FAF5EF] hover:bg-emerald-500/15 hover:text-emerald-300 transition-colors cursor-pointer group"
               >
                 <Zap className="w-4 h-4 text-emerald-400" />
-                <span className="font-medium">Simulate Live Incoming Order</span>
+                <span className="font-medium">Live Order (Incoming Trigger)</span>
               </button>
             </div>
           </div>
