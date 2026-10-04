@@ -1,24 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useAdmin, OUTLETS, DEMO_USERS, ADMIN_ROLES } from "@/lib/admin/adminStore";
-import AdminBadge from "./AdminBadge";
+import { useAdmin, OUTLETS, MASTER_ADMIN } from "@/lib/admin/adminStore";
+
+const emptySubscribe = () => () => {};
+const useIsMounted = () => useSyncExternalStore(emptySubscribe, () => true, () => false);
 import {
   Search,
   Bell,
   PlusCircle,
   Zap,
-  MapPin,
   Menu,
   ChevronDown,
   LogOut,
-  UserCheck,
-  Shield,
   Check,
   ExternalLink,
-  Sparkles,
 } from "lucide-react";
 
 export default function AdminHeader() {
@@ -26,7 +25,6 @@ export default function AdminHeader() {
   const {
     currentUser,
     logoutUser,
-    switchUserRole,
     selectedOutlet,
     setSelectedOutlet,
     setMobileMenuOpen,
@@ -38,6 +36,8 @@ export default function AdminHeader() {
     markAllNotificationsRead,
   } = useAdmin();
 
+  const mounted = useIsMounted();
+
   const [outletMenuOpen, setOutletMenuOpen] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [notifMenuOpen, setNotifMenuOpen] = useState(false);
@@ -45,7 +45,10 @@ export default function AdminHeader() {
   const unreadNotifs = (notifications || []).filter((n) => !n.read);
 
   const currentOutletObj = OUTLETS.find((o) => o.id === selectedOutlet) || OUTLETS[0];
-  const userRoleConfig = currentUser ? ADMIN_ROLES[currentUser.role] : ADMIN_ROLES.SUPER_ADMIN;
+
+  const displayName = mounted ? (currentUser?.name || MASTER_ADMIN.name) : MASTER_ADMIN.name;
+  const displayEmail = mounted ? (currentUser?.email || MASTER_ADMIN.email) : MASTER_ADMIN.email;
+  const displayAvatar = mounted ? (currentUser?.avatar || MASTER_ADMIN.avatar) : MASTER_ADMIN.avatar;
 
   return (
     <header className="sticky top-0 z-30 h-16 bg-[#12100E]/95 backdrop-blur-md border-b border-[#26201B] px-4 sm:px-6 flex items-center justify-between gap-4">
@@ -54,7 +57,7 @@ export default function AdminHeader() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(true)}
-          className="lg:hidden p-2 rounded-xl text-[#A89F91] hover:text-[#FAF5EF] hover:bg-white/5 cursor-pointer"
+          className="lg:hidden p-2 rounded-xl text-[#A89F91] hover:text-cream hover:bg-white/5 cursor-pointer"
         >
           <Menu className="w-5 h-5" />
         </button>
@@ -68,11 +71,10 @@ export default function AdminHeader() {
               setProfileMenuOpen(false);
               setNotifMenuOpen(false);
             }}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#1A1714] border border-[#2E2721] hover:border-[#D4A853]/40 text-xs font-medium text-[#FAF5EF] transition-all cursor-pointer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-espresso border border-[#2E2721] hover:border-gold/40 text-xs font-medium text-cream transition-all cursor-pointer"
           >
-            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="hidden sm:inline font-semibold text-[#D4A853]">Branch:</span>
-            <span className="max-w-[140px] sm:max-w-none truncate">{currentOutletObj.name}</span>
+            <span className="hidden sm:inline font-semibold text-gold">Branch:</span>
+            <span className="max-w-35 sm:max-w-none truncate">{currentOutletObj.name}</span>
             <ChevronDown className="w-3.5 h-3.5 text-[#8E867B]" />
           </button>
 
@@ -96,7 +98,7 @@ export default function AdminHeader() {
                     }}
                     className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs transition-colors cursor-pointer ${
                       selectedOutlet === outlet.id
-                        ? "bg-[#D4A853]/15 text-[#E6BC65] font-semibold"
+                        ? "bg-gold/15 text-[#E6BC65] font-semibold"
                         : "text-[#D8CEBF] hover:bg-[#25201B]"
                     }`}
                   >
@@ -105,7 +107,7 @@ export default function AdminHeader() {
                       <p className="text-[10px] text-[#8E867B]">{outlet.city} • {outlet.tablesCount} Tables</p>
                     </div>
                     {selectedOutlet === outlet.id && (
-                      <Check className="w-4 h-4 text-[#D4A853]" />
+                      <Check className="w-4 h-4 text-gold" />
                     )}
                   </button>
                 ))}
@@ -120,10 +122,10 @@ export default function AdminHeader() {
         <button
           type="button"
           onClick={() => setIsCommandOpen(true)}
-          className="w-full flex items-center justify-between px-3.5 py-1.5 rounded-xl bg-[#181512] border border-[#2A241F] hover:border-[#D4A853]/40 text-xs text-[#7E7568] transition-all cursor-pointer group"
+          className="w-full flex items-center justify-between px-3.5 py-1.5 rounded-xl bg-[#181512] border border-[#2A241F] hover:border-gold/40 text-xs text-[#7E7568] transition-all cursor-pointer group"
         >
           <div className="flex items-center gap-2.5">
-            <Search className="w-3.5 h-3.5 text-[#D4A853] group-hover:scale-110 transition-transform" />
+            <Search className="w-3.5 h-3.5 text-gold group-hover:scale-110 transition-transform" />
             <span>Search orders, menu, patrons...</span>
           </div>
           <div className="flex items-center gap-1 font-mono text-[10px] bg-[#221C17] border border-[#362D24] px-1.5 py-0.5 rounded text-[#A89F91]">
@@ -135,22 +137,22 @@ export default function AdminHeader() {
 
       {/* Right Controls: Quick Actions, Notifs & User */}
       <div className="flex items-center gap-2 sm:gap-3">
-        {/* Simulate Order Button (Demo Wow Factor) */}
+        {/* Live Order Trigger */}
         <button
           type="button"
           onClick={simulateIncomingLiveOrder}
-          title="Simulate incoming online order"
-          className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-medium transition-all cursor-pointer active:scale-95"
+          title="Receive incoming live order"
+          className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/25 hover:border-emerald-500/40 text-xs font-medium transition-all cursor-pointer active:scale-95 shadow-xs"
         >
           <Zap className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
-          <span>Simulate Live Order</span>
+          <span>Live Order</span>
         </button>
 
         {/* Quick POS Biller Button */}
         <button
           type="button"
           onClick={() => setIsPosOpen(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-[#D4A853] to-[#E6BC65] hover:from-[#E6BC65] hover:to-[#F3CF7A] text-[#141210] text-xs font-semibold shadow-sm transition-all cursor-pointer active:scale-95"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-linear-to-r from-gold to-[#E6BC65] hover:from-[#E6BC65] hover:to-[#F3CF7A] text-[#141210] text-xs font-semibold shadow-sm transition-all cursor-pointer active:scale-95"
         >
           <PlusCircle className="w-3.5 h-3.5" />
           <span className="hidden sm:inline">Quick POS</span>
@@ -165,11 +167,14 @@ export default function AdminHeader() {
               setProfileMenuOpen(false);
               setOutletMenuOpen(false);
             }}
-            className="relative p-2 rounded-xl text-[#A89F91] hover:text-[#FAF5EF] hover:bg-white/5 transition-colors cursor-pointer"
+            className="relative p-2 rounded-xl text-[#A89F91] hover:text-cream hover:bg-white/5 transition-colors cursor-pointer"
+            aria-label="Notifications"
           >
             <Bell className="w-4 h-4" />
-            {unreadNotifs.length > 0 && (
-              <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-rose-500 ring-2 ring-[#12100E] animate-pulse" />
+            {mounted && unreadNotifs.length > 0 && (
+              <span className="absolute -top-1 -right-1 min-w-4.25 h-4.25 px-1 rounded-full bg-[#1A1613] text-white border border-white/40 font-bold text-[9px] flex items-center justify-center shadow-lg ring-1 ring-[#12100E]">
+                {unreadNotifs.length}
+              </span>
             )}
           </button>
 
@@ -180,13 +185,13 @@ export default function AdminHeader() {
                 onClick={() => setNotifMenuOpen(false)}
               />
               <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-[#161412] border border-[#2E2721] rounded-2xl shadow-2xl z-50 overflow-hidden animate-in fade-in duration-150">
-                <div className="px-4 py-3 border-b border-[#25201B] flex items-center justify-between bg-[#1A1714]">
+                <div className="px-4 py-3 border-b border-[#25201B] flex items-center justify-between bg-espresso">
                   <div className="flex items-center gap-2">
-                    <h4 className="font-semibold text-xs text-[#FAF5EF]">
+                    <h4 className="font-semibold text-xs text-cream">
                       Notifications
                     </h4>
                     {unreadNotifs.length > 0 && (
-                      <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-white border border-white/20">
                         {unreadNotifs.length} new
                       </span>
                     )}
@@ -195,7 +200,7 @@ export default function AdminHeader() {
                     <button
                       type="button"
                       onClick={markAllNotificationsRead}
-                      className="text-[11px] text-[#D4A853] hover:underline cursor-pointer"
+                      className="text-[11px] text-gold hover:underline cursor-pointer"
                     >
                       Mark all read
                     </button>
@@ -217,7 +222,7 @@ export default function AdminHeader() {
                         }`}
                       >
                         <div className="flex items-start justify-between gap-2">
-                          <p className={`font-semibold ${!n.read ? "text-[#FAF5EF]" : "text-[#D8CEBF]"}`}>
+                          <p className={`font-semibold ${!n.read ? "text-cream" : "text-[#D8CEBF]"}`}>
                             {n.title}
                           </p>
                           <span className="text-[10px] text-[#7E7568] whitespace-nowrap">
@@ -236,7 +241,7 @@ export default function AdminHeader() {
                   <Link
                     href="/admin/notifications"
                     onClick={() => setNotifMenuOpen(false)}
-                    className="text-xs text-[#D4A853] hover:underline font-medium"
+                    className="text-xs text-gold hover:underline font-medium"
                   >
                     View All Audit Logs & Notifications →
                   </Link>
@@ -246,7 +251,7 @@ export default function AdminHeader() {
           )}
         </div>
 
-        {/* User Profile & Role Switcher */}
+        {/* User Profile */}
         <div className="relative">
           <button
             type="button"
@@ -257,19 +262,22 @@ export default function AdminHeader() {
             }}
             className="flex items-center gap-2.5 p-1 rounded-xl hover:bg-white/5 transition-colors cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-full overflow-hidden border border-[#D4A853]/40 bg-[#25201B]">
-              <img
-                src={currentUser?.avatar || DEMO_USERS[0].avatar}
-                alt={currentUser?.name || "Admin"}
+            <div className="w-8 h-8 rounded-full overflow-hidden border border-gold/40 bg-[#25201B] relative">
+              <Image
+                src={displayAvatar}
+                alt={displayName}
+                width={32}
+                height={32}
+                quality={85}
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="hidden lg:block text-left text-xs">
-              <p className="font-semibold text-[#FAF5EF] leading-tight">
-                {currentUser?.name || "Admin User"}
+              <p suppressHydrationWarning className="font-semibold text-cream leading-tight">
+                {displayName}
               </p>
-              <p className="text-[10px] text-[#A89F91] mt-0.5">
-                {userRoleConfig?.title || "Super Admin"}
+              <p className="text-[10px] text-gold font-medium mt-0.5">
+                Administrator
               </p>
             </div>
             <ChevronDown className="w-3.5 h-3.5 text-[#8E867B] hidden sm:block" />
@@ -281,50 +289,18 @@ export default function AdminHeader() {
                 className="fixed inset-0 z-40"
                 onClick={() => setProfileMenuOpen(false)}
               />
-              <div className="absolute right-0 mt-2 w-72 bg-[#161412] border border-[#2E2721] rounded-2xl shadow-2xl p-2 z-50 animate-in fade-in duration-150">
+              <div className="absolute right-0 mt-2 w-64 bg-[#161412] border border-[#2E2721] rounded-2xl shadow-2xl p-2 z-50 animate-in fade-in duration-150">
                 {/* User Header */}
                 <div className="px-3 py-2.5 border-b border-[#25201B]">
-                  <p className="font-semibold text-sm text-[#FAF5EF]">
-                    {currentUser?.name}
+                  <p suppressHydrationWarning className="font-semibold text-sm text-cream">
+                    {displayName}
                   </p>
-                  <p className="text-xs text-[#8E867B]">{currentUser?.email}</p>
+                  <p suppressHydrationWarning className="text-xs text-[#8E867B]">{displayEmail}</p>
                   <div className="mt-2">
-                    <span
-                      className={`inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full border ${userRoleConfig?.badgeColor}`}
-                    >
-                      {userRoleConfig?.title}
+                    <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full border bg-amber-500/10 text-amber-400 border-amber-500/20">
+                      Master Administrator
                     </span>
                   </div>
-                </div>
-
-                {/* Role Switcher Section (Demo Superpower) */}
-                <div className="py-2 border-b border-[#25201B]">
-                  <div className="px-3 py-1 text-[10px] uppercase font-bold text-[#8E867B] tracking-wider">
-                    Switch Active Role (Demo)
-                  </div>
-                  {DEMO_USERS.map((usr) => (
-                    <button
-                      key={usr.id}
-                      type="button"
-                      onClick={() => {
-                        switchUserRole(usr.id);
-                        setProfileMenuOpen(false);
-                      }}
-                      className={`w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs transition-colors cursor-pointer ${
-                        currentUser?.id === usr.id
-                          ? "bg-[#D4A853]/15 text-[#E6BC65] font-semibold"
-                          : "text-[#D8CEBF] hover:bg-[#25201B]"
-                      }`}
-                    >
-                      <div className="text-left">
-                        <p className="font-medium">{usr.name}</p>
-                        <p className="text-[10px] text-[#8E867B]">{ADMIN_ROLES[usr.role]?.title} • {usr.outlet}</p>
-                      </div>
-                      {currentUser?.id === usr.id && (
-                        <Check className="w-3.5 h-3.5 text-[#D4A853]" />
-                      )}
-                    </button>
-                  ))}
                 </div>
 
                 {/* Links */}
@@ -332,9 +308,9 @@ export default function AdminHeader() {
                   <Link
                     href="/"
                     target="_blank"
-                    className="flex items-center gap-2 px-3 py-2 text-xs text-[#D8CEBF] hover:text-[#FAF5EF] hover:bg-[#25201B] rounded-xl transition-colors"
+                    className="flex items-center gap-2 px-3 py-2 text-xs text-[#D8CEBF] hover:text-cream hover:bg-[#25201B] rounded-xl transition-colors"
                   >
-                    <ExternalLink className="w-3.5 h-3.5 text-[#D4A853]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-gold" />
                     <span>View Public Café Website</span>
                   </Link>
 

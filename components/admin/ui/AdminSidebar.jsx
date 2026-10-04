@@ -1,0 +1,286 @@
+"use client";
+
+import { useSyncExternalStore } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useAdmin } from "@/lib/admin/adminStore";
+
+const emptySubscribe = () => () => {};
+const useIsMounted = () => useSyncExternalStore(emptySubscribe, () => true, () => false);
+import {
+  LayoutDashboard,
+  ShoppingBag,
+  Grid,
+  CalendarCheck,
+  Utensils,
+  Layers,
+  Package,
+  CreditCard,
+  Sparkles,
+  Users,
+  Briefcase,
+  MessageSquare,
+  Globe,
+  Bell,
+  Settings,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  Coffee,
+  Store,
+} from "lucide-react";
+
+export default function AdminSidebar() {
+  const pathname = usePathname();
+  const {
+    sidebarCollapsed,
+    setSidebarCollapsed,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    orders,
+    reservations,
+    inventory,
+    notifications,
+  } = useAdmin();
+
+  const mounted = useIsMounted();
+
+  // Dynamic counter badges
+  const pendingOrdersCount = (orders || []).filter(
+    (o) => o.status === "pending" || o.status === "preparing"
+  ).length;
+
+  const todayReservationsCount = (reservations || []).filter(
+    (r) => r.status === "confirmed"
+  ).length;
+
+  const lowStockCount = (inventory || []).filter(
+    (i) => i.status === "low" || i.status === "critical"
+  ).length;
+
+  const unreadNotifsCount = (notifications || []).filter((n) => !n.read).length;
+
+  const navGroups = [
+    {
+      group: "Core Operations",
+      items: [
+        { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
+        {
+          label: "Live Orders & KDS",
+          href: "/admin/orders",
+          icon: ShoppingBag,
+          badge: pendingOrdersCount > 0 ? pendingOrdersCount : null,
+          badgeVariant: "amber",
+        },
+        { label: "Tables & Floor Plan", href: "/admin/tables", icon: Grid },
+        {
+          label: "Reservations",
+          href: "/admin/reservations",
+          icon: CalendarCheck,
+          badge: todayReservationsCount > 0 ? todayReservationsCount : null,
+          badgeVariant: "gold",
+        },
+      ],
+    },
+    {
+      group: "Menu & Food",
+      items: [
+        { label: "Menu Catalog", href: "/admin/menu", icon: Utensils },
+        { label: "Categories", href: "/admin/categories", icon: Layers },
+        {
+          label: "Raw Inventory",
+          href: "/admin/inventory",
+          icon: Package,
+          badge: lowStockCount > 0 ? lowStockCount : null,
+          badgeVariant: "danger",
+        },
+      ],
+    },
+    {
+      group: "Sales & CRM",
+      items: [
+        { label: "Payments & Invoices", href: "/admin/payments", icon: CreditCard },
+        { label: "Offers & Coupons", href: "/admin/offers", icon: Sparkles },
+        { label: "Customers & Loyalty", href: "/admin/customers", icon: Users },
+      ],
+    },
+    {
+      group: "Management",
+      items: [
+        { label: "Staff & Shifts", href: "/admin/staff", icon: Briefcase },
+        { label: "Reviews & Feedback", href: "/admin/reviews", icon: MessageSquare },
+        { label: "Website Content CMS", href: "/admin/content", icon: Globe },
+        {
+          label: "Notifications & Audit",
+          href: "/admin/notifications",
+          icon: Bell,
+          badge: unreadNotifsCount > 0 ? unreadNotifsCount : null,
+          badgeVariant: "white",
+        },
+        { label: "Settings & Outlets", href: "/admin/settings", icon: Settings },
+      ],
+    },
+  ];
+
+  const renderBadge = (count, variant) => {
+    if (!mounted || !count) return null;
+    const colors = {
+      amber: "bg-[#D97200] text-white",
+      gold: "bg-[#D4A853] text-[#141210]",
+      danger: "bg-rose-500 text-white animate-pulse",
+      white: "bg-white/15 text-white border border-white/20 font-bold",
+    };
+    return (
+      <span
+        suppressHydrationWarning
+        className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold font-mono leading-none ${
+          colors[variant] || colors.gold
+        }`}
+      >
+        {count}
+      </span>
+    );
+  };
+
+  const navContent = (
+    <div className="flex flex-col h-full bg-[#12100E] border-r border-[#26201B] select-none">
+      {/* Brand Header */}
+      <div className="h-16 px-4 flex items-center justify-between border-b border-[#26201B]">
+        <Link
+          href="/admin"
+          className="flex items-center gap-2.5 overflow-hidden group cursor-pointer"
+        >
+          <div className="w-9 h-9 rounded-xl bg-linear-to-br from-gold to-[#B3832B] flex items-center justify-center shrink-0 shadow-md shadow-gold/20 group-hover:scale-105 transition-transform">
+            <Coffee className="w-5 h-5 text-[#141210]" />
+          </div>
+          {!sidebarCollapsed && (
+            <div className="flex flex-col min-w-0">
+              <span className="font-google-sans font-bold text-sm tracking-wide text-cream truncate">
+                Chaat & Chill
+              </span>
+              <span className="text-[10px] text-[#A89F91] tracking-wider uppercase font-medium">
+                Admin Suite
+              </span>
+            </div>
+          )}
+        </Link>
+
+        {/* Mobile close button */}
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen(false)}
+          className="lg:hidden p-1.5 rounded-lg text-[#A89F91] hover:text-cream hover:bg-white/5 cursor-pointer"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Nav List */}
+      <div className="flex-1 overflow-y-auto px-2.5 py-4 space-y-6">
+        {navGroups.map((group) => (
+          <div key={group.group} className="space-y-1">
+            {!sidebarCollapsed && (
+              <p className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#7E7568]">
+                {group.group}
+              </p>
+            )}
+            <div className="space-y-0.5">
+              {group.items.map((item) => {
+                const Icon = item.icon;
+                const isActive =
+                  pathname === item.href ||
+                  (item.href !== "/admin" && pathname.startsWith(item.href));
+
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    title={sidebarCollapsed ? item.label : undefined}
+                    className={`flex items-center justify-between px-2.5 py-2 rounded-xl text-xs font-medium transition-all group cursor-pointer ${
+                      isActive
+                        ? "bg-gold/15 text-[#E6BC65] font-semibold border border-gold/30 shadow-sm"
+                        : "text-[#B5AAA0] hover:text-cream hover:bg-white/5"
+                    } ${sidebarCollapsed ? "justify-center" : ""}`}
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      <Icon
+                        className={`w-4 h-4 shrink-0 transition-transform group-hover:scale-110 ${
+                          isActive ? "text-gold" : "text-[#8E867B] group-hover:text-cream"
+                        }`}
+                      />
+                      {!sidebarCollapsed && (
+                        <span className="truncate">{item.label}</span>
+                      )}
+                    </div>
+
+                    {!sidebarCollapsed && renderBadge(item.badge, item.badgeVariant)}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer System Status & Collapse Toggle */}
+      <div className="p-3 border-t border-[#26201B] bg-[#100E0C]">
+        {!sidebarCollapsed ? (
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#8E867B]" />
+              <span className="text-[11px] text-[#A89F91]">2 Outlets Online</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+              className="hidden lg:flex p-1.5 rounded-lg text-[#8E867B] hover:text-cream hover:bg-white/5 cursor-pointer"
+              title="Collapse sidebar"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+          </div>
+        ) : (
+          <div className="flex justify-center">
+            <button
+              type="button"
+              onClick={() => setSidebarCollapsed(false)}
+              className="p-1.5 rounded-lg text-[#8E867B] hover:text-cream hover:bg-white/5 cursor-pointer"
+              title="Expand sidebar"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+
+  return (
+    <>
+      {/* Desktop Sticky Sidebar */}
+      <aside
+        className={`hidden lg:block shrink-0 transition-all duration-250 z-30 h-screen sticky top-0 ${
+          sidebarCollapsed ? "w-18" : "w-64"
+        }`}
+      >
+        {navContent}
+      </aside>
+
+      {/* Mobile Off-canvas Drawer */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 lg:hidden overflow-hidden">
+          <div
+            className="fixed inset-0 bg-black/75 backdrop-blur-xs transition-opacity"
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          <div className="fixed inset-y-0 left-0 max-w-full flex">
+            <div className="w-72 bg-[#12100E] shadow-2xl">
+              {navContent}
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
