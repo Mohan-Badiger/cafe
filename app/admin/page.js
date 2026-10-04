@@ -132,7 +132,7 @@ export default function AdminDashboardPage() {
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-google-sans font-bold tracking-tight text-cream mt-2">
-              Namaskara, {currentUser?.name || "Manager"}! 🙏
+              Namaskara, {currentUser?.name || "Manager"}!
             </h1>
             <p className="text-xs sm:text-sm text-[#A89F91] mt-1 max-w-xl">
               Live orders are streaming in. All stone-ground batters, Nandini ghee roasts, and brass filter coffees are running at peak velocity.
@@ -146,7 +146,7 @@ export default function AdminDashboardPage() {
               icon={Zap}
               onClick={simulateIncomingLiveOrder}
             >
-              Simulate Live Order
+              Live Order
             </AdminButton>
 
             <AdminButton
@@ -336,7 +336,7 @@ export default function AdminDashboardPage() {
             <div className="divide-y divide-[#231E19] max-h-115 overflow-y-auto">
               {activeOrders.length === 0 ? (
                 <div className="p-8 text-center text-xs text-[#7E7568]">
-                  No active orders right now. Click &quot;Simulate Live Order&quot; to test.
+                  No active orders right now. Click &quot;Live Order&quot; to test.
                 </div>
               ) : (
                 activeOrders.map((ord) => {

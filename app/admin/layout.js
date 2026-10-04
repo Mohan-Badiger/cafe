@@ -1,12 +1,21 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import { AdminProvider } from "@/lib/admin/adminStore";
 import AdminSidebar from "@/components/admin/ui/AdminSidebar";
 import AdminHeader from "@/components/admin/ui/AdminHeader";
-import AdminCommandPalette from "@/components/admin/ui/AdminCommandPalette";
-import QuickPosModal from "@/components/admin/ui/QuickPosModal";
 import AdminToast from "@/components/admin/ui/AdminToast";
+
+// Code optimization: Lazily load heavy interactive modals only on the client
+const AdminCommandPalette = dynamic(
+  () => import("@/components/admin/ui/AdminCommandPalette"),
+  { ssr: false }
+);
+const QuickPosModal = dynamic(
+  () => import("@/components/admin/ui/QuickPosModal"),
+  { ssr: false }
+);
 
 export default function AdminLayout({ children }) {
   const pathname = usePathname();
