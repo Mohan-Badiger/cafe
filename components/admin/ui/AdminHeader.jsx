@@ -137,15 +137,15 @@ export default function AdminHeader() {
 
       {/* Right Controls: Quick Actions, Notifs & User */}
       <div className="flex items-center gap-2 sm:gap-3">
-        {/* Simulate Order Button (Demo Wow Factor) */}
+        {/* Live Order Trigger */}
         <button
           type="button"
           onClick={simulateIncomingLiveOrder}
-          title="Simulate incoming online order"
-          className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-medium transition-all cursor-pointer active:scale-95"
+          title="Receive incoming live order"
+          className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/25 hover:border-emerald-500/40 text-xs font-medium transition-all cursor-pointer active:scale-95 shadow-xs"
         >
           <Zap className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
-          <span>Simulate Live Order</span>
+          <span>Live Order</span>
         </button>
 
         {/* Quick POS Biller Button */}
@@ -168,10 +168,13 @@ export default function AdminHeader() {
               setOutletMenuOpen(false);
             }}
             className="relative p-2 rounded-xl text-[#A89F91] hover:text-cream hover:bg-white/5 transition-colors cursor-pointer"
+            aria-label="Notifications"
           >
             <Bell className="w-4 h-4" />
             {mounted && unreadNotifs.length > 0 && (
-              <span className="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-rose-500 ring-2 ring-[#12100E] animate-pulse" />
+              <span className="absolute -top-1 -right-1 min-w-[17px] h-[17px] px-1 rounded-full bg-[#1A1613] text-white border border-white/40 font-bold text-[9px] flex items-center justify-center shadow-lg ring-1 ring-[#12100E]">
+                {unreadNotifs.length}
+              </span>
             )}
           </button>
 
@@ -188,7 +191,7 @@ export default function AdminHeader() {
                       Notifications
                     </h4>
                     {unreadNotifs.length > 0 && (
-                      <span className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-white border border-white/20">
                         {unreadNotifs.length} new
                       </span>
                     )}
@@ -265,7 +268,7 @@ export default function AdminHeader() {
                 alt={displayName}
                 width={32}
                 height={32}
-                unoptimized
+                quality={85}
                 className="w-full h-full object-cover"
               />
             </div>

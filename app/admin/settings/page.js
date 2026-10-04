@@ -64,7 +64,7 @@ export default function AdminSettingsPage() {
       {/* Title & Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-[#FAF5EF]">
+          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-cream">
             Store Settings & Operational Configuration
           </h1>
           <p className="text-xs sm:text-sm text-[#A89F91] mt-0.5">
@@ -92,10 +92,10 @@ export default function AdminSettingsPage() {
             {OUTLETS.filter((o) => o.id !== "ALL").map((outlet) => (
               <div
                 key={outlet.id}
-                className="p-4 rounded-xl bg-[#1A1714] border border-[#2A241F] space-y-2"
+                className="p-4 rounded-xl bg-espresso border border-[#2A241F] space-y-2"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-sm text-[#FAF5EF]">
+                  <h3 className="font-semibold text-sm text-cream">
                     {outlet.name}
                   </h3>
                   <AdminBadge variant="success" size="sm">
@@ -107,7 +107,7 @@ export default function AdminSettingsPage() {
                 </p>
                 <div className="pt-2 border-t border-[#25201B] flex justify-between text-xs text-[#8E867B]">
                   <span>Timing: {outlet.timing}</span>
-                  <span className="font-mono text-[#D4A853]">{outlet.phone}</span>
+                  <span className="font-mono text-gold">{outlet.phone}</span>
                 </div>
               </div>
             ))}
@@ -121,38 +121,38 @@ export default function AdminSettingsPage() {
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 GSTIN Registration Number
               </label>
               <input
                 type="text"
                 value={settings.gstNumber}
                 onChange={(e) => setSettings({ ...settings, gstNumber: e.target.value })}
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs font-mono uppercase text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs font-mono uppercase text-cream focus:border-gold focus:outline-hidden"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Restaurant GST Rate (%)
               </label>
               <input
                 type="number"
                 value={settings.gstRate}
                 onChange={(e) => setSettings({ ...settings, gstRate: Number(e.target.value) })}
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs font-mono text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs font-mono text-cream focus:border-gold focus:outline-hidden"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Discretionary Service Charge (%)
               </label>
               <input
                 type="number"
                 value={settings.serviceCharge}
                 onChange={(e) => setSettings({ ...settings, serviceCharge: Number(e.target.value) })}
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs font-mono text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs font-mono text-cream focus:border-gold focus:outline-hidden"
               />
             </div>
           </div>
@@ -166,13 +166,13 @@ export default function AdminSettingsPage() {
           <div className="space-y-3">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-xs font-semibold text-[#FAF5EF]">
+                <label className="text-xs font-semibold text-cream">
                   Paper Roll Specification
                 </label>
                 <select
                   value={settings.receiptWidth}
                   onChange={(e) => setSettings({ ...settings, receiptWidth: e.target.value })}
-                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:outline-hidden"
+                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:outline-hidden"
                 >
                   <option value="80mm">Standard 80mm High-Speed Thermal</option>
                   <option value="58mm">Compact 58mm Mobile Bluetooth</option>
@@ -180,12 +180,12 @@ export default function AdminSettingsPage() {
               </div>
 
               <div className="flex flex-col justify-end">
-                <label className="flex items-center gap-2 cursor-pointer text-xs text-[#FAF5EF] pb-2">
+                <label className="flex items-center gap-2 cursor-pointer text-xs text-cream pb-2">
                   <input
                     type="checkbox"
                     checked={settings.kotAutoPrint}
                     onChange={(e) => setSettings({ ...settings, kotAutoPrint: e.target.checked })}
-                    className="rounded accent-[#D4A853]"
+                    className="rounded accent-gold"
                   />
                   <span>Automatically print KOT on order punch</span>
                 </label>
@@ -201,7 +201,7 @@ export default function AdminSettingsPage() {
         >
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p className="text-xs font-semibold text-[#FAF5EF]">
+              <p className="text-xs font-semibold text-cream">
                 Factory Reset Demo Database
               </p>
               <p className="text-xs text-[#8E867B] mt-0.5">

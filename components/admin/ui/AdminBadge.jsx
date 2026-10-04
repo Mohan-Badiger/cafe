@@ -6,6 +6,8 @@ export default function AdminBadge({
   size = "md",
   dot = false,
   className = "",
+  suppressHydrationWarning = true,
+  ...props
 }) {
   const variants = {
     default: "bg-[#25201B] text-[#D8CEBF] border-[#362D24]",
@@ -37,7 +39,9 @@ export default function AdminBadge({
 
   return (
     <span
+      suppressHydrationWarning={suppressHydrationWarning}
       className={`inline-flex items-center gap-1.5 rounded-full border shadow-sm ${variants[variant] || variants.default} ${sizes[size]} ${className}`}
+      {...props}
     >
       {dot && (
         <span

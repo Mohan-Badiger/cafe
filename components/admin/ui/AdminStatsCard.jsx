@@ -48,14 +48,14 @@ export default function AdminStatsCard({
       className={`relative bg-[#161412] border ${style.border} ${style.glow} rounded-2xl p-5 shadow-lg transition-all duration-200 group overflow-hidden ${className}`}
     >
       {/* Background ambient radial highlight */}
-      <div className="absolute top-0 right-0 -mr-8 -mt-8 w-28 h-28 rounded-full bg-white/2 blur-2xl pointer-events-none group-hover:bg-[#D4A853]/5 transition-colors" />
+      <div className="absolute top-0 right-0 -mr-8 -mt-8 w-28 h-28 rounded-full bg-white/2 blur-2xl pointer-events-none group-hover:bg-gold/5 transition-colors" />
 
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-xs font-medium text-[#A89F91] tracking-wider uppercase">
             {title}
           </p>
-          <h4 suppressHydrationWarning className="text-2xl sm:text-3xl font-bold text-[#FAF5EF] mt-1.5 font-sans tracking-tight">
+          <h4 suppressHydrationWarning className="text-2xl sm:text-3xl font-bold text-cream mt-1.5 font-sans tracking-tight">
             {value}
           </h4>
         </div>
@@ -95,7 +95,7 @@ export default function AdminStatsCard({
           )}
 
           {badgeText && (
-            <span suppressHydrationWarning className="text-[11px] font-medium text-[#D4A853] bg-[#D4A853]/10 px-2 py-0.5 rounded-md">
+            <span suppressHydrationWarning className="text-[11px] font-medium text-gold bg-gold/10 px-2 py-0.5 rounded-md">
               {badgeText}
             </span>
           )}

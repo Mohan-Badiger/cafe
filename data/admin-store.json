@@ -1,0 +1,1520 @@
+{
+  "version": 3,
+  "lastModified": "2026-10-04T13:50:43.359Z",
+  "currentUser": {
+    "id": "admin-master",
+    "name": "Mohan",
+    "email": "admin@cafe.com",
+    "password": "admin@123",
+    "pin": "admin@123",
+    "role": "ADMIN",
+    "outlet": "ALL",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    "phone": "+91 98800 11001",
+    "department": "Owner & Administration"
+  },
+  "menuItems": [
+    {
+      "id": "item-101",
+      "title": "Ghee Pudi Masala Dosa",
+      "category": "Stars of the Morning Show",
+      "price": 160,
+      "costPrice": 55,
+      "description": "Crisp, paper-thin golden crepe roasted in generous ladles of pure Nandini cow ghee, dusted with fiery gunpowder podi & spiced potato palya.",
+      "image": "/images/food-dosa.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": true,
+      "isBestseller": true,
+      "spiceLevel": 2,
+      "prepTime": 8,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 1420,
+      "tags": [
+        "Signature",
+        "Pure Ghee",
+        "Fiery Podi"
+      ]
+    },
+    {
+      "id": "item-102",
+      "title": "Butter Thatte Idli with Gunpowder",
+      "category": "Stars of the Morning Show",
+      "price": 95,
+      "costPrice": 28,
+      "description": "Plate-sized steaming thatte idli, featherlight and cloud-soft, crowned with churned white butter and warm lentil podi with hot drumstick sambhar.",
+      "image": "/images/food-idli.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": true,
+      "isBestseller": true,
+      "spiceLevel": 1,
+      "prepTime": 4,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 1180,
+      "tags": [
+        "Thatte Size",
+        "Melt In Mouth"
+      ]
+    },
+    {
+      "id": "item-103",
+      "title": "Open Butter Masala Dosa",
+      "category": "Stars of the Morning Show",
+      "price": 170,
+      "costPrice": 60,
+      "description": "Thick spongy golden dosa roasted open-faced with creamy dollops of butter, vibrant red chutney, podi dust, and spiced potato mash.",
+      "image": "/images/food-dosa.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": true,
+      "isBestseller": false,
+      "spiceLevel": 2,
+      "prepTime": 9,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 640,
+      "tags": [
+        "Chef Special",
+        "Open Faced"
+      ]
+    },
+    {
+      "id": "item-104",
+      "title": "Button Ghee Podi Idlis (14 Pcs)",
+      "category": "Stars of the Morning Show",
+      "price": 135,
+      "costPrice": 42,
+      "description": "Fourteen bite-sized button idlis tossed live on a smoking pan with golden Nandini ghee, fragrant curry leaves, and milagai podi.",
+      "image": "/images/food-idli.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": true,
+      "isBestseller": true,
+      "spiceLevel": 2,
+      "prepTime": 6,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 950,
+      "tags": [
+        "Patron Obsession",
+        "Button Idlis"
+      ]
+    },
+    {
+      "id": "item-105",
+      "title": "Ghee Khali Dosa (Set of 2)",
+      "category": "Stars of the Morning Show",
+      "price": 140,
+      "costPrice": 40,
+      "description": "Double cloud-soft spongy dosas roasted delicately with pure ghee. Featherlight, porous, and designed to soak up fresh coconut chutney.",
+      "image": "/images/food-dosa.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": true,
+      "isBestseller": false,
+      "spiceLevel": 1,
+      "prepTime": 7,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 480,
+      "tags": [
+        "Set Dosa",
+        "Comfort Classic"
+      ]
+    },
+    {
+      "id": "item-107",
+      "title": "Crispy Medu Vada (2 Pcs) with Hot Sambhar",
+      "category": "Bite-Sized Blockbusters",
+      "price": 90,
+      "costPrice": 26,
+      "description": "Golden-brown crisp urad dal fritters seasoned with cracked black peppercorns, ginger, and curry leaves. Served with steaming drumstick sambhar.",
+      "image": "/images/food-vada.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": false,
+      "isBestseller": true,
+      "spiceLevel": 1,
+      "prepTime": 3,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 1340,
+      "tags": [
+        "Golden Crunch",
+        "Fresh Fried"
+      ]
+    },
+    {
+      "id": "item-108",
+      "title": "Crunchy Karnataka Ambode (3 Pcs)",
+      "category": "Bite-Sized Blockbusters",
+      "price": 95,
+      "costPrice": 30,
+      "description": "Coarse-ground chana dal patties infused with fresh sabbakki soppu dill leaves, green chilies, and shallots, fried to rustic crunch.",
+      "image": "/images/food-vada.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": false,
+      "isBestseller": false,
+      "spiceLevel": 2,
+      "prepTime": 5,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 420,
+      "tags": [
+        "Dill Leaves",
+        "Festival Classic"
+      ]
+    },
+    {
+      "id": "item-109",
+      "title": "Spicy Karnataka Mirchi Bhajji",
+      "category": "Bite-Sized Blockbusters",
+      "price": 100,
+      "costPrice": 32,
+      "description": "Large mild Bhavnagri chilies slit, stuffed with ajwain spiced gram flour, dip-fried and sliced open with raw onions and roasted peanuts.",
+      "image": "/images/food-vada.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": false,
+      "isBestseller": true,
+      "spiceLevel": 3,
+      "prepTime": 6,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 880,
+      "tags": [
+        "Fiery Kick",
+        "Street Legend"
+      ]
+    },
+    {
+      "id": "item-111",
+      "title": "Spicy Khara Bath (Upma)",
+      "category": "Grand Finale & Comfort Classics",
+      "price": 85,
+      "costPrice": 22,
+      "description": "Coarse semolina roasted in pure ghee and slow-cooked with garden vegetables, ginger, mustard seeds, and heirloom vangi masala blend.",
+      "image": "/images/food-kesaribath.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": true,
+      "isBestseller": false,
+      "spiceLevel": 2,
+      "prepTime": 4,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 610,
+      "tags": [
+        "Breakfast Staple",
+        "Pure Ghee"
+      ]
+    },
+    {
+      "id": "item-112",
+      "title": "Royal Karnataka Kesari Bath",
+      "category": "Grand Finale & Comfort Classics",
+      "price": 90,
+      "costPrice": 32,
+      "description": "Silken saffron-infused semolina halwa glistening with pure Nandini ghee, loaded with golden roasted cashews, raisins, and green cardamom.",
+      "image": "/images/food-kesaribath.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": true,
+      "isBestseller": true,
+      "spiceLevel": 0,
+      "prepTime": 3,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 1100,
+      "tags": [
+        "Kashmiri Saffron",
+        "Cashews"
+      ]
+    },
+    {
+      "id": "item-113",
+      "title": "Traditional Bisi Bele Bath",
+      "category": "Grand Finale & Comfort Classics",
+      "price": 130,
+      "costPrice": 42,
+      "description": "Wholesome rice, toor dal, and seasonal vegetables simmered together in an elaborate 30-spice blend, topped with ghee-fried cashews and boondi.",
+      "image": "/images/food-kesaribath.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": true,
+      "isBestseller": true,
+      "spiceLevel": 2,
+      "prepTime": 5,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 830,
+      "tags": [
+        "30 Spices",
+        "Comfort Bowl"
+      ]
+    },
+    {
+      "id": "item-116",
+      "title": "Signature Degree Filter Coffee",
+      "category": "Liquid Gold & Chais",
+      "price": 55,
+      "costPrice": 15,
+      "description": "Piping hot decoction brewed from high-elevation Chikmagalur Arabica and Robusta peaberry, blended with frothy boiled milk in brass dabara.",
+      "image": "/images/food-filtercoffee.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": false,
+      "isBestseller": true,
+      "spiceLevel": 0,
+      "prepTime": 3,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 3200,
+      "tags": [
+        "Brass Dabara",
+        "Chikmagalur Roast"
+      ]
+    },
+    {
+      "id": "item-117",
+      "title": "Kullad Masala Chai",
+      "category": "Liquid Gold & Chais",
+      "price": 60,
+      "costPrice": 16,
+      "description": "Mountain ginger and crushed green cardamom slow-simmered in whole milk with Assam CTC tea leaves, poured steaming into rustic clay kullad.",
+      "image": "/images/food-masalachai.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": false,
+      "isBestseller": true,
+      "spiceLevel": 0,
+      "prepTime": 3,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 2650,
+      "tags": [
+        "Clay Kullad",
+        "Kadak"
+      ]
+    },
+    {
+      "id": "item-001",
+      "title": "Artisanal Papdi Chaat",
+      "category": "Street Chaats & Snacks",
+      "price": 180,
+      "costPrice": 50,
+      "description": "Crispy handcrafted papdis layered with spiced potatoes, chickpeas, sweet date chutney, fiery mint water, and velvety spiced yogurt.",
+      "image": "/images/food-chaat.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": false,
+      "isBestseller": true,
+      "spiceLevel": 2,
+      "prepTime": 5,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 1580,
+      "tags": [
+        "Chaat Royalty",
+        "Tangy"
+      ]
+    },
+    {
+      "id": "item-003",
+      "title": "Royal Pani Puri Tasting Flight (8 Pcs)",
+      "category": "Street Chaats & Snacks",
+      "price": 150,
+      "costPrice": 38,
+      "description": "Crispy semolina puris served with 4 artisanal waters: Spicy Mint Hing, Tangy Tamarind-Jaggery, Roasted Jeera, and Garlic-Chili.",
+      "image": "/images/food-panipuri.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": false,
+      "isBestseller": true,
+      "spiceLevel": 3,
+      "prepTime": 4,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 2100,
+      "tags": [
+        "Interactive",
+        "Must Try"
+      ]
+    },
+    {
+      "id": "item-002",
+      "title": "Classic Punjabi Samosa (2 Pcs)",
+      "category": "Street Chaats & Snacks",
+      "price": 120,
+      "costPrice": 34,
+      "description": "Pyramid pastries stuffed with fragrant cumin-spiced potatoes, green peas, and cashews, fried crisp with sonth and pudina chutneys.",
+      "image": "/images/food-samosa.jpg",
+      "isAvailable": true,
+      "isGheeSpecial": false,
+      "isBestseller": false,
+      "spiceLevel": 1,
+      "prepTime": 4,
+      "dietary": "Pure Veg",
+      "outlet": "ALL",
+      "ordersCount": 790,
+      "tags": [
+        "Golden Flaky",
+        "All-Time Classic"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-1",
+      "name": "Stars of the Morning Show",
+      "icon": "Sun",
+      "itemsCount": 5,
+      "sortOrder": 1,
+      "isActive": true
+    },
+    {
+      "id": "cat-2",
+      "name": "Bite-Sized Blockbusters",
+      "icon": "UtensilsCrossed",
+      "itemsCount": 3,
+      "sortOrder": 2,
+      "isActive": true
+    },
+    {
+      "id": "cat-3",
+      "name": "Grand Finale & Comfort Classics",
+      "icon": "Bowl",
+      "itemsCount": 3,
+      "sortOrder": 3,
+      "isActive": true
+    },
+    {
+      "id": "cat-4",
+      "name": "Liquid Gold & Chais",
+      "icon": "Coffee",
+      "itemsCount": 2,
+      "sortOrder": 4,
+      "isActive": true
+    },
+    {
+      "id": "cat-5",
+      "name": "Street Chaats & Snacks",
+      "icon": "Sparkles",
+      "itemsCount": 3,
+      "sortOrder": 5,
+      "isActive": true
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-9660",
+      "timestamp": "2026-10-04T13:50:43.324Z",
+      "status": "pending",
+      "paymentStatus": "paid",
+      "outlet": "Rabakavi",
+      "type": "Dine-in",
+      "table": "T-02",
+      "customer": {
+        "name": "Dr. Sanjeev Rao",
+        "phone": "+91 9889948470"
+      },
+      "items": [
+        {
+          "id": "item-113",
+          "title": "Traditional Bisi Bele Bath",
+          "quantity": 1,
+          "price": 130,
+          "notes": "Special request"
+        },
+        {
+          "id": "item-116",
+          "title": "Signature Degree Filter Coffee",
+          "quantity": 1,
+          "price": 55,
+          "notes": ""
+        }
+      ],
+      "subtotal": 185,
+      "tax": 9.25,
+      "discount": 0,
+      "total": 194.25,
+      "paymentMode": "UPI / PhonePe Live",
+      "kotPrinted": false
+    },
+    {
+      "id": "ORD-9639",
+      "timestamp": "2026-10-04T13:49:58.452Z",
+      "status": "pending",
+      "paymentStatus": "paid",
+      "kotPrinted": false,
+      "outlet": "Jamakhandi",
+      "type": "Dine-in",
+      "table": "T-01",
+      "customer": {
+        "name": "Walk-in Guest",
+        "phone": "+91"
+      },
+      "items": [
+        {
+          "id": "item-102",
+          "title": "Butter Thatte Idli with Gunpowder",
+          "quantity": 1,
+          "price": 95,
+          "notes": ""
+        },
+        {
+          "id": "item-103",
+          "title": "Open Butter Masala Dosa",
+          "quantity": 2,
+          "price": 170,
+          "notes": ""
+        },
+        {
+          "id": "item-101",
+          "title": "Ghee Pudi Masala Dosa",
+          "quantity": 1,
+          "price": 160,
+          "notes": ""
+        }
+      ],
+      "subtotal": 595,
+      "tax": 29.75,
+      "discount": 0,
+      "total": 624.75,
+      "paymentMode": "UPI / PhonePe"
+    },
+    {
+      "id": "ORD-9401",
+      "outlet": "Jamakhandi",
+      "type": "Dine-in",
+      "table": "T-01",
+      "customer": {
+        "name": "Anil Kulkarni",
+        "phone": "+91 94481 23450"
+      },
+      "items": [
+        {
+          "id": "item-101",
+          "title": "Ghee Pudi Masala Dosa",
+          "quantity": 2,
+          "price": 160,
+          "notes": "Extra crispy, podi on side"
+        },
+        {
+          "id": "item-116",
+          "title": "Signature Degree Filter Coffee",
+          "quantity": 2,
+          "price": 55,
+          "notes": "Strong decoction"
+        }
+      ],
+      "subtotal": 430,
+      "tax": 21.5,
+      "discount": 0,
+      "total": 451.5,
+      "status": "preparing",
+      "paymentStatus": "paid",
+      "paymentMode": "UPI / PhonePe",
+      "timestamp": "2026-10-04T13:15:15.591Z",
+      "kotPrinted": true
+    },
+    {
+      "id": "ORD-9403",
+      "outlet": "Jamakhandi",
+      "type": "Dine-in",
+      "table": "T-03",
+      "customer": {
+        "name": "Priya Sharma",
+        "phone": "+91 98200 44123"
+      },
+      "items": [
+        {
+          "id": "item-102",
+          "title": "Butter Thatte Idli with Gunpowder",
+          "quantity": 2,
+          "price": 95,
+          "notes": "Hot sambhar"
+        },
+        {
+          "id": "item-107",
+          "title": "Crispy Medu Vada (2 Pcs)",
+          "quantity": 1,
+          "price": 90,
+          "notes": ""
+        },
+        {
+          "id": "item-117",
+          "title": "Kullad Masala Chai",
+          "quantity": 2,
+          "price": 60,
+          "notes": "Less sugar"
+        }
+      ],
+      "subtotal": 400,
+      "tax": 20,
+      "discount": 20,
+      "total": 400,
+      "status": "ready",
+      "paymentStatus": "unpaid",
+      "paymentMode": "Cash at Desk",
+      "timestamp": "2026-10-04T13:23:15.591Z",
+      "kotPrinted": true
+    },
+    {
+      "id": "ORD-9405",
+      "outlet": "Jamakhandi",
+      "type": "Takeaway",
+      "table": "Parcel #14",
+      "customer": {
+        "name": "Mahesh Joshi",
+        "phone": "+91 99801 77234"
+      },
+      "items": [
+        {
+          "id": "item-001",
+          "title": "Artisanal Papdi Chaat",
+          "quantity": 2,
+          "price": 180,
+          "notes": "Pack chutneys separately"
+        },
+        {
+          "id": "item-003",
+          "title": "Royal Pani Puri Tasting Flight",
+          "quantity": 1,
+          "price": 150,
+          "notes": ""
+        },
+        {
+          "id": "item-112",
+          "title": "Royal Karnataka Kesari Bath",
+          "quantity": 1,
+          "price": 90,
+          "notes": ""
+        }
+      ],
+      "subtotal": 600,
+      "tax": 30,
+      "discount": 50,
+      "total": 580,
+      "status": "pending",
+      "paymentStatus": "paid",
+      "paymentMode": "GPay Online",
+      "timestamp": "2026-10-04T13:33:15.591Z",
+      "kotPrinted": false
+    },
+    {
+      "id": "ORD-9406",
+      "outlet": "Jamakhandi",
+      "type": "Dine-in",
+      "table": "T-06",
+      "customer": {
+        "name": "Ramesh Naidu",
+        "phone": "+91 97412 88219"
+      },
+      "items": [
+        {
+          "id": "item-104",
+          "title": "Button Ghee Podi Idlis (14 Pcs)",
+          "quantity": 2,
+          "price": 135,
+          "notes": "Extra ghee drizzle"
+        },
+        {
+          "id": "item-113",
+          "title": "Traditional Bisi Bele Bath",
+          "quantity": 1,
+          "price": 130,
+          "notes": "Boondi on top"
+        },
+        {
+          "id": "item-116",
+          "title": "Signature Degree Filter Coffee",
+          "quantity": 2,
+          "price": 55,
+          "notes": ""
+        }
+      ],
+      "subtotal": 510,
+      "tax": 25.5,
+      "discount": 0,
+      "total": 535.5,
+      "status": "completed",
+      "paymentStatus": "paid",
+      "paymentMode": "HDFC Card",
+      "timestamp": "2026-10-04T12:49:15.591Z",
+      "kotPrinted": true
+    },
+    {
+      "id": "ORD-9415",
+      "outlet": "Rabakavi",
+      "type": "Dine-in",
+      "table": "R-01",
+      "customer": {
+        "name": "Sneha Patil",
+        "phone": "+91 96112 55901"
+      },
+      "items": [
+        {
+          "id": "item-101",
+          "title": "Ghee Pudi Masala Dosa",
+          "quantity": 2,
+          "price": 160,
+          "notes": "Crisp golden"
+        },
+        {
+          "id": "item-109",
+          "title": "Spicy Karnataka Mirchi Bhajji",
+          "quantity": 1,
+          "price": 100,
+          "notes": "Extra lemon & onion"
+        },
+        {
+          "id": "item-116",
+          "title": "Signature Degree Filter Coffee",
+          "quantity": 2,
+          "price": 55,
+          "notes": ""
+        }
+      ],
+      "subtotal": 530,
+      "tax": 26.5,
+      "discount": 0,
+      "total": 556.5,
+      "status": "preparing",
+      "paymentStatus": "paid",
+      "paymentMode": "UPI / Paytm",
+      "timestamp": "2026-10-04T13:19:15.591Z",
+      "kotPrinted": true
+    },
+    {
+      "id": "ORD-9416",
+      "outlet": "Rabakavi",
+      "type": "Dine-in",
+      "table": "R-03",
+      "customer": {
+        "name": "Gururaj Inamdar",
+        "phone": "+91 94803 11842"
+      },
+      "items": [
+        {
+          "id": "item-102",
+          "title": "Butter Thatte Idli with Gunpowder",
+          "quantity": 4,
+          "price": 95,
+          "notes": "Extra white butter"
+        },
+        {
+          "id": "item-111",
+          "title": "Spicy Khara Bath (Upma)",
+          "quantity": 2,
+          "price": 85,
+          "notes": ""
+        },
+        {
+          "id": "item-112",
+          "title": "Royal Karnataka Kesari Bath",
+          "quantity": 2,
+          "price": 90,
+          "notes": ""
+        },
+        {
+          "id": "item-116",
+          "title": "Signature Degree Filter Coffee",
+          "quantity": 4,
+          "price": 55,
+          "notes": "Super frothy"
+        }
+      ],
+      "subtotal": 950,
+      "tax": 47.5,
+      "discount": 95,
+      "total": 902.5,
+      "status": "preparing",
+      "paymentStatus": "paid",
+      "paymentMode": "UPI / PhonePe",
+      "timestamp": "2026-10-04T13:08:15.591Z",
+      "kotPrinted": true
+    },
+    {
+      "id": "ORD-9419",
+      "outlet": "Rabakavi",
+      "type": "Dine-in",
+      "table": "S-01",
+      "customer": {
+        "name": "Vijay Badiger",
+        "phone": "+91 99002 44331"
+      },
+      "items": [
+        {
+          "id": "item-108",
+          "title": "Crunchy Karnataka Ambode (3 Pcs)",
+          "quantity": 1,
+          "price": 95,
+          "notes": ""
+        },
+        {
+          "id": "item-117",
+          "title": "Kullad Masala Chai",
+          "quantity": 2,
+          "price": 60,
+          "notes": "Kadak adrak"
+        }
+      ],
+      "subtotal": 215,
+      "tax": 10.75,
+      "discount": 0,
+      "total": 225.75,
+      "status": "ready",
+      "paymentStatus": "paid",
+      "paymentMode": "Cash",
+      "timestamp": "2026-10-04T13:31:15.591Z",
+      "kotPrinted": true
+    }
+  ],
+  "tables": [
+    {
+      "id": "tbl-01",
+      "code": "T-01",
+      "name": "Table 01",
+      "capacity": 4,
+      "status": "dining",
+      "currentOrder": "ORD-9401",
+      "guests": 3,
+      "elapsedMins": 22
+    },
+    {
+      "id": "tbl-02",
+      "code": "T-02",
+      "name": "Table 02",
+      "capacity": 2,
+      "status": "available",
+      "currentOrder": null,
+      "guests": 0,
+      "elapsedMins": 0
+    },
+    {
+      "id": "tbl-03",
+      "code": "T-03",
+      "name": "Table 03",
+      "capacity": 4,
+      "status": "dining",
+      "currentOrder": "ORD-9403",
+      "guests": 4,
+      "elapsedMins": 14
+    },
+    {
+      "id": "tbl-04",
+      "code": "T-04",
+      "name": "Table 04",
+      "capacity": 6,
+      "status": "reserved",
+      "currentOrder": null,
+      "guests": 0,
+      "reservedFor": "Vikram Desai (08:00 PM)"
+    },
+    {
+      "id": "tbl-05",
+      "code": "T-05",
+      "name": "Table 05",
+      "capacity": 4,
+      "status": "available",
+      "currentOrder": null,
+      "guests": 0,
+      "elapsedMins": 0
+    },
+    {
+      "id": "tbl-06",
+      "code": "T-06",
+      "name": "Table 06",
+      "capacity": 4,
+      "status": "dining",
+      "currentOrder": "ORD-9406",
+      "guests": 2,
+      "elapsedMins": 35
+    },
+    {
+      "id": "tbl-07",
+      "code": "T-07",
+      "name": "Table 07",
+      "capacity": 8,
+      "status": "available",
+      "currentOrder": null,
+      "guests": 0,
+      "elapsedMins": 0
+    },
+    {
+      "id": "tbl-08",
+      "code": "T-08",
+      "name": "Table 08",
+      "capacity": 2,
+      "status": "available",
+      "currentOrder": null,
+      "guests": 0,
+      "elapsedMins": 0
+    },
+    {
+      "id": "tbl-09",
+      "code": "T-09",
+      "name": "Table 09",
+      "capacity": 4,
+      "status": "reserved",
+      "currentOrder": null,
+      "guests": 0,
+      "reservedFor": "Dr. Sanjeev Rao (08:30 PM)"
+    },
+    {
+      "id": "tbl-10",
+      "code": "T-10",
+      "name": "Table 10",
+      "capacity": 4,
+      "status": "available",
+      "currentOrder": null,
+      "guests": 0,
+      "elapsedMins": 0
+    },
+    {
+      "id": "tbl-11",
+      "code": "T-11",
+      "name": "Table 11",
+      "capacity": 4,
+      "status": "available",
+      "currentOrder": null,
+      "guests": 0,
+      "elapsedMins": 0
+    },
+    {
+      "id": "tbl-12",
+      "code": "T-12",
+      "name": "Table 12",
+      "capacity": 6,
+      "status": "available",
+      "currentOrder": null,
+      "guests": 0,
+      "elapsedMins": 0
+    }
+  ],
+  "reservations": [
+    {
+      "id": "RES-8801",
+      "bookingCode": "CC-8801",
+      "outlet": "Jamakhandi",
+      "name": "Vikram Desai",
+      "phone": "+91 98450 11920",
+      "email": "vikram.desai@gmail.com",
+      "guests": 6,
+      "date": "2026-10-04",
+      "time": "7:30 PM",
+      "tableAssigned": "T-04",
+      "status": "confirmed",
+      "notes": "Celebrating 10th anniversary. Wants corner table with mild spice food for elders.",
+      "source": "Website Concierge",
+      "createdAt": "2026-10-04T10:37:15.591Z"
+    },
+    {
+      "id": "RES-8802",
+      "bookingCode": "CC-8802",
+      "outlet": "Rabakavi",
+      "name": "Suresh Patil",
+      "phone": "+91 94480 33412",
+      "email": "suresh.patil@outlook.com",
+      "guests": 2,
+      "date": "2026-10-04",
+      "time": "8:30 PM",
+      "tableAssigned": "R-04",
+      "status": "confirmed",
+      "notes": "Requires high chair if possible.",
+      "source": "Phone Call",
+      "createdAt": "2026-10-04T12:07:15.591Z"
+    },
+    {
+      "id": "RES-8803",
+      "bookingCode": "CC-8803",
+      "outlet": "Jamakhandi",
+      "name": "Dr. Ananya Krishnan",
+      "phone": "+91 97312 99800",
+      "email": "ananya.k@apollo.com",
+      "guests": 4,
+      "date": "2026-10-05",
+      "time": "12:30 PM",
+      "tableAssigned": "T-05",
+      "status": "confirmed",
+      "notes": "Family brunch with cousins visiting from Bengaluru.",
+      "source": "Website Concierge",
+      "createdAt": "2026-10-04T07:37:15.591Z"
+    },
+    {
+      "id": "RES-8804",
+      "bookingCode": "CC-8804",
+      "outlet": "Jamakhandi",
+      "name": "Rahul Verma",
+      "phone": "+91 98801 44556",
+      "email": "rahul.v@techcorp.in",
+      "guests": 3,
+      "date": "2026-10-04",
+      "time": "4:00 PM",
+      "tableAssigned": "T-01",
+      "status": "seated",
+      "notes": "Business tea meeting.",
+      "source": "Website Concierge",
+      "createdAt": "2026-10-04T06:57:15.591Z"
+    },
+    {
+      "id": "RES-8805",
+      "bookingCode": "CC-8805",
+      "outlet": "Rabakavi",
+      "name": "Meenakshi Sundaram",
+      "phone": "+91 98230 67119",
+      "email": "meena.s@yahoo.com",
+      "guests": 8,
+      "date": "2026-10-06",
+      "time": "7:30 PM",
+      "tableAssigned": "R-03",
+      "status": "confirmed",
+      "notes": "Pre-order 8 Thatte idlis and 8 filter coffees on arrival.",
+      "source": "Franchise Partner Call",
+      "createdAt": "2026-10-04T05:17:15.591Z"
+    }
+  ],
+  "inventory": [
+    {
+      "id": "inv-01",
+      "name": "KMF Nandini Pure Cow Ghee",
+      "category": "Dairy & Fats",
+      "currentStock": 18.5,
+      "unit": "Litres",
+      "minThreshold": 15,
+      "costPerUnit": 640,
+      "supplier": "Karnataka Milk Federation (KMF) Hub",
+      "supplierContact": "+91 80 2553 6611",
+      "outlet": "Jamakhandi",
+      "status": "low",
+      "lastRestocked": "2026-09-28"
+    },
+    {
+      "id": "inv-02",
+      "name": "Chikmagalur Peaberry Coffee Powder",
+      "category": "Coffee & Tea",
+      "currentStock": 24,
+      "unit": "Kg",
+      "minThreshold": 10,
+      "costPerUnit": 580,
+      "supplier": "Western Ghats Coffee Planters Co-op",
+      "supplierContact": "+91 8262 230911",
+      "outlet": "ALL",
+      "status": "good",
+      "lastRestocked": "2026-09-30"
+    },
+    {
+      "id": "inv-03",
+      "name": "Mysore Sona Masoori Rice (Aged)",
+      "category": "Grains & Pulses",
+      "currentStock": 180,
+      "unit": "Kg",
+      "minThreshold": 50,
+      "costPerUnit": 72,
+      "supplier": "Mandya Organic Rice Millers",
+      "supplierContact": "+91 8232 245120",
+      "outlet": "ALL",
+      "status": "good",
+      "lastRestocked": "2026-10-01"
+    },
+    {
+      "id": "inv-04",
+      "name": "Selected Urad Dal (Gota)",
+      "category": "Grains & Pulses",
+      "currentStock": 85,
+      "unit": "Kg",
+      "minThreshold": 30,
+      "costPerUnit": 145,
+      "supplier": "Gulbarga Dal Producers Sangh",
+      "supplierContact": "+91 8472 261890",
+      "outlet": "ALL",
+      "status": "good",
+      "lastRestocked": "2026-09-29"
+    },
+    {
+      "id": "inv-05",
+      "name": "Byadgi Red Dried Chilies (Stemless)",
+      "category": "Spices & Condiments",
+      "currentStock": 6.2,
+      "unit": "Kg",
+      "minThreshold": 8,
+      "costPerUnit": 480,
+      "supplier": "Byadgi APMC Mandi Trader #41",
+      "supplierContact": "+91 8375 228114",
+      "outlet": "Jamakhandi",
+      "status": "critical",
+      "lastRestocked": "2026-09-22"
+    },
+    {
+      "id": "inv-06",
+      "name": "Handmade Terracotta Kullads",
+      "category": "Packaging & Serveware",
+      "currentStock": 450,
+      "unit": "Pcs",
+      "minThreshold": 200,
+      "costPerUnit": 4.5,
+      "supplier": "Dharwad Potter's Artisanal Guild",
+      "supplierContact": "+91 836 2441908",
+      "outlet": "ALL",
+      "status": "good",
+      "lastRestocked": "2026-09-26"
+    },
+    {
+      "id": "inv-07",
+      "name": "Eco Areca Leaf Plates (10-inch Round)",
+      "category": "Packaging & Serveware",
+      "currentStock": 820,
+      "unit": "Pcs",
+      "minThreshold": 300,
+      "costPerUnit": 5.2,
+      "supplier": "Malnad Green Pack Industries",
+      "supplierContact": "+91 8182 278144",
+      "outlet": "ALL",
+      "status": "good",
+      "lastRestocked": "2026-10-01"
+    },
+    {
+      "id": "inv-08",
+      "name": "Fresh Grated Coconut (Local)",
+      "category": "Daily Perishables",
+      "currentStock": 14,
+      "unit": "Kg",
+      "minThreshold": 12,
+      "costPerUnit": 60,
+      "supplier": "Jamakhandi APMC Farmers Direct",
+      "supplierContact": "+91 94812 00192",
+      "outlet": "Jamakhandi",
+      "status": "low",
+      "lastRestocked": "2026-10-02"
+    }
+  ],
+  "customers": [
+    {
+      "id": "cst-01",
+      "name": "Priya Sharma",
+      "phone": "+91 98200 44123",
+      "email": "priya.sharma@gmail.com",
+      "city": "Bangalore",
+      "tier": "VIP Patron",
+      "loyaltyCoins": 850,
+      "totalVisits": 28,
+      "totalSpent": 12450,
+      "favoriteDish": "Ghee Pudi Masala Dosa",
+      "lastVisit": "Today",
+      "tags": [
+        "Regular",
+        "High Spender",
+        "Pure Veg Advocate"
+      ]
+    },
+    {
+      "id": "cst-02",
+      "name": "Anil Kulkarni",
+      "phone": "+91 94481 23450",
+      "email": "anil.kulkarni@bsnl.in",
+      "city": "Jamakhandi",
+      "tier": "Gold Member",
+      "loyaltyCoins": 420,
+      "totalVisits": 19,
+      "totalSpent": 6840,
+      "favoriteDish": "Butter Thatte Idli with Gunpowder",
+      "lastVisit": "Today",
+      "tags": [
+        "Morning Walker",
+        "Filter Coffee Fanatic"
+      ]
+    },
+    {
+      "id": "cst-03",
+      "name": "Dr. Vikram Desai",
+      "phone": "+91 98450 11920",
+      "email": "vikram.desai@gmail.com",
+      "city": "Rabakavi",
+      "tier": "Platinum",
+      "loyaltyCoins": 1250,
+      "totalVisits": 44,
+      "totalSpent": 24800,
+      "favoriteDish": "Artisanal Papdi Chaat",
+      "lastVisit": "Yesterday",
+      "tags": [
+        "Family Dinners",
+        "Corporate Catering Client"
+      ]
+    },
+    {
+      "id": "cst-04",
+      "name": "Rahul Verma",
+      "phone": "+91 98801 44556",
+      "email": "rahul.v@techcorp.in",
+      "city": "Mumbai",
+      "tier": "Silver Member",
+      "loyaltyCoins": 180,
+      "totalVisits": 6,
+      "totalSpent": 3100,
+      "favoriteDish": "Button Ghee Podi Idlis (14 Pcs)",
+      "lastVisit": "2 days ago",
+      "tags": [
+        "Tech Traveler",
+        "Weekend Foodie"
+      ]
+    },
+    {
+      "id": "cst-05",
+      "name": "Sneha Patel",
+      "phone": "+91 96112 55901",
+      "email": "sneha.p@designtales.com",
+      "city": "Jamakhandi",
+      "tier": "Gold Member",
+      "loyaltyCoins": 560,
+      "totalVisits": 15,
+      "totalSpent": 7200,
+      "favoriteDish": "Royal Pani Puri Tasting Flight",
+      "lastVisit": "Today",
+      "tags": [
+        "Instagram Foodie",
+        "Chaat Lover"
+      ]
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TXN-7011",
+      "orderId": "ORD-9401",
+      "outlet": "Jamakhandi",
+      "customer": "Anil Kulkarni",
+      "amount": 451.5,
+      "mode": "UPI (PhonePe)",
+      "gatewayRef": "UPI/261002/984112",
+      "status": "Successful",
+      "timestamp": "10:42 AM, Today"
+    },
+    {
+      "id": "TXN-7012",
+      "orderId": "ORD-9405",
+      "outlet": "Jamakhandi",
+      "customer": "Mahesh Joshi",
+      "amount": 580,
+      "mode": "UPI (GPay)",
+      "gatewayRef": "GPay/261002/110943",
+      "status": "Successful",
+      "timestamp": "11:15 AM, Today"
+    },
+    {
+      "id": "TXN-7013",
+      "orderId": "ORD-9406",
+      "outlet": "Jamakhandi",
+      "customer": "Ramesh Naidu",
+      "amount": 535.5,
+      "mode": "HDFC POS Terminal",
+      "gatewayRef": "HDFC/CARD/88120",
+      "status": "Successful",
+      "timestamp": "11:34 AM, Today"
+    },
+    {
+      "id": "TXN-7014",
+      "orderId": "ORD-9415",
+      "outlet": "Rabakavi",
+      "customer": "Sneha Patil",
+      "amount": 556.5,
+      "mode": "UPI (Paytm)",
+      "gatewayRef": "PTM/261002/77192",
+      "status": "Successful",
+      "timestamp": "11:46 AM, Today"
+    },
+    {
+      "id": "TXN-7015",
+      "orderId": "ORD-9416",
+      "outlet": "Rabakavi",
+      "customer": "Gururaj Inamdar",
+      "amount": 902.5,
+      "mode": "UPI (PhonePe)",
+      "gatewayRef": "UPI/261002/44589",
+      "status": "Successful",
+      "timestamp": "12:02 PM, Today"
+    },
+    {
+      "id": "TXN-7016",
+      "orderId": "ORD-9419",
+      "outlet": "Rabakavi",
+      "customer": "Vijay Badiger",
+      "amount": 225.75,
+      "mode": "Cash Register #1",
+      "gatewayRef": "CASH/REC/094",
+      "status": "Successful",
+      "timestamp": "12:18 PM, Today"
+    },
+    {
+      "id": "TXN-7017",
+      "orderId": "ORD-9390",
+      "outlet": "Jamakhandi",
+      "customer": "Kiran R",
+      "amount": 180,
+      "mode": "Razorpay Gateway",
+      "gatewayRef": "pay_Op91Qk28dLa",
+      "status": "Refunded",
+      "timestamp": "Yesterday, 09:20 PM",
+      "refundReason": "Customer accidentally double paid via QR code"
+    }
+  ],
+  "offers": [
+    {
+      "id": "ofr-01",
+      "code": "CHAAT20",
+      "title": "Chaat Craze 20% Off",
+      "description": "Get 20% off on all street chaats and starters above ₹299 order value.",
+      "discountType": "percentage",
+      "value": 20,
+      "minOrder": 299,
+      "maxDiscount": 100,
+      "usageCount": 418,
+      "validUntil": "2026-10-31",
+      "isActive": true,
+      "outlet": "ALL"
+    },
+    {
+      "id": "ofr-02",
+      "code": "FILTERCHAI50",
+      "title": "Liquid Gold Flat ₹50 Off",
+      "description": "Flat ₹50 discount on orders containing at least 2 filter coffees or chais.",
+      "discountType": "flat",
+      "value": 50,
+      "minOrder": 200,
+      "maxDiscount": 50,
+      "usageCount": 680,
+      "validUntil": "2026-11-15",
+      "isActive": true,
+      "outlet": "ALL"
+    },
+    {
+      "id": "ofr-03",
+      "code": "WEEKENDGHEE",
+      "title": "Pure Ghee Festival 15% Off",
+      "description": "Weekend special savings on all Ghee roast dosas and button idlis.",
+      "discountType": "percentage",
+      "value": 15,
+      "minOrder": 350,
+      "maxDiscount": 120,
+      "usageCount": 294,
+      "validUntil": "2026-10-25",
+      "isActive": true,
+      "outlet": "ALL"
+    },
+    {
+      "id": "ofr-04",
+      "code": "JAMAKHANDI100",
+      "title": "Flagship Welcome ₹100 Off",
+      "description": "Special celebratory voucher for diners visiting Jamakhandi outlet.",
+      "discountType": "flat",
+      "value": 100,
+      "minOrder": 500,
+      "maxDiscount": 100,
+      "usageCount": 182,
+      "validUntil": "2026-12-31",
+      "isActive": true,
+      "outlet": "Jamakhandi"
+    }
+  ],
+  "staff": [
+    {
+      "id": "stf-01",
+      "name": "Mohan",
+      "role": "CEO & Culinary Director",
+      "outlet": "ALL",
+      "phone": "+91 98800 11001",
+      "shift": "Full Time / Executive",
+      "status": "On Duty",
+      "salary": "₹1,80,000 / mo",
+      "joinDate": "Jan 2021",
+      "performance": 5,
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "stf-02",
+      "name": "Pooja Hegde",
+      "role": "Branch General Manager",
+      "outlet": "Jamakhandi",
+      "phone": "+91 8353 220199",
+      "shift": "Morning (07:00 AM – 03:30 PM)",
+      "status": "On Duty",
+      "salary": "₹48,000 / mo",
+      "joinDate": "Mar 2023",
+      "performance": 4.9,
+      "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "stf-03",
+      "name": "Chef Someshwar Shastri",
+      "role": "Head Chef & Tawa Master",
+      "outlet": "Rabakavi",
+      "phone": "+91 8351 230789",
+      "shift": "Morning (06:00 AM – 02:30 PM)",
+      "status": "On Duty",
+      "salary": "₹42,000 / mo",
+      "joinDate": "Nov 2022",
+      "performance": 4.8,
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "stf-04",
+      "name": "Arun Patil",
+      "role": "Chief Cashier & POS Lead",
+      "outlet": "Jamakhandi",
+      "phone": "+91 8353 220344",
+      "shift": "Evening (02:30 PM – 11:00 PM)",
+      "status": "On Duty",
+      "salary": "₹26,000 / mo",
+      "joinDate": "Feb 2024",
+      "performance": 4.7,
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "stf-05",
+      "name": "Basavaraj Biradar",
+      "role": "Master Barista & Chai Maker",
+      "outlet": "Jamakhandi",
+      "phone": "+91 94490 88123",
+      "shift": "Morning (06:00 AM – 02:30 PM)",
+      "status": "On Break",
+      "salary": "₹24,000 / mo",
+      "joinDate": "Aug 2023",
+      "performance": 4.9,
+      "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80"
+    },
+    {
+      "id": "stf-06",
+      "name": "Gauri Mankani",
+      "role": "Guest Concierge & Hostess",
+      "outlet": "Rabakavi",
+      "phone": "+91 8351 230990",
+      "shift": "Evening (03:00 PM – 11:00 PM)",
+      "status": "Off Duty",
+      "salary": "₹22,000 / mo",
+      "joinDate": "Jun 2024",
+      "performance": 4.6,
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev-01",
+      "customer": "Priya Sharma",
+      "outlet": "Jamakhandi",
+      "rating": 5,
+      "source": "In-Store QR",
+      "date": "Today, 11:20 AM",
+      "title": "A religious culinary experience!",
+      "comment": "The Ghee Pudi Masala Dosa is crisp perfection. Unbelievable aroma of Nandini ghee, and the degree filter coffee in brass dabara took me straight to heaven.",
+      "featured": true,
+      "status": "Published",
+      "reply": "Thank you Priya! Our café is our temple and serving you is our divine joy. Can't wait to see you again soon!"
+    },
+    {
+      "id": "rev-02",
+      "customer": "Vikram Desai",
+      "outlet": "Rabakavi",
+      "rating": 5,
+      "source": "Google Reviews",
+      "date": "Yesterday",
+      "title": "Best South Indian breakfast in North Karnataka",
+      "comment": "Softest thatte idlis I have ever had. The standing adda format is so lively and energetic. Staff served us within 4 minutes flat!",
+      "featured": true,
+      "status": "Published",
+      "reply": "Heartfelt gratitude Vikram Sir! Lightning speed and pure cow ghee are our promises."
+    },
+    {
+      "id": "rev-03",
+      "customer": "Rahul Verma",
+      "outlet": "Jamakhandi",
+      "rating": 4,
+      "source": "Zomato",
+      "date": "2 days ago",
+      "title": "Superb food, bit crowded at 8 PM peak",
+      "comment": "Pani puri tasting flight was super creative with 4 distinct waters. Waiting line was 15 mins during peak dinner rush, but totally worth it.",
+      "featured": false,
+      "status": "Published",
+      "reply": "Thank you Rahul! We are expanding our garden patio seating at Jamakhandi next month to reduce wait times during peak hours."
+    },
+    {
+      "id": "rev-04",
+      "customer": "Kiran R",
+      "outlet": "Jamakhandi",
+      "rating": 3,
+      "source": "Website Feedback",
+      "date": "3 days ago",
+      "title": "Chai was slightly sweet for my taste",
+      "comment": "Ordered masala chai, wanted it without sugar but got regular. The papdi chaat made up for it though!",
+      "featured": false,
+      "status": "Published",
+      "reply": "Our apologies Kiran. We have briefed our barista counter to strictly follow custom sweetness tags on KOT tickets. Your next coffee is on us!"
+    }
+  ],
+  "cmsContent": {
+    "announcementBar": {
+      "enabled": true,
+      "text": "✨ Festival Season Special: Traditional Mysore Pak & Kashmiri Kesari Bath available daily across Jamakhandi & Rabakavi outlets!",
+      "link": "/menu",
+      "highlight": "Order Online"
+    },
+    "heroBanner": {
+      "badge": "100% PURE NANDINI COW GHEE • ZERO REFRIGERATION",
+      "headline": "Tradition on a Plate, Joy in Every Bite.",
+      "subheadline": "Sip. Snack. Smile. Where street food heritage meets luxury café soul."
+    },
+    "operationalNotice": {
+      "status": "Normal Operations",
+      "message": "Both outlets open from 10:00 AM to 11:00 PM today. Live tawa counters in full swing."
+    },
+    "featuredSpecials": [
+      "item-101",
+      "item-102",
+      "item-116",
+      "item-001"
+    ]
+  },
+  "notifications": [
+    {
+      "id": "notif-1791121843359",
+      "type": "order",
+      "priority": "urgent",
+      "title": "⚡ New Order: ORD-9660",
+      "message": "Dr. Sanjeev Rao placed an order for ₹194.25.",
+      "time": "Just now",
+      "read": false
+    },
+    {
+      "id": "notif-1791121799124",
+      "type": "order",
+      "priority": "urgent",
+      "title": "⚡ New Order: ORD-9639",
+      "message": "Walk-in Guest placed an order for ₹624.75.",
+      "time": "Just now",
+      "read": false
+    },
+    {
+      "id": "notif-01",
+      "type": "order",
+      "priority": "urgent",
+      "title": "New Table Order Placed",
+      "message": "Table T-01 placed an order (ORD-9401) for ₹451.50.",
+      "time": "2 mins ago",
+      "read": false
+    },
+    {
+      "id": "notif-02",
+      "type": "inventory",
+      "priority": "urgent",
+      "title": "Low Stock Alert: KMF Nandini Ghee",
+      "message": "Current stock at Jamakhandi is 18.5L (Threshold: 15L). Place reorder with KMF Hub.",
+      "time": "25 mins ago",
+      "read": false
+    },
+    {
+      "id": "notif-03",
+      "type": "reservation",
+      "priority": "info",
+      "title": "VIP Reservation Confirmed",
+      "message": "Dr. Vikram Desai booked Table T-04 for 6 guests at 7:30 PM today.",
+      "time": "1 hour ago",
+      "read": false
+    },
+    {
+      "id": "notif-04",
+      "type": "payment",
+      "priority": "success",
+      "title": "Payment Received via UPI",
+      "message": "₹902.50 credited from Gururaj Inamdar for Table R-03.",
+      "time": "2 hours ago",
+      "read": true
+    }
+  ]
+}
