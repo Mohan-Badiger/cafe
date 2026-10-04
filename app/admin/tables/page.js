@@ -87,7 +87,7 @@ export default function AdminTablesPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-[#FAF5EF]">
+          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-cream">
             Main Tables Management
           </h1>
           <p className="text-xs sm:text-sm text-[#8E867B] mt-0.5">
@@ -141,7 +141,7 @@ export default function AdminTablesPage() {
             </AdminBadge>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <p suppressHydrationWarning className="text-3xl font-google-sans font-bold text-[#FAF5EF]">
+            <p suppressHydrationWarning className="text-3xl font-google-sans font-bold text-cream">
               {availableCount}
             </p>
             <span className="text-xs text-[#8E867B]">/ 12 Total</span>
@@ -170,7 +170,7 @@ export default function AdminTablesPage() {
             </AdminBadge>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <p suppressHydrationWarning className="text-3xl font-google-sans font-bold text-[#FAF5EF]">
+            <p suppressHydrationWarning className="text-3xl font-google-sans font-bold text-cream">
               {diningCount}
             </p>
             <span suppressHydrationWarning className="text-xs text-[#8E867B]">
@@ -201,7 +201,7 @@ export default function AdminTablesPage() {
             </AdminBadge>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <p suppressHydrationWarning className="text-3xl font-google-sans font-bold text-[#FAF5EF]">
+            <p suppressHydrationWarning className="text-3xl font-google-sans font-bold text-cream">
               {reservedCount}
             </p>
             <span className="text-xs text-[#8E867B]">/ 12 Total</span>
@@ -221,8 +221,8 @@ export default function AdminTablesPage() {
             onClick={() => setStatusFilter("all")}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
               statusFilter === "all"
-                ? "bg-[#25201B] border border-[#3E342B] text-[#FAF5EF]"
-                : "text-[#8E867B] hover:text-[#FAF5EF] hover:bg-white/5"
+                ? "bg-[#25201B] border border-[#3E342B] text-cream"
+                : "text-[#8E867B] hover:text-cream hover:bg-white/5"
             }`}
           >
             All 12 Tables
@@ -233,8 +233,8 @@ export default function AdminTablesPage() {
             onClick={() => setStatusFilter("available")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
               statusFilter === "available"
-                ? "bg-[#25201B] border border-[#3E342B] text-[#FAF5EF]"
-                : "text-[#8E867B] hover:text-[#FAF5EF] hover:bg-white/5"
+                ? "bg-[#25201B] border border-[#3E342B] text-cream"
+                : "text-[#8E867B] hover:text-cream hover:bg-white/5"
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
@@ -246,8 +246,8 @@ export default function AdminTablesPage() {
             onClick={() => setStatusFilter("dining")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
               statusFilter === "dining"
-                ? "bg-[#25201B] border border-[#3E342B] text-[#FAF5EF]"
-                : "text-[#8E867B] hover:text-[#FAF5EF] hover:bg-white/5"
+                ? "bg-[#25201B] border border-[#3E342B] text-cream"
+                : "text-[#8E867B] hover:text-cream hover:bg-white/5"
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[#E6BC65]" />
@@ -259,8 +259,8 @@ export default function AdminTablesPage() {
             onClick={() => setStatusFilter("reserved")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
               statusFilter === "reserved"
-                ? "bg-[#25201B] border border-[#3E342B] text-[#FAF5EF]"
-                : "text-[#8E867B] hover:text-[#FAF5EF] hover:bg-white/5"
+                ? "bg-[#25201B] border border-[#3E342B] text-cream"
+                : "text-[#8E867B] hover:text-cream hover:bg-white/5"
             }`}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
@@ -276,7 +276,7 @@ export default function AdminTablesPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search Table #, order..."
-            className="w-full bg-[#1A1714] border border-[#2E2721] rounded-xl pl-9 pr-3 py-1.5 text-xs text-[#FAF5EF] placeholder-[#7E7568] focus:outline-none focus:border-gold/40"
+            className="w-full bg-espresso border border-[#2E2721] rounded-xl pl-9 pr-3 py-1.5 text-xs text-cream placeholder:text-[#7E7568] focus:border-gold focus:outline-hidden"
           />
         </div>
       </div>
@@ -292,13 +292,13 @@ export default function AdminTablesPage() {
             <div
               key={tbl.id}
               onClick={() => handleOpenDrawer(tbl)}
-              className="p-5 rounded-2xl bg-[#161412] border border-[#2A241F] hover:border-[#3E342B] transition-all cursor-pointer select-none flex flex-col justify-between min-h-[220px] shadow-lg group relative"
+              className="p-5 rounded-2xl bg-[#161412] border border-[#2A241F] hover:border-[#3E342B] transition-all cursor-pointer select-none flex flex-col justify-between min-h-55 shadow-lg group relative"
             >
               {/* Card Top: Code & Tag */}
               <div>
                 <div className="flex items-start justify-between">
                   <div>
-                    <h3 className="font-mono text-2xl font-bold text-[#FAF5EF] group-hover:text-gold transition-colors">
+                    <h3 className="font-mono text-2xl font-bold text-cream group-hover:text-gold transition-colors">
                       {tbl.code}
                     </h3>
                     <p className="text-xs text-[#8E867B] font-medium mt-0.5">
@@ -335,7 +335,7 @@ export default function AdminTablesPage() {
                     <div className="space-y-1 pt-1.5 border-t border-[#25201B]">
                       <div className="flex items-center justify-between text-xs">
                         <span className="text-[#8E867B]">Seated:</span>
-                        <span className="font-medium text-[#FAF5EF]">
+                        <span className="font-medium text-cream">
                           {tbl.guests || 2} Guests
                         </span>
                       </div>
@@ -351,7 +351,7 @@ export default function AdminTablesPage() {
                       {tbl.currentOrder && (
                         <div className="flex items-center justify-between text-xs">
                           <span className="text-[#8E867B]">Order:</span>
-                          <span className="font-mono text-[#FAF5EF] font-semibold">
+                          <span className="font-mono text-cream font-semibold">
                             {tbl.currentOrder}
                           </span>
                         </div>
@@ -364,7 +364,7 @@ export default function AdminTablesPage() {
                       <span className="text-[10px] text-[#8E867B] uppercase font-bold tracking-wider">
                         Reserved For:
                       </span>
-                      <p className="text-xs text-[#FAF5EF] font-medium truncate">
+                      <p className="text-xs text-cream font-medium truncate">
                         {tbl.reservedFor || "Confirmed Guest"}
                       </p>
                     </div>
@@ -395,7 +395,7 @@ export default function AdminTablesPage() {
                           guests: tbl.capacity > 2 ? 4 : 2,
                         })
                       }
-                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-[#FAF5EF] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-cream transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <UtensilsCrossed className="w-3 h-3 text-[#A89F91]" />
                       <span>Seat</span>
@@ -403,7 +403,7 @@ export default function AdminTablesPage() {
                     <button
                       type="button"
                       onClick={() => handleOpenDrawer(tbl)}
-                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-[#FAF5EF] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-cream transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <CalendarCheck className="w-3 h-3 text-[#A89F91]" />
                       <span>Reserve</span>
@@ -416,7 +416,7 @@ export default function AdminTablesPage() {
                     <button
                       type="button"
                       onClick={(e) => handleQuickStatusChange(e, tbl.id, "available")}
-                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-[#FAF5EF] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-cream transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <CheckCircle2 className="w-3 h-3 text-[#A89F91]" />
                       <span>Vacate</span>
@@ -438,7 +438,7 @@ export default function AdminTablesPage() {
                       onClick={(e) =>
                         handleQuickStatusChange(e, tbl.id, "dining", { guests: 2 })
                       }
-                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-[#FAF5EF] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-cream transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <UserCheck className="w-3 h-3 text-[#A89F91]" />
                       <span>Seat</span>
@@ -446,7 +446,7 @@ export default function AdminTablesPage() {
                     <button
                       type="button"
                       onClick={(e) => handleQuickStatusChange(e, tbl.id, "available")}
-                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-[#FAF5EF] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="py-1.5 px-2.5 rounded-xl bg-[#1C1814] hover:bg-[#25201B] border border-[#2A241F] hover:border-[#3E342B] text-xs font-medium text-[#D8CEBF] hover:text-cream transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <XCircle className="w-3 h-3 text-[#A89F91]" />
                       <span>Release</span>
@@ -470,7 +470,7 @@ export default function AdminTablesPage() {
           <div className="space-y-6">
             {/* Status Switcher (Sleek dark buttons with colorful indicator dots) */}
             <div className="space-y-2">
-              <label className="text-xs font-semibold text-[#FAF5EF] block">
+              <label className="text-xs font-semibold text-cream block">
                 Update Status (1-Click)
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -482,8 +482,8 @@ export default function AdminTablesPage() {
                   }}
                   className={`p-3 rounded-xl border text-center transition-all cursor-pointer ${
                     selectedTable.status === "available"
-                      ? "bg-[#25201B] border-gold/50 text-[#FAF5EF] font-bold shadow-md"
-                      : "bg-[#181512] border-[#2A241F] text-[#8E867B] hover:text-[#FAF5EF] hover:border-[#3E342B]"
+                      ? "bg-[#25201B] border-gold/50 text-cream font-bold shadow-md"
+                      : "bg-[#181512] border-[#2A241F] text-[#8E867B] hover:text-cream hover:border-[#3E342B]"
                   }`}
                 >
                   <div className="w-2 h-2 rounded-full bg-emerald-400 mx-auto mb-1.5" />
@@ -498,8 +498,8 @@ export default function AdminTablesPage() {
                   }}
                   className={`p-3 rounded-xl border text-center transition-all cursor-pointer ${
                     selectedTable.status === "dining"
-                      ? "bg-[#25201B] border-gold/50 text-[#FAF5EF] font-bold shadow-md"
-                      : "bg-[#181512] border-[#2A241F] text-[#8E867B] hover:text-[#FAF5EF] hover:border-[#3E342B]"
+                      ? "bg-[#25201B] border-gold/50 text-cream font-bold shadow-md"
+                      : "bg-[#181512] border-[#2A241F] text-[#8E867B] hover:text-cream hover:border-[#3E342B]"
                   }`}
                 >
                   <div className="w-2 h-2 rounded-full bg-[#E6BC65] mx-auto mb-1.5" />
@@ -515,8 +515,8 @@ export default function AdminTablesPage() {
                   }}
                   className={`p-3 rounded-xl border text-center transition-all cursor-pointer ${
                     selectedTable.status === "reserved"
-                      ? "bg-[#25201B] border-gold/50 text-[#FAF5EF] font-bold shadow-md"
-                      : "bg-[#181512] border-[#2A241F] text-[#8E867B] hover:text-[#FAF5EF] hover:border-[#3E342B]"
+                      ? "bg-[#25201B] border-gold/50 text-cream font-bold shadow-md"
+                      : "bg-[#181512] border-[#2A241F] text-[#8E867B] hover:text-cream hover:border-[#3E342B]"
                   }`}
                 >
                   <div className="w-2 h-2 rounded-full bg-sky-400 mx-auto mb-1.5" />
@@ -529,7 +529,7 @@ export default function AdminTablesPage() {
             {selectedTable.status === "dining" && (
               <div className="p-4 rounded-2xl bg-[#181512] border border-[#2A241F] space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-[#FAF5EF]">
+                  <span className="text-xs font-semibold text-cream">
                     Seated Guests Count
                   </span>
                   <div className="flex items-center gap-2">
@@ -566,7 +566,7 @@ export default function AdminTablesPage() {
                 {linkedOrder ? (
                   <div className="space-y-3 pt-3 border-t border-[#25201B]">
                     <div className="flex items-center justify-between">
-                      <h4 className="font-semibold text-xs text-[#FAF5EF]">
+                      <h4 className="font-semibold text-xs text-cream">
                         Active Bill: {linkedOrder.id}
                       </h4>
                       <AdminBadge variant="amber" size="sm">
@@ -582,9 +582,9 @@ export default function AdminTablesPage() {
 
                       <div className="divide-y divide-[#231E19] py-1">
                         {linkedOrder.items.map((line, idx) => (
-                          <div key={idx} className="flex justify-between py-1 text-[#FAF5EF]">
+                          <div key={idx} className="flex justify-between py-1 text-cream">
                             <span>{line.quantity}× {line.title}</span>
-                            <span className="font-mono text-[#D4A853]">₹{line.price * line.quantity}</span>
+                            <span className="font-mono text-gold">₹{line.price * line.quantity}</span>
                           </div>
                         ))}
                       </div>
@@ -617,7 +617,7 @@ export default function AdminTablesPage() {
                     releaseTable(selectedTable.id);
                     setSelectedTable(null);
                   }}
-                  className="w-full py-2.5 px-4 rounded-xl bg-[#221C16] hover:bg-[#2A231C] border border-[#2E2721] text-[#FAF5EF] font-semibold text-xs cursor-pointer transition-colors"
+                  className="w-full py-2.5 px-4 rounded-xl bg-[#221C16] hover:bg-[#2A231C] border border-[#2E2721] text-cream font-semibold text-xs cursor-pointer transition-colors"
                 >
                   Vacate Table & Mark Available
                 </button>
@@ -626,7 +626,7 @@ export default function AdminTablesPage() {
 
             {selectedTable.status === "reserved" && (
               <div className="p-4 rounded-2xl bg-[#181512] border border-[#2A241F] space-y-3">
-                <label className="text-xs font-semibold text-[#FAF5EF] block">
+                <label className="text-xs font-semibold text-cream block">
                   Reservation Notes & Guest Details
                 </label>
                 <input
@@ -634,7 +634,7 @@ export default function AdminTablesPage() {
                   value={editReservedFor}
                   onChange={(e) => setEditReservedFor(e.target.value)}
                   placeholder="e.g. Ramesh Kulkarni (08:30 PM)"
-                  className="w-full bg-[#141210] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:outline-none focus:border-gold/40"
+                  className="w-full bg-[#141210] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:border-gold focus:outline-hidden"
                 />
                 <button
                   type="button"
@@ -643,7 +643,7 @@ export default function AdminTablesPage() {
                     setSelectedTable((prev) => ({ ...prev, reservedFor: editReservedFor }));
                     addToast("Reservation guest details updated", "success");
                   }}
-                  className="w-full py-2 px-3 rounded-xl bg-[#25201B] hover:bg-[#2E2721] border border-[#3E342B] text-[#FAF5EF] text-xs font-semibold cursor-pointer transition-colors"
+                  className="w-full py-2 px-3 rounded-xl bg-[#25201B] hover:bg-[#2E2721] border border-[#3E342B] text-cream text-xs font-semibold cursor-pointer transition-colors"
                 >
                   Save Guest Details
                 </button>
@@ -666,7 +666,7 @@ export default function AdminTablesPage() {
 
             {selectedTable.status === "available" && (
               <div className="p-4 rounded-2xl bg-[#181512] border border-[#2A241F] space-y-3">
-                <div className="flex items-center gap-2 text-[#FAF5EF] text-xs font-semibold">
+                <div className="flex items-center gap-2 text-cream text-xs font-semibold">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   <span>Table is sanitized and vacant</span>
                 </div>
