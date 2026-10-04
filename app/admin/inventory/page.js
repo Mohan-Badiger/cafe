@@ -67,7 +67,7 @@ export default function AdminInventoryPage() {
       {/* Title & Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-[#FAF5EF]">
+          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-cream">
             Raw Inventory & Zero-Chiller Freshness
           </h1>
           <p className="text-xs sm:text-sm text-[#A89F91] mt-0.5">
@@ -92,7 +92,7 @@ export default function AdminInventoryPage() {
             <p className="text-[10px] text-rose-400 uppercase font-bold tracking-wider">
               Critical Shortages
             </p>
-            <p className="text-2xl font-bold font-mono text-[#FAF5EF] mt-0.5">
+            <p className="text-2xl font-bold font-mono text-cream mt-0.5">
               {criticalCount} Items
             </p>
           </div>
@@ -104,7 +104,7 @@ export default function AdminInventoryPage() {
             <p className="text-[10px] text-amber-400 uppercase font-bold tracking-wider">
               Below Safe Threshold
             </p>
-            <p className="text-2xl font-bold font-mono text-[#FAF5EF] mt-0.5">
+            <p className="text-2xl font-bold font-mono text-cream mt-0.5">
               {lowCount} Items
             </p>
           </div>
@@ -116,7 +116,7 @@ export default function AdminInventoryPage() {
             <p className="text-[10px] text-emerald-400 uppercase font-bold tracking-wider">
               Adequate & Healthy
             </p>
-            <p className="text-2xl font-bold font-mono text-[#FAF5EF] mt-0.5">
+            <p className="text-2xl font-bold font-mono text-cream mt-0.5">
               {goodCount} Items
             </p>
           </div>
@@ -134,14 +134,14 @@ export default function AdminInventoryPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search ingredient, supplier, or category..."
-              className="w-full bg-[#1A1714] border border-[#2E2721] rounded-xl pl-9 pr-3 py-2 text-xs text-[#FAF5EF] placeholder-[#7E7568] focus:border-[#D4A853] focus:outline-hidden"
+              className="w-full bg-espresso border border-[#2E2721] rounded-xl pl-9 pr-3 py-2 text-xs text-cream placeholder:text-[#7E7568] focus:border-gold focus:outline-hidden"
             />
           </div>
 
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-[#1A1714] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:outline-hidden"
+            className="bg-espresso border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:outline-hidden"
           >
             <option value="all">All Inventory Statuses</option>
             <option value="critical">Critical Shortages Only</option>
@@ -169,7 +169,7 @@ export default function AdminInventoryPage() {
               <div className="space-y-3">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <h3 className="font-semibold text-sm text-[#FAF5EF]">
+                    <h3 className="font-semibold text-sm text-cream">
                       {item.name}
                     </h3>
                     <p className="text-[11px] text-[#8E867B]">
@@ -194,7 +194,7 @@ export default function AdminInventoryPage() {
                 {/* Stock Level Bar */}
                 <div className="space-y-1.5 pt-1">
                   <div className="flex justify-between items-baseline text-xs">
-                    <span className="font-mono text-xl font-bold text-[#FAF5EF]">
+                    <span className="font-mono text-xl font-bold text-cream">
                       {item.currentStock} {item.unit}
                     </span>
                     <span className="text-[11px] text-[#8E867B]">
@@ -218,9 +218,9 @@ export default function AdminInventoryPage() {
 
                 {/* Supplier info */}
                 <div className="p-2.5 rounded-xl bg-[#141210] border border-[#25201B] text-[11px] space-y-1">
-                  <div className="flex justify-between text-[#FAF5EF]">
+                  <div className="flex justify-between text-cream">
                     <span className="truncate">{item.supplier}</span>
-                    <span className="font-mono text-[#D4A853]">₹{item.costPerUnit}/{item.unit}</span>
+                    <span className="font-mono text-gold">₹{item.costPerUnit}/{item.unit}</span>
                   </div>
                   <div className="flex items-center justify-between text-[#8E867B]">
                     <span>Last: {item.lastRestocked}</span>
@@ -297,8 +297,8 @@ export default function AdminInventoryPage() {
       >
         {selectedItemForRestock && (
           <form onSubmit={handleConfirmRestock} className="space-y-4">
-            <div className="p-3 rounded-xl bg-[#1A1714] border border-[#2A241F] text-xs space-y-1">
-              <p className="font-semibold text-[#FAF5EF]">
+            <div className="p-3 rounded-xl bg-espresso border border-[#2A241F] text-xs space-y-1">
+              <p className="font-semibold text-cream">
                 {selectedItemForRestock.name}
               </p>
               <p className="text-[#8E867B]">
@@ -307,7 +307,7 @@ export default function AdminInventoryPage() {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Delivered Quantity ({selectedItemForRestock.unit}) *
               </label>
               <input
@@ -317,7 +317,7 @@ export default function AdminInventoryPage() {
                 value={restockQty}
                 onChange={(e) => setRestockQty(Number(e.target.value))}
                 required
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] font-mono focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream font-mono focus:border-gold focus:outline-hidden"
               />
             </div>
           </form>

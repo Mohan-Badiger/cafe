@@ -32,7 +32,7 @@ export default function AdminContentPage() {
       {/* Title & Save */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-[#FAF5EF]">
+          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-cream">
             Website Content & Headless CMS
           </h1>
           <p className="text-xs sm:text-sm text-[#A89F91] mt-0.5">
@@ -44,9 +44,9 @@ export default function AdminContentPage() {
           <Link
             href="/"
             target="_blank"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#25201B] hover:bg-[#322A23] text-xs font-medium text-[#FAF5EF] transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#25201B] hover:bg-[#322A23] text-xs font-medium text-cream transition-colors"
           >
-            <Eye className="w-3.5 h-3.5 text-[#D4A853]" />
+            <Eye className="w-3.5 h-3.5 text-gold" />
             <span>Preview Website</span>
           </Link>
 
@@ -73,7 +73,7 @@ export default function AdminContentPage() {
           }
         >
           <div className="space-y-4">
-            <label className="flex items-center gap-2 cursor-pointer text-xs text-[#FAF5EF]">
+            <label className="flex items-center gap-2 cursor-pointer text-xs text-cream">
               <input
                 type="checkbox"
                 checked={formData.announcementBar?.enabled}
@@ -86,13 +86,13 @@ export default function AdminContentPage() {
                     },
                   })
                 }
-                className="rounded accent-[#D4A853]"
+                className="rounded accent-gold"
               />
               <span className="font-semibold">Enable Announcement Banner on Website</span>
             </label>
 
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Announcement Copy
               </label>
               <input
@@ -107,13 +107,13 @@ export default function AdminContentPage() {
                     },
                   })
                 }
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] placeholder-[#7E7568] focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:outline-hidden"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#FAF5EF]">
+                <label className="text-xs font-semibold text-cream">
                   CTA Button Label
                 </label>
                 <input
@@ -128,12 +128,12 @@ export default function AdminContentPage() {
                       },
                     })
                   }
-                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#FAF5EF]">
+                <label className="text-xs font-semibold text-cream">
                   Target Link Destination
                 </label>
                 <input
@@ -148,7 +148,7 @@ export default function AdminContentPage() {
                       },
                     })
                   }
-                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:border-gold focus:outline-hidden"
                 />
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function AdminContentPage() {
         >
           <div className="space-y-4">
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Brand Eyebrow Badge
               </label>
               <input
@@ -177,12 +177,12 @@ export default function AdminContentPage() {
                     },
                   })
                 }
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:border-gold focus:outline-hidden"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Main Headline
               </label>
               <input
@@ -197,12 +197,12 @@ export default function AdminContentPage() {
                     },
                   })
                 }
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:border-gold focus:outline-hidden"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Subheadline & Tagline
               </label>
               <textarea
@@ -217,7 +217,7 @@ export default function AdminContentPage() {
                     },
                   })
                 }
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl p-3 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl p-3 text-xs text-cream focus:border-gold focus:outline-hidden"
               />
             </div>
           </div>
@@ -231,7 +231,7 @@ export default function AdminContentPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-semibold text-[#FAF5EF]">
+                <label className="text-xs font-semibold text-cream">
                   Operational State
                 </label>
                 <select
@@ -245,7 +245,7 @@ export default function AdminContentPage() {
                       },
                     })
                   }
-                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:outline-hidden"
+                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:outline-hidden"
                 >
                   <option value="Normal Operations">Normal Operations</option>
                   <option value="Extended Festival Hours">Extended Festival Hours (Open till 1 AM)</option>
@@ -254,7 +254,7 @@ export default function AdminContentPage() {
               </div>
 
               <div>
-                <label className="text-xs font-semibold text-[#FAF5EF]">
+                <label className="text-xs font-semibold text-cream">
                   Notice Description
                 </label>
                 <input
@@ -269,7 +269,7 @@ export default function AdminContentPage() {
                       },
                     })
                   }
-                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:border-[#D4A853] focus:outline-hidden"
+                  className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:border-gold focus:outline-hidden"
                 />
               </div>
             </div>

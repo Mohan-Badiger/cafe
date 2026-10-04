@@ -80,7 +80,7 @@ export default function AdminOffersPage() {
       {/* Title & Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-[#FAF5EF]">
+          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-cream">
             Offers, Coupons & Loyalty Campaigns
           </h1>
           <p className="text-xs sm:text-sm text-[#A89F91] mt-0.5">
@@ -111,13 +111,13 @@ export default function AdminOffersPage() {
               {/* Header code */}
               <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-base font-bold text-[#FAF5EF] bg-[#1E1914] border border-[#3C3227] px-3 py-1 rounded-xl">
+                  <span className="font-mono text-base font-bold text-cream bg-[#1E1914] border border-[#3C3227] px-3 py-1 rounded-xl">
                     {ofr.code}
                   </span>
                   <button
                     type="button"
                     onClick={() => handleCopyCode(ofr.code)}
-                    className="p-1.5 rounded-lg text-[#8E867B] hover:text-[#FAF5EF] hover:bg-white/5 cursor-pointer"
+                    className="p-1.5 rounded-lg text-[#8E867B] hover:text-cream hover:bg-white/5 cursor-pointer"
                     title="Copy Code"
                   >
                     <Copy className="w-3.5 h-3.5" />
@@ -130,7 +130,7 @@ export default function AdminOffersPage() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-sm text-[#FAF5EF]">
+                <h3 className="font-semibold text-sm text-cream">
                   {ofr.title}
                 </h3>
                 <p className="text-xs text-[#A89F91] mt-1 leading-relaxed">
@@ -152,7 +152,7 @@ export default function AdminOffersPage() {
                   <span className="text-[10px] text-[#7E7568] uppercase font-bold">
                     Min Order
                   </span>
-                  <p className="font-mono text-[#FAF5EF] mt-0.5">
+                  <p className="font-mono text-cream mt-0.5">
                     ₹{ofr.minOrder}
                   </p>
                 </div>
@@ -222,7 +222,7 @@ export default function AdminOffersPage() {
         <form onSubmit={handleCreateOffer} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Coupon Code *
               </label>
               <input
@@ -231,12 +231,12 @@ export default function AdminOffersPage() {
                 onChange={(e) => setFormData({ ...formData, code: e.target.value })}
                 placeholder="e.g. DIWALI50"
                 required
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs font-mono uppercase text-[#FAF5EF] placeholder-[#7E7568] focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs font-mono uppercase text-cream placeholder:text-[#7E7568] focus:border-gold focus:outline-hidden"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Campaign Title *
               </label>
               <input
@@ -245,20 +245,20 @@ export default function AdminOffersPage() {
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 placeholder="e.g. Festival Season Pure Ghee Special"
                 required
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] placeholder-[#7E7568] focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream placeholder:text-[#7E7568] focus:border-gold focus:outline-hidden"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Discount Type
               </label>
               <select
                 value={formData.discountType}
                 onChange={(e) => setFormData({ ...formData, discountType: e.target.value })}
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:outline-hidden"
               >
                 <option value="percentage">Percentage (%) Off</option>
                 <option value="flat">Flat Cash (₹) Off</option>
@@ -266,7 +266,7 @@ export default function AdminOffersPage() {
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Value ({formData.discountType === "percentage" ? "%" : "₹"}) *
               </label>
               <input
@@ -274,25 +274,25 @@ export default function AdminOffersPage() {
                 value={formData.value}
                 onChange={(e) => setFormData({ ...formData, value: Number(e.target.value) })}
                 required
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] font-mono focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream font-mono focus:border-gold focus:outline-hidden"
               />
             </div>
 
             <div>
-              <label className="text-xs font-semibold text-[#FAF5EF]">
+              <label className="text-xs font-semibold text-cream">
                 Min Order (₹)
               </label>
               <input
                 type="number"
                 value={formData.minOrder}
                 onChange={(e) => setFormData({ ...formData, minOrder: Number(e.target.value) })}
-                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] font-mono focus:border-[#D4A853] focus:outline-hidden"
+                className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream font-mono focus:border-gold focus:outline-hidden"
               />
             </div>
           </div>
 
           <div>
-            <label className="text-xs font-semibold text-[#FAF5EF]">
+            <label className="text-xs font-semibold text-cream">
               Short Description / Fine Print
             </label>
             <input
@@ -300,7 +300,7 @@ export default function AdminOffersPage() {
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="e.g. Valid on all dosas and thatte idlis above ₹299 order."
-              className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] placeholder-[#7E7568] focus:border-[#D4A853] focus:outline-hidden"
+              className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream placeholder:text-[#7E7568] focus:border-gold focus:outline-hidden"
             />
           </div>
         </form>
