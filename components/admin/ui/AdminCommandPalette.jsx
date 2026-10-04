@@ -19,7 +19,6 @@ import {
   Settings,
   X,
   PlusCircle,
-  RefreshCw,
   Zap,
 } from "lucide-react";
 
@@ -99,14 +98,14 @@ export default function AdminCommandPalette() {
       {/* Palette Container */}
       <div className="relative w-full max-w-2xl bg-[#161412] border border-[#2E2721] rounded-2xl shadow-2xl z-10 overflow-hidden flex flex-col animate-in zoom-in-95 duration-150">
         {/* Search Bar Input */}
-        <div className="px-5 py-4 border-b border-[#2A241F] flex items-center gap-3 bg-[#1A1714]">
-          <Search className="w-5 h-5 text-[#D4A853]" />
+        <div className="px-5 py-4 border-b border-[#2A241F] flex items-center gap-3 bg-espresso">
+          <Search className="w-5 h-5 text-gold" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search menu items, orders, patrons, or type command..."
-            className="flex-1 bg-transparent text-sm text-[#FAF5EF] placeholder-[#7E7568] focus:outline-hidden"
+            className="flex-1 bg-transparent text-sm text-cream placeholder-[#7E7568] focus:outline-hidden"
             autoFocus
           />
           <div className="flex items-center gap-1.5">
@@ -115,7 +114,7 @@ export default function AdminCommandPalette() {
             </kbd>
             <button
               onClick={() => setIsCommandOpen(false)}
-              className="p-1 rounded-md text-[#A89F91] hover:text-[#FAF5EF] hover:bg-white/5 cursor-pointer"
+              className="p-1 rounded-md text-[#A89F91] hover:text-cream hover:bg-white/5 cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -136,9 +135,9 @@ export default function AdminCommandPalette() {
                   setIsCommandOpen(false);
                   setIsPosOpen(true);
                 }}
-                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-left text-sm text-[#FAF5EF] hover:bg-[#D4A853]/15 hover:text-[#E6BC65] transition-colors cursor-pointer group"
+                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-left text-sm text-cream hover:bg-gold/15 hover:text-[#E6BC65] transition-colors cursor-pointer group"
               >
-                <PlusCircle className="w-4 h-4 text-[#D4A853]" />
+                <PlusCircle className="w-4 h-4 text-gold" />
                 <span className="font-medium">New Quick Order (POS)</span>
               </button>
 
@@ -148,7 +147,7 @@ export default function AdminCommandPalette() {
                   setIsCommandOpen(false);
                   simulateIncomingLiveOrder();
                 }}
-                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-left text-sm text-[#FAF5EF] hover:bg-emerald-500/15 hover:text-emerald-300 transition-colors cursor-pointer group"
+                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-left text-sm text-cream hover:bg-emerald-500/15 hover:text-emerald-300 transition-colors cursor-pointer group"
               >
                 <Zap className="w-4 h-4 text-emerald-400" />
                 <span className="font-medium">Live Order (Incoming Trigger)</span>
@@ -170,13 +169,13 @@ export default function AdminCommandPalette() {
                       key={item.href}
                       type="button"
                       onClick={() => handleNavigate(item.href)}
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-sm text-[#D8CEBF] hover:text-[#FAF5EF] hover:bg-[#25201B] transition-colors cursor-pointer"
+                      className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-sm text-[#D8CEBF] hover:text-cream hover:bg-[#25201B] transition-colors cursor-pointer"
                     >
                       <div className="flex items-center gap-3">
                         <Icon className="w-4 h-4 text-[#A89F91]" />
                         <span>{item.title}</span>
                       </div>
-                      <span className="text-[10px] font-mono uppercase bg-[#1A1714] border border-[#2E2721] px-2 py-0.5 rounded text-[#A89F91]">
+                      <span className="text-[10px] font-mono uppercase bg-espresso border border-[#2E2721] px-2 py-0.5 rounded text-[#A89F91]">
                         {item.badge}
                       </span>
                     </button>
@@ -198,13 +197,13 @@ export default function AdminCommandPalette() {
                     key={item.id}
                     type="button"
                     onClick={() => handleNavigate("/admin/menu")}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-sm text-[#D8CEBF] hover:text-[#FAF5EF] hover:bg-[#25201B] transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-sm text-[#D8CEBF] hover:text-cream hover:bg-[#25201B] transition-colors cursor-pointer"
                   >
                     <div>
-                      <p className="font-medium text-[#FAF5EF]">{item.title}</p>
+                      <p className="font-medium text-cream">{item.title}</p>
                       <p className="text-xs text-[#8E867B]">{item.category}</p>
                     </div>
-                    <span className="font-mono text-xs text-[#D4A853]">
+                    <span className="font-mono text-xs text-gold">
                       ₹{item.price}
                     </span>
                   </button>
@@ -225,10 +224,10 @@ export default function AdminCommandPalette() {
                     key={ord.id}
                     type="button"
                     onClick={() => handleNavigate("/admin/orders")}
-                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-sm text-[#D8CEBF] hover:text-[#FAF5EF] hover:bg-[#25201B] transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-sm text-[#D8CEBF] hover:text-cream hover:bg-[#25201B] transition-colors cursor-pointer"
                   >
                     <div>
-                      <p className="font-medium text-[#FAF5EF]">{ord.id} • {ord.customer?.name}</p>
+                      <p className="font-medium text-cream">{ord.id} • {ord.customer?.name}</p>
                       <p className="text-xs text-[#8E867B]">{ord.type} • Table {ord.table || "N/A"}</p>
                     </div>
                     <span className="font-mono text-xs text-emerald-400">
