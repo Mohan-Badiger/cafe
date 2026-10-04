@@ -63,7 +63,7 @@ export default function AdminCategoriesPage() {
       {/* Title & Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-[#FAF5EF]">
+          <h1 className="text-2xl font-google-sans font-bold tracking-tight text-cream">
             Menu Category Structure
           </h1>
           <p className="text-xs sm:text-sm text-[#A89F91] mt-0.5">
@@ -93,11 +93,11 @@ export default function AdminCategoriesPage() {
               <div className="space-y-3">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-10 h-10 rounded-xl bg-[#D4A853]/15 text-[#E6BC65] flex items-center justify-center font-bold text-sm">
+                    <div className="w-10 h-10 rounded-xl bg-gold/15 text-[#E6BC65] flex items-center justify-center font-bold text-sm">
                       #{idx + 1}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-sm text-[#FAF5EF]">
+                      <h3 className="font-semibold text-sm text-cream">
                         {cat.name}
                       </h3>
                       <p className="text-[11px] text-[#8E867B]">
@@ -132,9 +132,8 @@ export default function AdminCategoriesPage() {
                 <button
                   type="button"
                   onClick={() => updateCategory(cat.id, { isActive: !cat.isActive })}
-                  className={`text-xs font-medium cursor-pointer ${
-                    cat.isActive ? "text-amber-400 hover:underline" : "text-emerald-400 hover:underline"
-                  }`}
+                  className={`text-xs font-medium cursor-pointer ${cat.isActive ? "text-amber-400 hover:underline" : "text-emerald-400 hover:underline"
+                    }`}
                 >
                   {cat.isActive ? "Hide from Menu" : "Publish to Menu"}
                 </button>
@@ -195,7 +194,7 @@ export default function AdminCategoriesPage() {
       >
         <form onSubmit={handleSave} className="space-y-4">
           <div>
-            <label className="text-xs font-semibold text-[#FAF5EF]">
+            <label className="text-xs font-semibold text-cream">
               Category Name *
             </label>
             <input
@@ -204,7 +203,7 @@ export default function AdminCategoriesPage() {
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="e.g. Traditional Thalis & Combos"
               required
-              className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-[#FAF5EF] placeholder-[#7E7568] focus:border-[#D4A853] focus:outline-hidden"
+              className="w-full mt-1.5 bg-[#1C1814] border border-[#2E2721] rounded-xl px-3 py-2 text-xs text-cream focus:border-gold focus:outline-hidden"
             />
           </div>
 
@@ -213,7 +212,7 @@ export default function AdminCategoriesPage() {
               type="checkbox"
               checked={formData.isActive}
               onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-              className="rounded accent-[#D4A853]"
+              className="rounded accent-gold"
             />
             <span>Active on public website menu</span>
           </label>
